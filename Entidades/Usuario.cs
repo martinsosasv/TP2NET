@@ -14,7 +14,7 @@ namespace Entidades
         string _apellido;
         string _email;
         bool _habilitado;
-        
+        string _campoagregado;
         public string NombreUsuario
         {
             get { return _nombreUsuario; }
