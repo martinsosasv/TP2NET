@@ -52,11 +52,8 @@
     <Compile Include="Plan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prueba.cs" />
-<<<<<<< HEAD
     <Compile Include="PruebaFabri.cs" />
-=======
     <Compile Include="PruebaMartin.cs" />
->>>>>>> origin/master
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
