@@ -115,7 +115,8 @@ namespace UI.Web
 
         private void SaveEntity(Usuario usuario)
         {
-            this.Logic.Save(usuario);
+            // TODO: Ver que se quitó el Save
+            //this.Logic.Save(usuario);
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

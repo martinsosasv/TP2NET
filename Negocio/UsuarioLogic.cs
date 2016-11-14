@@ -39,9 +39,14 @@ namespace Negocio
             this.UsuarioData.Delete(id);
         }
 
-        public void Save(Usuario usuario)
+        public void Insert(Usuario usuario)
         {
-            this.UsuarioData.Save(usuario);
+            this.UsuarioData.Insert(usuario);
+        }
+
+        public void Update(Usuario usuario)
+        {
+            this.UsuarioData.Update(usuario);
         }
 
     }

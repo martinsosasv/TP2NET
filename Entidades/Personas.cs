@@ -12,7 +12,7 @@ namespace Entidades
         string _direccion;
         string _email;
         DateTime _fechaNacimiento;
-        int _idPlan;
+        Plan _plan;
         int _idLegajo;
         string _nombre;
         string _telefono;
@@ -42,10 +42,10 @@ namespace Entidades
             set { _fechaNacimiento = value;}
         }
 
-        public int IdPlan
+        public Plan Plan
         {
-            get{ return _idPlan ;}
-            set { _idPlan = value;}
+            get{ return _plan ;}
+            set { _plan = value;}
         }
 
         public int IdLegajo
@@ -74,7 +74,7 @@ namespace Entidades
 
         public enum TiposPersonas
         {
-            Administrador, Docente, Alumno
+            Administrador=1, Docente, Alumno
         }
     
     }

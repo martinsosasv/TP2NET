@@ -159,7 +159,7 @@ namespace UI.Consola
             Console.Write("Ingrese hablilitacion del usuario (1-SI/otro-NO): ");
             usuario.Habilitado = (Console.ReadLine() == "1");
             usuario.State = Entidades.Usuario.States.New;
-            UsuarioNegocio.Save(usuario);
+            //UsuarioNegocio.Save(usuario);
             Console.WriteLine();
             Console.WriteLine("ID: {0}",usuario.ID);
         }

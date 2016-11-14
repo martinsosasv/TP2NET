@@ -107,7 +107,7 @@ namespace Data.Database
             }
         }
 
-        protected void Update(Usuario usuario)
+        public void Update(Usuario usuario)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace Data.Database
             }
         }
 
-        protected void Insert(Usuario usuario)
+        public void Insert(Usuario usuario)
         {
             try
             {
@@ -161,23 +161,6 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-        }
-
-        public void Save(Usuario usuario)
-        {
-            if (usuario.State == Entidades.Entidades.States.Deleted)
-            {
-                this.Delete(usuario.ID);
-            }
-            else if (usuario.State == Entidades.Entidades.States.New)
-            {
-                this.Insert(usuario);
-            }
-            else if (usuario.State == Entidades.Entidades.States.Modified)
-            {
-                this.Update(usuario);
-            }
-            usuario.State = Entidades.Entidades.States.Unmodified;
         }
     }
 }
