@@ -8,7 +8,9 @@ namespace Entidades
 {
     public class Curso : Entidades
     {
-        int _anioCalendario, _cupo, _idComision, _idMateria;
+        int _anioCalendario, _cupo;// _idComision, _idMateria;
+        Materia _materia;
+        Comision _comision;
         
 
         public int AnioCalendario
@@ -35,29 +37,38 @@ namespace Entidades
             }
         }
 
-        public int IdComision
+        public Comision Comision
         {
             get
             {
-                return _idComision;
+                return _comision;
             }
             set
             {
-                _idComision = value;
+                _comision = value;
             }
         }
 
-        public int IdMateria
+        public Materia Materia
         {
             get
             {
-                return _idMateria;
+                return _materia;
             }
             set
             {
-                _idMateria = value;
+                _materia = value;
             }
         }
 
+        public string DescMateria
+        {
+            get { return _materia.Descripcion; }
+        }
+
+        public string DescComision
+        {
+            get { return _comision.Descripcion; }
+        }
     }
 }

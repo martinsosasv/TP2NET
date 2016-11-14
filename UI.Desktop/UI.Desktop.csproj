@@ -68,6 +68,18 @@
     <Compile Include="Comisiones.Designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="CursoAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CursoAgregar.Designer.cs">
+      <DependentUpon>CursoAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cursos.Designer.cs">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="EspecialidadAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComisionAgregar.resx">
       <DependentUpon>ComisionAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CursoAgregar.resx">
+      <DependentUpon>CursoAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EspecialidadAgregar.resx">
       <DependentUpon>EspecialidadAgregar.cs</DependentUpon>

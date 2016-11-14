@@ -22,7 +22,7 @@ namespace UI.Desktop
             PlanLogic plaLog = new PlanLogic();
             List<Plan> listaPlanes = plaLog.GetAll();
             cbxPlan.DataSource = listaPlanes;
-            cbxPlan.DisplayMember = "DescripcionEspecialidad";
+            cbxPlan.DisplayMember = "DescripcionEspPlan";
             cbxPlan.ValueMember = "ID";
         }
 

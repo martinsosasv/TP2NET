@@ -34,15 +34,19 @@ namespace Negocio
             return this.CursoData.GetOne(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Curso curso)
         {
-            this.CursoData.Delete(id);
+            this.CursoData.Delete(curso);
         }
 
-        public void Save(Curso curso)
+        public void Insert(Curso curso)
         {
-            this.CursoData.Save(curso);
+            this.CursoData.Insert(curso);
         }
 
+        public void Update(Curso curso)
+        {
+            this.CursoData.Update(curso);
+        }
     }
 }

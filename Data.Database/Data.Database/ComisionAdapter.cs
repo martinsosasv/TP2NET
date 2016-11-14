@@ -137,7 +137,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("INSERT INTO comisiones (desc_comision,anio_especialidad,id_plan) " +
-                                                    "VALUES(@desc_comision,@anio_especialidad,id_plan) " +
+                                                    "VALUES(@desc_comision,@anio_especialidad,@id_plan) " +
                                                     "SELECT @@identity", SqlConn);
 
 
@@ -151,6 +151,7 @@ namespace Data.Database
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al crear comision", Ex);
+                throw ExcepcionManejada;
             }
             finally
             {

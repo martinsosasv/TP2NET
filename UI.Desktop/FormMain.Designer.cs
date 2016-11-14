@@ -121,6 +121,7 @@
             this.cursosToolStripMenuItem2.Name = "cursosToolStripMenuItem2";
             this.cursosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.cursosToolStripMenuItem2.Text = "Cursos";
+            this.cursosToolStripMenuItem2.Click += new System.EventHandler(this.cursosToolStripMenuItem2_Click);
             // 
             // mnuReportes
             // 

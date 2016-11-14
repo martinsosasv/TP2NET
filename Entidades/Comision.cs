@@ -32,7 +32,7 @@ namespace Entidades
 
         public string PlanDescripcion
         {
-            get { return this.PlanDescripcion; }
+            get { return _plan.Descripcion; }
         }
 
         public string DescripcionEspecPlan

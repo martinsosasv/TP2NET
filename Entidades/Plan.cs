@@ -38,5 +38,13 @@ namespace Entidades
         {
             get { return Especialidad.Descripcion; }
         }
+
+        public string DescripcionEspPlan
+        {
+            get {
+                string espPlan = DescripcionEspecialidad + " - " + Descripcion;
+                return espPlan;
+            }
+        }
     }
 }

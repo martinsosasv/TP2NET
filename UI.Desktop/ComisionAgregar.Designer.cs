@@ -88,14 +88,14 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(123, 78);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(146, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(162, 20);
             this.txtDescripcion.TabIndex = 5;
             // 
             // txtAnio
             // 
             this.txtAnio.Location = new System.Drawing.Point(123, 114);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(146, 20);
+            this.txtAnio.Size = new System.Drawing.Size(162, 20);
             this.txtAnio.TabIndex = 6;
             // 
             // cbxPlan
@@ -103,12 +103,12 @@
             this.cbxPlan.FormattingEnabled = true;
             this.cbxPlan.Location = new System.Drawing.Point(123, 149);
             this.cbxPlan.Name = "cbxPlan";
-            this.cbxPlan.Size = new System.Drawing.Size(146, 21);
+            this.cbxPlan.Size = new System.Drawing.Size(162, 21);
             this.cbxPlan.TabIndex = 7;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(57, 211);
+            this.btnAceptar.Location = new System.Drawing.Point(67, 211);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 8;
@@ -118,7 +118,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(185, 211);
+            this.btnCancelar.Location = new System.Drawing.Point(194, 211);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 9;

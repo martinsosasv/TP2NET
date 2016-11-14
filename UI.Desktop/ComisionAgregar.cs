@@ -19,12 +19,12 @@ namespace UI.Desktop
         {
             InitializeComponent();
             estadoEdicion = false;
-            ComisionLogic comLog = new ComisionLogic();
-            List<Comision> listaComisiones = comLog.GetAll();
-            cbxPlan.DataSource = listaComisiones;
-            cbxPlan.DisplayMember = "DescripcionEspecialidad";
+            PlanLogic plaLog = new PlanLogic();
+            List<Plan> listaPlanes = plaLog.GetAll();
+            cbxPlan.DataSource = listaPlanes;
+            cbxPlan.DisplayMember = "DescripcionEspPlan";
             cbxPlan.ValueMember = "ID";
-        }
+                    }
 
         public void Editar(Comision comision)
         {

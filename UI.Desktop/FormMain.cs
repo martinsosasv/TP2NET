@@ -75,5 +75,11 @@ namespace UI.Desktop
             Comisiones frmComisiones = new Comisiones();
             frmComisiones.Show();
         }
+
+        private void cursosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Cursos frmCursos = new Cursos();
+            frmCursos.Show();
+        }
     }
 }
