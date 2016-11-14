@@ -100,7 +100,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE especialidades SET desc_especialidad = @desc_especialidad" +
+                SqlCommand cmdSave = new SqlCommand("UPDATE especialidades SET desc_especialidad = @desc_especialidad " +
                                                     "WHERE id_especialidad = @id", SqlConn);
                 cmdSave.Parameters.AddWithValue("@id", Convert.ToInt32(especialidad.ID));
                 cmdSave.Parameters.AddWithValue("@desc_especialidad",especialidad.Descripcion);

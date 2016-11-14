@@ -126,7 +126,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE materias SET desc_materia = @desc_materia, hs_semanales = @hs_semanales," +
-                                                    "hs_totales = @hs_totales, id_plan = @id_plan" +
+                                                    "hs_totales = @hs_totales, id_plan = @id_plan " +
                                                     "WHERE id_materia = @id", SqlConn);
                 cmdSave.Parameters.AddWithValue("@desc_materia",materia.Descripcion);
                 cmdSave.Parameters.AddWithValue("@hs_semanales",materia.HSSemanales);

@@ -151,7 +151,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripcion SET id_curso = @id_curso, id_alumno = @id_alumno," +
-                                                    "condicion = @condicion, nota = @nota" +
+                                                    "condicion = @condicion, nota = @nota " +
                                                     "WHERE id_inscripcion = @id_inscripcion", SqlConn);
                 cmdSave.Parameters.Add("@id_inscripcion", SqlDbType.Int).Value = inscripcion.ID;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.IdCurso;
