@@ -8,5 +8,6 @@ namespace Entidades
 {
     class Prueba
     {
+        string _campoprueba;
     }
 }
