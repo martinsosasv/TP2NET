@@ -15,6 +15,8 @@ namespace Entidades
         string _email;
         bool _habilitado;
         string _campoagregado;
+        Personas _persona;
+        
         public string NombreUsuario
         {
             get { return _nombreUsuario; }
@@ -49,6 +51,26 @@ namespace Entidades
         {
             get { return _habilitado; }
             set { _habilitado = value; }
+        }
+
+        public Personas Persona
+        {
+            get
+            {
+                return _persona;
+            }
+            set
+            {
+                _persona = value;
+            }
+        }
+
+        public int IdPersona
+        {
+            get
+            {
+                return _persona.ID;
+            }
         }
     }
 }
