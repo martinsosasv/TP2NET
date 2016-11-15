@@ -8,7 +8,6 @@ namespace Entidades
 {
     public class Personas : Entidades
     {
-        int _idPersona;
         string _apellido;
         string _direccion;
         string _email;
@@ -19,17 +18,6 @@ namespace Entidades
         string _telefono;
         TiposPersonas _tipoPersona;
 
-        public int ID
-        {
-            get
-            {
-                return _idPersona;
-            }
-            set
-            {
-                _idPersona = value;
-            }
-        }
 
         public string Apellido
         {

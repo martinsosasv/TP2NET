@@ -40,9 +40,9 @@ namespace Negocio
             return this.PersonaData.GetOne(id);
         }
 
-        public void Delete(int id)
+        public void Delete(Personas persona)
         {
-            this.PersonaData.Delete(id);
+            this.PersonaData.Delete(persona);
         }
 
         public void Insert(Personas persona)

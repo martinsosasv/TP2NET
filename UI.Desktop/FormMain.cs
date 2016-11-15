@@ -36,7 +36,7 @@ namespace UI.Desktop
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            switch(this.Persona.TipoPersona)
+            /*switch(this.Persona.TipoPersona)
             {
                 case(Entidades.Personas.TiposPersonas.Administrador):
                     this.mnuABM.Visible = true;
@@ -48,7 +48,7 @@ namespace UI.Desktop
                 case(Entidades.Personas.TiposPersonas.Docente):
                     this.mnuCursos.Visible = true;
                     break;
-            }
+            }*/
 
         }
 

@@ -21,7 +21,7 @@ namespace UI.Desktop
             {
                 InitializeComponent();
                 estadoEdicion = false;
-                List<Personas> listadoPersonas = new List<Personas>();
+                List<Entidades.Personas> listadoPersonas = new List<Entidades.Personas>();
                 PersonaLogic perLog = new PersonaLogic();
                 listadoPersonas = perLog.GetAll();
                 cbxPersona.DataSource = listadoPersonas;

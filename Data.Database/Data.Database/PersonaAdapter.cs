@@ -17,7 +17,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdPersonas = new SqlCommand("SELECT (nombre,apellido,direccion,email,telefeno,fecha_nac,legajo,tipo_persona,id_plan) FROM personas", SqlConn);
+                SqlCommand cmdPersonas = new SqlCommand("SELECT (id_persona,nombre,apellido,direccion,email,telefeno,fecha_nac,legajo,tipo_persona,id_plan) FROM personas", SqlConn);
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
                 while (drPersonas.Read())
                 {
@@ -62,7 +62,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdPersona = new SqlCommand("SELECT (nombre,apellido,direccion,email,telefeno,fecha_nac,legajo,tipo_persona,id_plan) FROM personas WHILE id_persona = @ID", SqlConn);
+                SqlCommand cmdPersona = new SqlCommand("SELECT (id_persona,nombre,apellido,direccion,email,telefeno,fecha_nac,legajo,tipo_persona,id_plan) FROM personas WHILE id_persona = @ID", SqlConn);
                 cmdPersona.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
                 SqlDataReader drPersona = cmdPersona.ExecuteReader();
                 if(drPersona.Read())
@@ -99,20 +99,20 @@ namespace Data.Database
             return persona;
         }
 
-        public void Delete(int ID)
+        public void Delete(Personas persona)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("DELETE personas WHERE id_persona = @ID",SqlConn);
-                cmdDelete.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+                SqlCommand cmdDelete = new SqlCommand("DELETE personas WHERE id_persona = @id",SqlConn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
                 cmdDelete.ExecuteNonQuery();
                 
             }
             catch (Exception Ex)
             {
-                Exception exCapturada = new Exception("Error al eliminar persona",Ex);
-                throw exCapturada;
+                Exception exManejada = new Exception("Error al eliminar persona",Ex);
+                throw exManejada;
             }
             finally
             {
