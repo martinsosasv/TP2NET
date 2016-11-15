@@ -9,7 +9,7 @@ using DD = Data.Database;
 
 namespace Negocio
 {
-    class PersonaLogic : Negocio
+    public class PersonaLogic : Negocio
     {
         public PersonaLogic()
         {

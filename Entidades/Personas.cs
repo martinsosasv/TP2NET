@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class Personas : Entidades
     {
+        int _idPersona;
         string _apellido;
         string _direccion;
         string _email;
@@ -17,6 +18,18 @@ namespace Entidades
         string _nombre;
         string _telefono;
         TiposPersonas _tipoPersona;
+
+        public int ID
+        {
+            get
+            {
+                return _idPersona;
+            }
+            set
+            {
+                _idPersona = value;
+            }
+        }
 
         public string Apellido
         {
@@ -75,6 +88,14 @@ namespace Entidades
         public enum TiposPersonas
         {
             Administrador=1, Docente, Alumno
+        }
+
+        public string ApellidoNombre
+        {
+            get
+            {
+                return _apellido + " " + _nombre;
+            }
         }
     
     }
