@@ -44,6 +44,7 @@
             this.inscripciónACursadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.verCursosAsignadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,8 @@
             this.planesToolStripMenuItem1,
             this.materiasToolStripMenuItem,
             this.comisionesToolStripMenuItem,
-            this.cursosToolStripMenuItem2});
+            this.cursosToolStripMenuItem2,
+            this.personasToolStripMenuItem});
             this.mnuABM.Name = "mnuABM";
             this.mnuABM.Size = new System.Drawing.Size(45, 20);
             this.mnuABM.Text = "ABM";
@@ -172,6 +174,13 @@
             this.verCursosAsignadosToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.verCursosAsignadosToolStripMenuItem.Text = "Ver cursos asignados";
             // 
+            // personasToolStripMenuItem
+            // 
+            this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.personasToolStripMenuItem.Text = "Personas";
+            this.personasToolStripMenuItem.Click += new System.EventHandler(this.personasToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +216,6 @@
         private System.Windows.Forms.ToolStripMenuItem inscripciónACursadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuCursos;
         private System.Windows.Forms.ToolStripMenuItem verCursosAsignadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
     }
 }

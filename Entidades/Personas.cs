@@ -75,7 +75,7 @@ namespace Entidades
 
         public enum TiposPersonas
         {
-            Administrador=1, Docente, Alumno
+            Administrador=1, Docente=2, Alumno=3
         }
 
         public string ApellidoNombre
@@ -84,6 +84,11 @@ namespace Entidades
             {
                 return _apellido + " " + _nombre;
             }
+        }
+
+        public string PlanPersona
+        {
+            get { return _plan.DescripcionEspPlan; }
         }
     
     }
