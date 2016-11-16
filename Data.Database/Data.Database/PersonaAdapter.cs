@@ -62,8 +62,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdPersona = new SqlCommand("SELECT (id_persona,nombre,apellido,direccion,email,telefeno,fecha_nac,legajo,tipo_persona,id_plan) FROM personas WHILE id_persona = @ID", SqlConn);
-                cmdPersona.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
+                SqlCommand cmdPersona = new SqlCommand("SELECT id_persona,nombre,apellido,direccion,email,telefono,fecha_nac,legajo,tipo_persona,id_plan FROM personas WHERE id_persona = @id", SqlConn);
+                cmdPersona.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drPersona = cmdPersona.ExecuteReader();
                 if(drPersona.Read())
                 {
