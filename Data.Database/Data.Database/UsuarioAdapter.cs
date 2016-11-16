@@ -5,8 +5,6 @@ using Entidades;
 using System.Data;
 using System.Data.SqlClient;
 
-
-
 namespace Data.Database
 {
     public class UsuarioAdapter:Adapter
@@ -18,11 +16,15 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios", SqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT id_usuario,nombre_usuario,clave,habilitado,email,id_persona FROM usuarios", SqlConn);
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
                     Usuario usr = new Usuario();
+                    Entidades.Personas persona = new Entidades.Personas();
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
+                    
 
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
@@ -31,7 +33,7 @@ namespace Data.Database
                     //usr.Nombre = (string)drUsuarios["nombre"];
                     //usr.Apellido = (string)drUsuarios["apellido"];
                     usr.Email = (string)drUsuarios["email"];
-
+                    usr.Persona = drUsuarios.IsDBNull(5) ? null : persona;
                     usuarios.Add(usr);
                 }
 

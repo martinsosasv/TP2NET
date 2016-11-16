@@ -45,6 +45,7 @@
             this.mnuCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.verCursosAsignadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,8 @@
             this.materiasToolStripMenuItem,
             this.comisionesToolStripMenuItem,
             this.cursosToolStripMenuItem2,
-            this.personasToolStripMenuItem});
+            this.personasToolStripMenuItem,
+            this.usuariosToolStripMenuItem});
             this.mnuABM.Name = "mnuABM";
             this.mnuABM.Size = new System.Drawing.Size(45, 20);
             this.mnuABM.Text = "ABM";
@@ -181,6 +183,13 @@
             this.personasToolStripMenuItem.Text = "Personas";
             this.personasToolStripMenuItem.Click += new System.EventHandler(this.personasToolStripMenuItem_Click);
             // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +226,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCursos;
         private System.Windows.Forms.ToolStripMenuItem verCursosAsignadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
     }
 }

@@ -87,5 +87,11 @@ namespace UI.Desktop
             Personas frmPersonas = new Personas();
             frmPersonas.Show();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios frmUser = new Usuarios();
+            frmUser.Show();
+        }
     }
 }
