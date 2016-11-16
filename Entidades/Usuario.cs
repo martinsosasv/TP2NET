@@ -74,5 +74,10 @@ namespace Entidades
                 return this.Persona.Apellido;
             }
         }
+
+        public string ApellidoNombrePersona
+        {
+            get { return _persona.ApellidoNombre; }
+        }
     }
 }

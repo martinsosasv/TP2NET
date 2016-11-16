@@ -40,23 +40,17 @@ namespace UI.Desktop
             colHabilitado_Usuario.DataPropertyName = "Habilitado";
             this.dgvBase.Columns.Add(colHabilitado_Usuario);
 
-            DataGridViewTextBoxColumn colNombre = new DataGridViewTextBoxColumn();
-            colNombre.Name = "nombre";
-            colNombre.HeaderText = "Nombre";
-            colNombre.DataPropertyName = "NombrePersona";
-            this.dgvBase.Columns.Add(colNombre);
-
-            DataGridViewTextBoxColumn colApellido = new DataGridViewTextBoxColumn();
-            colApellido.Name = "apellido";
-            colApellido.HeaderText = "Apellido";
-            colApellido.DataPropertyName = "ApellidoPersona";
-            this.dgvBase.Columns.Add(colApellido);
-
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
             colEmail.Name = "email";
             colEmail.HeaderText = "Email";
             colEmail.DataPropertyName = "Email";
             this.dgvBase.Columns.Add(colEmail);
+
+            DataGridViewTextBoxColumn colPer = new DataGridViewTextBoxColumn();
+            colPer.Name = "persona_usuario";
+            colPer.HeaderText = "Persona";
+            colPer.DataPropertyName = "ApellidoNombrePersona";
+            this.dgvBase.Columns.Add(colPer);
         }
 
         public void Listar()
