@@ -81,5 +81,11 @@ namespace UI.Desktop
             Cursos frmCursos = new Cursos();
             frmCursos.Show();
         }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Personas frmPersonas = new Personas();
+            frmPersonas.Show();
+        }
     }
 }
