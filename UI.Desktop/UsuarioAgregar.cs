@@ -41,11 +41,53 @@ namespace UI.Desktop
             this.txtID.Text = usuario.ID.ToString();
             this.txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
             this.chkHabilitado.Checked = usuario.Habilitado;
-            this.txtNombre.Text = usuario.Nombre.ToString();
-            this.txtApellido.Text = usuario.Apellido.ToString();
+            this.txtClave.Text = usuario.Clave.ToString();
             this.txtEmail.Text = usuario.Email.ToString();
             cbxPersona.SelectedValue = usuario.Persona.ID;
             
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //if (Validar())
+                //{
+                if (MessageBox.Show(estadoEdicion == true ? "Esta seguro que desea editar este Usuario?" : "Esta seguro que desea agregar este Usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    UsuarioLogic userLog = new UsuarioLogic();
+                    Usuario user = new Usuario();
+                    user.NombreUsuario = this.txtNombreUsuario.Text;
+                    user.Habilitado = this.chkHabilitado.Checked;
+                    user.Clave = this.txtClave.Text;
+                    user.Email = this.txtEmail.Text;
+                    user.Persona = (Entidades.Personas)this.cbxPersona.SelectedItem;
+
+                    if (!estadoEdicion)
+                    {
+                        userLog.Insert(user);
+                        MessageBox.Show("Se ha agregado correctamente el Usuario", "Agregar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        user.ID = Int32.Parse(this.txtID.Text);
+                        userLog.Update(user);
+                        MessageBox.Show("Se ha editado correctamente el Usuario", "Editar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    this.Close();
+                    //}
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         

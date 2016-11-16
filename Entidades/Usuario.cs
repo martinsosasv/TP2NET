@@ -10,8 +10,6 @@ namespace Entidades
     {
         string _nombreUsuario;
         string _clave;
-        string _nombre;
-        string _apellido;
         string _email;
         bool _habilitado;
         string _campoagregado;
@@ -27,18 +25,6 @@ namespace Entidades
         {
             get { return _clave; }
             set { _clave = value; }
-        }
-
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value; }
-        }
-
-        public string Apellido
-        {
-            get { return _apellido; }
-            set { _apellido = value; }
         }
 
         public string Email
@@ -69,7 +55,23 @@ namespace Entidades
         {
             get
             {
-                return _persona.ID;
+                return this.Persona.ID;
+            }
+        }
+
+        public string NombrePersona
+        {
+            get
+            {
+                return this.Persona.Nombre;
+            }
+        }
+
+        public string ApellidoPersona
+        {
+            get
+            {
+                return this.Persona.Apellido;
             }
         }
     }

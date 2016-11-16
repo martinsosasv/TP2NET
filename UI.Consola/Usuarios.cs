@@ -70,8 +70,8 @@ namespace UI.Consola
         public void MostrarDatos(Usuario u)
         {
             Console.WriteLine("Usuario: {0} ",u.ID);
-            Console.WriteLine("\t\tNombre: {0} ",u.Nombre);
-            Console.WriteLine("\t\tApellido: {0} ", u.Apellido);
+            //Console.WriteLine("\t\tNombre: {0} ",u.Nombre);
+            //Console.WriteLine("\t\tApellido: {0} ", u.Apellido);
             Console.WriteLine("\t\tNombre de usuario: {0} ", u.NombreUsuario);
             Console.WriteLine("\t\tClave: {0} ", u.Clave);
             Console.WriteLine("\t\tEmail: {0} ", u.Email);
@@ -112,9 +112,9 @@ namespace UI.Consola
                 int ID = int.Parse(Console.ReadLine());
                 Usuario usuario = UsuarioNegocio.GetOne(ID);
                 Console.Write("Ingrese nombre: ");
-                usuario.Nombre = Console.ReadLine();
+                //usuario.Nombre = Console.ReadLine();
                 Console.Write("Ingrese apellido: ");
-                usuario.Apellido = Console.ReadLine();
+                //usuario.Apellido = Console.ReadLine();
                 Console.Write("Ingrese nombre de usuario: ");
                 usuario.NombreUsuario = Console.ReadLine();
                 Console.Write("Ingrese clave: ");
@@ -147,9 +147,9 @@ namespace UI.Consola
 
             Console.Clear();
             Console.Write("Ingrese nombre: ");
-            usuario.Nombre = Console.ReadLine();
+            //usuario.Nombre = Console.ReadLine();
             Console.Write("Ingrese apellido: ");
-            usuario.Apellido = Console.ReadLine();
+            //usuario.Apellido = Console.ReadLine();
             Console.Write("Ingrese nombre de usuario: ");
             usuario.NombreUsuario = Console.ReadLine();
             Console.Write("Ingrese clave: ");

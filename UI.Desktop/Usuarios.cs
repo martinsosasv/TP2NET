@@ -43,13 +43,13 @@ namespace UI.Desktop
             DataGridViewTextBoxColumn colNombre = new DataGridViewTextBoxColumn();
             colNombre.Name = "nombre";
             colNombre.HeaderText = "Nombre";
-            colNombre.DataPropertyName = "Nombre";
+            colNombre.DataPropertyName = "NombrePersona";
             this.dgvBase.Columns.Add(colNombre);
 
             DataGridViewTextBoxColumn colApellido = new DataGridViewTextBoxColumn();
             colApellido.Name = "apellido";
             colApellido.HeaderText = "Apellido";
-            colApellido.DataPropertyName = "Apellido";
+            colApellido.DataPropertyName = "ApellidoPersona";
             this.dgvBase.Columns.Add(colApellido);
 
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
@@ -57,12 +57,6 @@ namespace UI.Desktop
             colEmail.HeaderText = "Email";
             colEmail.DataPropertyName = "Email";
             this.dgvBase.Columns.Add(colEmail);
-
-            DataGridViewTextBoxColumn colIdPersona = new DataGridViewTextBoxColumn();
-            colIdPersona.Name = "id_persona";
-            colIdPersona.HeaderText = "ID Persona";
-            colIdPersona.DataPropertyName = "IdPersona";
-            this.dgvBase.Columns.Add(colIdPersona);
         }
 
         public void Listar()
@@ -75,8 +69,8 @@ namespace UI.Desktop
 
         protected override void btnNuevo_Click(object sender, EventArgs e)
         {
-            CursoAgregar frmCurAgr = new CursoAgregar();
-            frmCurAgr.ShowDialog();
+            UsuarioAgregar frmUserAgr = new UsuarioAgregar();
+            frmUserAgr.ShowDialog();
             this.Listar();
         }
 
