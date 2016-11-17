@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Negocio;
+using UI.Desktop;
 
 namespace CreacionFormLogin
 {
@@ -20,7 +22,21 @@ namespace CreacionFormLogin
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //la propiedad Text de los TextBox contiene el texto escrito en ellos
+            Usuario user = new Usuario();
+            UsuarioLogic userLog = new UsuarioLogic();
+            user = userLog.GetOne(this.txtUsuario.Text);
+            if (user.NombreUsuario == this.txtUsuario.Text && user.Clave == this.txtPass.Text)
+            {
+                this.txtUsuario.Text = "";
+                this.txtPass.Text = "";
+                frmMain frmMain = new frmMain();
+                frmMain.Persona = user.Persona;
+                frmMain.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("El usuario no existe");
+            }
         }
 
         private void lnkOlvidaPass_Click(object sender, EventArgs e)

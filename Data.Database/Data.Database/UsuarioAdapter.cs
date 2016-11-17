@@ -59,11 +59,15 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE id_usuario = @id", SqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT id_usuario,nombre_usuario,clave,habilitado,email,id_persona FROM usuarios WHERE id_usuario = @id", SqlConn);
                 cmdUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = ID; 
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
                 {
+                    Entidades.Personas persona = new Entidades.Personas();
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
+
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
@@ -71,7 +75,48 @@ namespace Data.Database
                     //usr.Nombre = (string)drUsuarios["nombre"];
                     //usr.Apellido = (string)drUsuarios["apellido"];
                     usr.Email = (string)drUsuarios["email"];
+                    usr.Persona = drUsuarios.IsDBNull(5) ? null : persona;
+                }
 
+                drUsuarios.Close();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return usr;
+        }
+
+        public Entidades.Usuario GetOne(string usuario)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT id_usuario,nombre_usuario,clave,habilitado,email,id_persona FROM usuarios WHERE nombre_usuario = @nombre_usuario", SqlConn);
+                cmdUsuarios.Parameters.AddWithValue("@nombre_usuario", usuario);
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+                if (drUsuarios.Read())
+                {
+
+                    Entidades.Personas persona = new Entidades.Personas();
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
+
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    //usr.Nombre = (string)drUsuarios["nombre"];
+                    //usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.Email = (string)drUsuarios["email"];
+                    usr.Persona = drUsuarios.IsDBNull(5) ? null : persona;
                 }
 
                 drUsuarios.Close();

@@ -124,7 +124,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(107, 65);
+            this.lblNombre.Location = new System.Drawing.Point(102, 65);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 13;
@@ -133,7 +133,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(133, 34);
+            this.lblID.Location = new System.Drawing.Point(128, 31);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 12;
@@ -158,7 +158,7 @@
             // lblFechaNac
             // 
             this.lblFechaNac.AutoSize = true;
-            this.lblFechaNac.Location = new System.Drawing.Point(43, 229);
+            this.lblFechaNac.Location = new System.Drawing.Point(38, 229);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(108, 13);
             this.lblFechaNac.TabIndex = 26;
@@ -188,7 +188,7 @@
             // lblLegajo
             // 
             this.lblLegajo.AutoSize = true;
-            this.lblLegajo.Location = new System.Drawing.Point(112, 261);
+            this.lblLegajo.Location = new System.Drawing.Point(107, 292);
             this.lblLegajo.Name = "lblLegajo";
             this.lblLegajo.Size = new System.Drawing.Size(39, 13);
             this.lblLegajo.TabIndex = 30;
@@ -197,7 +197,7 @@
             // lblTipoPersona
             // 
             this.lblTipoPersona.AutoSize = true;
-            this.lblTipoPersona.Location = new System.Drawing.Point(118, 288);
+            this.lblTipoPersona.Location = new System.Drawing.Point(118, 260);
             this.lblTipoPersona.Name = "lblTipoPersona";
             this.lblTipoPersona.Size = new System.Drawing.Size(28, 13);
             this.lblTipoPersona.TabIndex = 31;
@@ -214,13 +214,15 @@
             // 
             // txtLegajo
             // 
-            this.txtLegajo.Location = new System.Drawing.Point(157, 258);
+            this.txtLegajo.Enabled = false;
+            this.txtLegajo.Location = new System.Drawing.Point(157, 289);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(100, 20);
             this.txtLegajo.TabIndex = 33;
             // 
             // cbxPlan
             // 
+            this.cbxPlan.Enabled = false;
             this.cbxPlan.FormattingEnabled = true;
             this.cbxPlan.Location = new System.Drawing.Point(157, 318);
             this.cbxPlan.Name = "cbxPlan";
@@ -230,10 +232,11 @@
             // cbxTipo
             // 
             this.cbxTipo.FormattingEnabled = true;
-            this.cbxTipo.Location = new System.Drawing.Point(157, 288);
+            this.cbxTipo.Location = new System.Drawing.Point(157, 257);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 21);
             this.cbxTipo.TabIndex = 36;
+            this.cbxTipo.SelectedValueChanged += new System.EventHandler(this.cbxTipo_SelectedValueChanged);
             // 
             // PersonaAgregar
             // 

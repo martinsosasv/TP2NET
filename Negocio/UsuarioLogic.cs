@@ -33,6 +33,10 @@ namespace Negocio
         {
             return this.UsuarioData.GetOne(id);
         }
+        public Usuario GetOne(string usuario)
+        {
+            return this.UsuarioData.GetOne(usuario);
+        }
 
         public void Delete(int id)
         {

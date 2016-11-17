@@ -14,9 +14,9 @@ namespace UI.Desktop
     public partial class frmMain : Form
     {
 
-        private Personas _persona;
+        private Entidades.Personas _persona;
 
-        public Personas Persona
+        public Entidades.Personas Persona
         {
             get { return _persona; }
             set { _persona = value; }
@@ -27,8 +27,6 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -36,7 +34,7 @@ namespace UI.Desktop
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            /*switch(this.Persona.TipoPersona)
+            switch(this.Persona.TipoPersona)
             {
                 case(Entidades.Personas.TiposPersonas.Administrador):
                     this.mnuABM.Visible = true;
@@ -48,7 +46,7 @@ namespace UI.Desktop
                 case(Entidades.Personas.TiposPersonas.Docente):
                     this.mnuCursos.Visible = true;
                     break;
-            }*/
+            }
 
         }
 
