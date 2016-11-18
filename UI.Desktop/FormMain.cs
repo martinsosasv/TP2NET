@@ -91,5 +91,11 @@ namespace UI.Desktop
             Usuarios frmUser = new Usuarios();
             frmUser.Show();
         }
+
+        private void inscripciónACursadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InscripcionAlumnoCurso frmInscAlu = new InscripcionAlumnoCurso(this.Persona);
+            frmInscAlu.Show();
+        }
     }
 }

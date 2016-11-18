@@ -18,19 +18,30 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAlumnoInscripciones = new SqlCommand("SELECT * FROM alumnos_incripciones", SqlConn);
+                SqlCommand cmdAlumnoInscripciones = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_incripciones", SqlConn);
                 SqlDataReader drAlumnoInscripciones = cmdAlumnoInscripciones.ExecuteReader();
                 while (drAlumnoInscripciones.Read())
                 {
-                    AlumnoInscripcion alu = new AlumnoInscripcion();
+                    AlumnoInscripcion aluIns = new AlumnoInscripcion();
 
-                    alu.ID = (int)drAlumnoInscripciones["id_inscripcion"];
-                    alu.IdAlumno = (int)drAlumnoInscripciones["id_usuario"];
-                    alu.IdCurso = (int)drAlumnoInscripciones["nombre_usuario"];
-                    alu.Condicion = (string)drAlumnoInscripciones["clave"];
-                    alu.Nota = (int)drAlumnoInscripciones["nota"];
+                    Personas per = new Personas();
+                    Curso cur = new Curso();
 
-                    alumnos.Add(alu);
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    CursoAdapter curAda = new CursoAdapter();
+
+                    per = perAda.GetOne(Convert.ToInt32(drAlumnoInscripciones["id_alumno"]));
+                    cur = curAda.GetOne(Convert.ToInt32(drAlumnoInscripciones["id_curso"]));
+
+                    aluIns.ID = (int)drAlumnoInscripciones["id_inscripcion"];
+                    aluIns.Alumno = drAlumnoInscripciones.IsDBNull(1) ? null : per;
+                    aluIns.Curso = drAlumnoInscripciones.IsDBNull(2) ? null : cur;
+                    aluIns.Condicion = (string)drAlumnoInscripciones["condicion"];
+                    aluIns.Nota = (int)drAlumnoInscripciones["nota"];
+                    
+                    
+
+                    alumnos.Add(aluIns);
                 }
 
                 drAlumnoInscripciones.Close();
@@ -38,7 +49,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones alumnos", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos inscriptos", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -55,21 +66,29 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDatosCurso = new SqlCommand("SELECT * FROM alumnos_inscripciones WHERE id_curso = @id_curso", SqlConn);
+                SqlCommand cmdDatosCurso = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones WHERE id_curso = @id_curso", SqlConn);
                 cmdDatosCurso.Parameters.Add("@id_curso", SqlDbType.Int).Value = IDCurso;
                 SqlDataReader drDatosCurso = cmdDatosCurso.ExecuteReader();
                 if (drDatosCurso.Read())
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
+                    Personas per = new Personas();
+                    Curso cur = new Curso();
+
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    CursoAdapter curAda = new CursoAdapter();
+
+                    per = perAda.GetOne(Convert.ToInt32(drDatosCurso["id_alumno"]));
+                    cur = curAda.GetOne(Convert.ToInt32(drDatosCurso["id_curso"]));
+
                     aluCurso.ID = (int)drDatosCurso["id_inscripcion"];
-                    aluCurso.IdAlumno = (int)drDatosCurso["id_usuario"];
-                    aluCurso.IdCurso = (int)drDatosCurso["nombre_usuario"];
-                    aluCurso.Condicion = (string)drDatosCurso["clave"];
+                    aluCurso.Alumno = drDatosCurso.IsDBNull(1) ? null : per;
+                    aluCurso.Curso = drDatosCurso.IsDBNull(2) ? null : cur;
+                    aluCurso.Condicion = (string)drDatosCurso["condicion"];
                     aluCurso.Nota = (int)drDatosCurso["nota"];
 
                     inscripcionesCursos.Add(aluCurso);
-
                 }
 
                 drDatosCurso.Close();
@@ -93,17 +112,26 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDatosCurso = new SqlCommand("SELECT * FROM alumnos_inscripciones WHERE id_alumno = @id_alumno", SqlConn);
-                cmdDatosCurso.Parameters.Add("@id_curso", SqlDbType.Int).Value = IDAlumno;
+                SqlCommand cmdDatosCurso = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones WHERE id_alumno = @id_alumno", SqlConn);
+                cmdDatosCurso.Parameters.Add("@id_alumno", SqlDbType.Int).Value = IDAlumno;
                 SqlDataReader drDatosCurso = cmdDatosCurso.ExecuteReader();
                 if (drDatosCurso.Read())
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
+                    Personas per = new Personas();
+                    Curso cur = new Curso();
+
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    CursoAdapter curAda = new CursoAdapter();
+
+                    per = perAda.GetOne(Convert.ToInt32(drDatosCurso["id_alumno"]));
+                    cur = curAda.GetOne(Convert.ToInt32(drDatosCurso["id_curso"]));
+
                     aluCurso.ID = (int)drDatosCurso["id_inscripcion"];
-                    aluCurso.IdAlumno = (int)drDatosCurso["id_usuario"];
-                    aluCurso.IdCurso = (int)drDatosCurso["nombre_usuario"];
-                    aluCurso.Condicion = (string)drDatosCurso["clave"];
+                    aluCurso.Alumno = drDatosCurso.IsDBNull(1) ? null : per;
+                    aluCurso.Curso = drDatosCurso.IsDBNull(2) ? null : cur;
+                    aluCurso.Condicion = (string)drDatosCurso["condicion"];
                     aluCurso.Nota = (int)drDatosCurso["nota"];
 
                     inscripcionesCursos.Add(aluCurso);
@@ -125,13 +153,13 @@ namespace Data.Database
             return inscripcionesCursos;
         }
 
-        public void Delete(int ID)
+        public void Delete(AlumnoInscripcion aluInscripto)
         {
             try
             {
                 this.OpenConnection();
                 SqlCommand cmdDelete = new SqlCommand("DELETE alumnos_inscripciones WHERE id_inscripcion = @id", SqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = aluInscripto.ID;
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -145,7 +173,7 @@ namespace Data.Database
             }
         }
 
-        protected void Update(AlumnoInscripcion inscripcion)
+        public void Update(AlumnoInscripcion inscripcion)
         {
             try
             {
@@ -154,8 +182,8 @@ namespace Data.Database
                                                     "condicion = @condicion, nota = @nota " +
                                                     "WHERE id_inscripcion = @id_inscripcion", SqlConn);
                 cmdSave.Parameters.Add("@id_inscripcion", SqlDbType.Int).Value = inscripcion.ID;
-                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.IdCurso;
-                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.IdAlumno;
+                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.Curso.ID;
+                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.Alumno.ID;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
 
@@ -172,17 +200,17 @@ namespace Data.Database
             }
         }
 
-        protected void Insert(AlumnoInscripcion inscripcion)
+        public void Insert(AlumnoInscripcion inscripcion)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripcion (id_curso,id_alumno,condicion,nota) " +
-                                                    "VALUES(@id_curso,@id_alumno,@condicion,@nota) " +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripcion (id_alumno,id_curso,condicion,nota) " +
+                                                    "VALUES(@id_alumno,@id_curso,@condicion,@nota) " +
                                                     "SELECT @@identity", SqlConn);
 
-                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.IdAlumno;
-                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.IdCurso;
+                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.Alumno.IdLegajo;//El ID del alumno en la inscripcion es el legajo
+                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.Curso.ID;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
                 inscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar()); //Asi se obtiene el id que asingo a la BD automaticamente
@@ -196,23 +224,6 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-        }
-
-        public void Save(AlumnoInscripcion inscripcion)
-        {
-            if (inscripcion.State == Entidades.Entidades.States.Deleted)
-            {
-                this.Delete(inscripcion.ID);
-            }
-            else if (inscripcion.State == Entidades.Entidades.States.New)
-            {
-                this.Insert(inscripcion);
-            }
-            else if (inscripcion.State == Entidades.Entidades.States.Modified)
-            {
-                this.Update(inscripcion);
-            }
-            inscripcion.State = Entidades.Entidades.States.Unmodified;
         }
     }
 }

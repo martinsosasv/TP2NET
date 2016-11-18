@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Plan : Entidades
     {
-        string _descripcion, _descripcionEspecialidad;
+        string _descripcion;
         Especialidad _especialidad;
 
         public string Descripcion
