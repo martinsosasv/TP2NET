@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
+      <CustomToolNamespace>UI.Desktop</CustomToolNamespace>
     </Compile>
     <Compile Include="FormLogin.designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>

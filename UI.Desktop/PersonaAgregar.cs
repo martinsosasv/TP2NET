@@ -80,5 +80,19 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void cbxTipo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(this.cbxTipo.SelectedIndex == 2)
+            {
+                this.txtLegajo.Enabled = true;
+                this.cbxPlan.Enabled = true;
+            }
+            else
+            {
+                this.txtLegajo.Enabled = false;
+                this.cbxPlan.Enabled = false;
+            }
+        }
     }
 }
