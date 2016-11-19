@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Entidades;
+using Util;
 
 namespace UI.Desktop
 {
@@ -48,32 +49,36 @@ namespace UI.Desktop
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Entidades.Personas persona = new Entidades.Personas();
-            PersonaLogic perLog = new PersonaLogic();
-            persona.Nombre = this.txtNombre.Text;
-            persona.Apellido = this.txtApellido.Text;
-            persona.Direccion = this.txtDireccion.Text;
-            persona.Email = this.txtEmail.Text;
-            persona.Telefono = this.txtTelefono.Text;
-            persona.FechaNacimiento = this.dtpFechaNac.Value;
-            persona.IdLegajo = Convert.ToInt32(this.txtLegajo.Text);
-            persona.TipoPersona = (Entidades.Personas.TiposPersonas)this.cbxTipo.SelectedItem;
-            persona.Plan = (Plan)this.cbxPlan.SelectedItem;
-        
-            if (estadoEdicion == false)
+            if (this.Validar())
             {
+                Entidades.Personas persona = new Entidades.Personas();
+                PersonaLogic perLog = new PersonaLogic();
+                persona.Nombre = this.txtNombre.Text;
+                persona.Apellido = this.txtApellido.Text;
+                persona.Direccion = this.txtDireccion.Text;
+                persona.Email = this.txtEmail.Text;
+                persona.Telefono = this.txtTelefono.Text;
+                persona.FechaNacimiento = this.dtpFechaNac.Value;
+                persona.IdLegajo = Convert.ToInt32(this.txtLegajo.Text);
+                persona.TipoPersona = (Entidades.Personas.TiposPersonas)this.cbxTipo.SelectedItem;
+                persona.Plan = (Plan)this.cbxPlan.SelectedItem;
 
-                perLog.Insert(persona);
-                MessageBox.Show("Se ha agregado correctamente la persona", "Agregar persona", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                persona.ID = Convert.ToInt32(this.txtID.Text);
+                if (estadoEdicion == false)
+                {
 
-                perLog.Update(persona);
-                MessageBox.Show("Se ha editado correctamente la persona", "Editar persona", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    perLog.Insert(persona);
+                    MessageBox.Show("Se ha agregado correctamente la persona", "Agregar persona", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    persona.ID = Convert.ToInt32(this.txtID.Text);
+
+                    perLog.Update(persona);
+                    MessageBox.Show("Se ha editado correctamente la persona", "Editar persona", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                this.Close();
             }
-            this.Close();
+                
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -92,6 +97,50 @@ namespace UI.Desktop
             {
                 this.txtLegajo.Enabled = false;
                 this.cbxPlan.Enabled = false;
+            }
+        }
+
+        private bool Validar()
+        {
+            string mensaje = "";
+            if (!Validaciones.esDescripcionValida(this.txtNombre.Text))
+            {
+                mensaje += "- El campo Nombre es requerido y no debe contener caracteres especiales" + "\n";
+            }
+            if (!Validaciones.esDescripcionValida(this.txtApellido.Text))
+            {
+                mensaje += "- El campo Apellido es requerido y no debe contener caracteres especiales" + "\n";
+            }
+            if (!Validaciones.esEmailValido(this.txtEmail.Text))
+            {
+                mensaje += "- El campo Email es requerido y debe ser del formato de correo electrónico" + "\n";
+            }
+            if (!Validaciones.esTelefonoValido(this.txtTelefono.Text))
+            {
+                mensaje += "- El campo Teléfono es requerido y debe contener sólo números" + "\n";
+            }
+            if (this.cbxTipo.SelectedIndex == -1)
+            {
+                mensaje += "- El campo Tipo es requerido" + "\n";
+            }
+            if (this.cbxPlan.SelectedIndex == -1)
+            {
+                mensaje += "- El campo Plan es requerido" + "\n";
+            }
+            if (!Validaciones.esLegajoValido(this.txtLegajo.Text))
+            {
+                mensaje += "- El campo Legajo es requerido y debe contener sólo números" + "\n";
+            }
+
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

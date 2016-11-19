@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Entidades;
 using Negocio;
 using UI.Desktop;
+using Util;
 
 namespace CreacionFormLogin
 {
@@ -22,21 +23,33 @@ namespace CreacionFormLogin
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Usuario user = new Usuario();
-            UsuarioLogic userLog = new UsuarioLogic();
-            user = userLog.GetOne(this.txtUsuario.Text);
-            if (user.NombreUsuario == this.txtUsuario.Text && user.Clave == this.txtPass.Text)
+            if(this.Validar())
             {
-                this.txtUsuario.Text = "";
-                this.txtPass.Text = "";
-                frmMain frmMain = new frmMain();
-                frmMain.Persona = user.Persona;
-                frmMain.ShowDialog();
+                Usuario user = new Usuario();
+                UsuarioLogic userLog = new UsuarioLogic();
+                user = userLog.GetOne(this.txtUsuario.Text);
+                if (user.NombreUsuario == this.txtUsuario.Text && user.Clave == this.txtPass.Text)
+                {
+                    this.txtUsuario.Text = "";
+                    this.txtPass.Text = "";
+                    frmMain frmMain = new frmMain();
+                    frmMain.Persona = user.Persona;
+                    frmMain.ShowDialog();
+                }
+                else
+                {
+                    if (user.NombreUsuario != this.txtUsuario.Text)
+                    {
+                        MessageBox.Show("El Usuario no existe");
+                    }
+                    else
+                    {
+                        MessageBox.Show("La Clave ingresada es incorrecta");
+                    }
+                    
+                }
             }
-            else
-            {
-                MessageBox.Show("El usuario no existe");
-            }
+            
         }
 
         private void lnkOlvidaPass_Click(object sender, EventArgs e)
@@ -45,5 +58,32 @@ namespace CreacionFormLogin
             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
+
+        private bool Validar()
+        {
+            string mensaje = "";
+            if (!Validaciones.esUsuarioValido(this.txtUsuario.Text))
+            {
+                mensaje += "- El campo Nombre de Usuario es requerido y no debe contener caracteres especiales" + "\n";
+            }
+
+            if (!Validaciones.esPasswordValida(this.txtPass.Text))
+            {
+                mensaje += "- El campo Contraseña es requerido y debe contener al menos 6 caracteres" + "\n";
+            }
+
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
+        }
     }
+
 }

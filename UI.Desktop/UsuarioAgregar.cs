@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Negocio;
+using Util;
 
 namespace UI.Desktop
 {
@@ -51,31 +52,31 @@ namespace UI.Desktop
         {
             try
             {
-                //if (Validar())
-                //{
-                if (MessageBox.Show(estadoEdicion == true ? "Esta seguro que desea editar este Usuario?" : "Esta seguro que desea agregar este Usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (Validar())
                 {
-                    UsuarioLogic userLog = new UsuarioLogic();
-                    Usuario user = new Usuario();
-                    user.NombreUsuario = this.txtNombreUsuario.Text;
-                    user.Habilitado = this.chkHabilitado.Checked;
-                    user.Clave = this.txtClave.Text;
-                    user.Email = this.txtEmail.Text;
-                    user.Persona = (Entidades.Personas)this.cbxPersona.SelectedItem;
+                    if (MessageBox.Show(estadoEdicion == true ? "Esta seguro que desea editar este Usuario?" : "Esta seguro que desea agregar este Usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        UsuarioLogic userLog = new UsuarioLogic();
+                        Usuario user = new Usuario();
+                        user.NombreUsuario = this.txtNombreUsuario.Text;
+                        user.Habilitado = this.chkHabilitado.Checked;
+                        user.Clave = this.txtClave.Text;
+                        user.Email = this.txtEmail.Text;
+                        user.Persona = (Entidades.Personas)this.cbxPersona.SelectedItem;
 
-                    if (!estadoEdicion)
-                    {
-                        userLog.Insert(user);
-                        MessageBox.Show("Se ha agregado correctamente el Usuario", "Agregar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        if (!estadoEdicion)
+                        {
+                            userLog.Insert(user);
+                            MessageBox.Show("Se ha agregado correctamente el Usuario", "Agregar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            user.ID = Int32.Parse(this.txtID.Text);
+                            userLog.Update(user);
+                            MessageBox.Show("Se ha editado correctamente el Usuario", "Editar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        this.Close();
                     }
-                    else
-                    {
-                        user.ID = Int32.Parse(this.txtID.Text);
-                        userLog.Update(user);
-                        MessageBox.Show("Se ha editado correctamente el Usuario", "Editar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    this.Close();
-                    //}
                 }
             }
             catch (Exception exc)
@@ -90,8 +91,45 @@ namespace UI.Desktop
             this.Close();
         }
 
-    
 
+        private bool Validar()
+        {
+            string mensaje = "";
+            if (!Validaciones.esDescripcionValida(this.txtNombreUsuario.Text))
+            {
+                mensaje += "- El campo Nombre Usuario es requerido y no debe contener caracteres especiales" + "\n";
+            }
+            if (!Validaciones.esClaveValida(this.txtClave.Text))
+            {
+                mensaje += "- El campo Clave es requerido" + "\n";
+            }
+            else
+            {
+                if(!Validaciones.coincideClave(this.txtClave.Text,this.txtClave2.Text))
+                {
+                    mensaje += "- Las Claves deben coincidir" + "\n";
+                }
+            }
+            if (!Validaciones.esEmailValido(this.txtEmail.Text))
+            {
+                mensaje += "- El campo Email es requerido y debe ser del formato de correo electrónico" + "\n";
+            }
+            if (this.cbxPersona.SelectedIndex == -1)
+            {
+                mensaje += "- El campo Persona es requerido" + "\n";
+            }
+
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         
 
         

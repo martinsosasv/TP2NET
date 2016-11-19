@@ -41,6 +41,8 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPersona = new System.Windows.Forms.Label();
             this.cbxPersona = new System.Windows.Forms.ComboBox();
+            this.txtClave2 = new System.Windows.Forms.TextBox();
+            this.lblClave2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -65,15 +67,16 @@
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(180, 120);
+            this.txtClave.Location = new System.Drawing.Point(180, 108);
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(158, 20);
             this.txtClave.TabIndex = 21;
             // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
-            this.lblClave.Location = new System.Drawing.Point(113, 127);
+            this.lblClave.Location = new System.Drawing.Point(140, 111);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(34, 13);
             this.lblClave.TabIndex = 20;
@@ -155,11 +158,30 @@
             this.cbxPersona.Size = new System.Drawing.Size(158, 21);
             this.cbxPersona.TabIndex = 29;
             // 
+            // txtClave2
+            // 
+            this.txtClave2.Location = new System.Drawing.Point(180, 134);
+            this.txtClave2.Name = "txtClave2";
+            this.txtClave2.PasswordChar = '*';
+            this.txtClave2.Size = new System.Drawing.Size(158, 20);
+            this.txtClave2.TabIndex = 31;
+            // 
+            // lblClave2
+            // 
+            this.lblClave2.AutoSize = true;
+            this.lblClave2.Location = new System.Drawing.Point(103, 141);
+            this.lblClave2.Name = "lblClave2";
+            this.lblClave2.Size = new System.Drawing.Size(71, 13);
+            this.lblClave2.TabIndex = 30;
+            this.lblClave2.Text = "Repetir Clave";
+            // 
             // UsuarioAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 329);
+            this.Controls.Add(this.txtClave2);
+            this.Controls.Add(this.lblClave2);
             this.Controls.Add(this.cbxPersona);
             this.Controls.Add(this.lblPersona);
             this.Controls.Add(this.txtEmail);
@@ -195,6 +217,8 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPersona;
         private System.Windows.Forms.ComboBox cbxPersona;
+        private System.Windows.Forms.TextBox txtClave2;
+        private System.Windows.Forms.Label lblClave2;
 
     }
 }

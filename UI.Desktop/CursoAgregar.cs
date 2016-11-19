@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Entidades;
+using Util;
 
 namespace UI.Desktop
 {
@@ -56,8 +57,8 @@ namespace UI.Desktop
         {
             try
             {
-                //if (Validar())
-                //{
+                if (Validar())
+                {
                     if (MessageBox.Show(estadoEdicion == true ? "Esta seguro que desea editar este curso?" : "Esta seguro que desea agregar este curso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         CursoLogic curLog = new CursoLogic();
@@ -79,7 +80,7 @@ namespace UI.Desktop
                             MessageBox.Show("Se ha editado correctamente el curso", "Editar curso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         this.Close();
-                    //}
+                    }
                 }
             }
             catch (Exception exc)
@@ -92,6 +93,38 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool Validar()
+        {
+            string mensaje = "";
+            if (!Validaciones.esAnioCalendarioValido(this.txtAnioCalendario.Text))
+            {
+                mensaje += "- El campo Año Calendario es requerido y debe contener un numero entre 1950 y el año actual" + "\n";
+            }
+            if (this.cbxComision.SelectedIndex == -1 )
+            {
+                mensaje += "- El campo Comisión es requerido" + "\n";
+            }
+            if (this.cbxMateria.SelectedIndex == -1)
+            {
+                mensaje += "- El campo Materia es requerido" + "\n";
+            }
+            if (!Validaciones.esCupoValido(this.txtCupo.Text))
+            {
+                mensaje += "- El campo Cupo es requerido y debe ser como máximo de 100 personas" + "\n";
+            }
+
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

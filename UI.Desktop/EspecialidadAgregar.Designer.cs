@@ -50,9 +50,9 @@
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Location = new System.Drawing.Point(29, 108);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(69, 13);
+            this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 1;
-            this.lblDescripcion.Text = "Descripcioón";
+            this.lblDescripcion.Text = "Descripción";
             // 
             // txtID
             // 

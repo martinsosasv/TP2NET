@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Negocio;
+using Util;
 
 namespace UI.Desktop
 {
@@ -32,28 +33,52 @@ namespace UI.Desktop
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Especialidad especialidad = new Especialidad();
-            EspecialidadLogic espLog = new EspecialidadLogic();
-            especialidad.Descripcion = this.txtDescripcion.Text;
-            if(estadoEdicion == false)
+            if(this.Validar())
             {
+                Especialidad especialidad = new Especialidad();
+                EspecialidadLogic espLog = new EspecialidadLogic();
+                especialidad.Descripcion = this.txtDescripcion.Text;
+                if(estadoEdicion == false)
+                {
 
-                espLog.Create(especialidad);
-                MessageBox.Show("Se ha agregado correctamente la especialidad", "Agregar especialidad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                especialidad.ID = Convert.ToInt32(this.txtID.Text);
+                    espLog.Create(especialidad);
+                    MessageBox.Show("Se ha agregado correctamente la especialidad", "Agregar especialidad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    especialidad.ID = Convert.ToInt32(this.txtID.Text);
                 
-                espLog.Update(especialidad);
-                MessageBox.Show("Se ha editado correctamente la especialidad", "Editar especialidad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    espLog.Update(especialidad);
+                    MessageBox.Show("Se ha editado correctamente la especialidad", "Editar especialidad", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                this.Close();
             }
-            this.Close();
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private bool Validar()
+        {
+            string mensaje = "";
+            if(!Validaciones.esDescripcionComisionValida(this.txtDescripcion.Text))
+            {
+                mensaje += "- El campo Descripción es requerido y no debe contener caracteres especiales" + "\n";
+            }
+
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
