@@ -67,7 +67,7 @@ namespace CreacionFormLogin
                 mensaje += "- El campo Nombre de Usuario es requerido y no debe contener caracteres especiales" + "\n";
             }
 
-            if (!Validaciones.esPasswordValida(this.txtPass.Text))
+            if (!Validaciones.esClaveValida(this.txtPass.Text))
             {
                 mensaje += "- El campo Contraseña es requerido y debe contener al menos 6 caracteres" + "\n";
             }
