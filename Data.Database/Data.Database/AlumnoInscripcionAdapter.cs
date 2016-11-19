@@ -205,11 +205,11 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripcion (id_alumno,id_curso,condicion,nota) " +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripciones (id_alumno,id_curso,condicion,nota) " +
                                                     "VALUES(@id_alumno,@id_curso,@condicion,@nota) " +
                                                     "SELECT @@identity", SqlConn);
 
-                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.Alumno.IdLegajo;//El ID del alumno en la inscripcion es el legajo
+                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.Alumno.ID;//El ID del alumno en la inscripcion es el legajo
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.Curso.ID;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
@@ -219,6 +219,7 @@ namespace Data.Database
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
+                throw ExcepcionManejada;
             }
             finally
             {
