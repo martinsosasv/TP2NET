@@ -30,27 +30,27 @@ namespace Negocio
             }
         }
 
-        public List<Entidades.Personas> GetAll()
+        public List<Entidades.Persona> GetAll()
         {
             return this.PersonaData.GetAll();
         }
 
-        public Entidades.Personas GetOne(int id)
+        public Entidades.Persona GetOne(int id)
         {
             return this.PersonaData.GetOne(id);
         }
 
-        public void Delete(Personas persona)
+        public void Delete(Persona persona)
         {
             this.PersonaData.Delete(persona);
         }
 
-        public void Insert(Personas persona)
+        public void Insert(Persona persona)
         {
             this.PersonaData.Insert(persona);
         }
 
-        public void Update(Personas persona)
+        public void Update(Persona persona)
         {
             this.PersonaData.Update(persona);
         }

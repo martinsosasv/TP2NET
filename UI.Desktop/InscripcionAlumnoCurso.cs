@@ -14,14 +14,14 @@ namespace UI.Desktop
 {
     public partial class InscripcionAlumnoCurso : Form
     {
-        Entidades.Personas _alumno;
-        public Entidades.Personas Alumno
+        Entidades.Persona _alumno;
+        public Entidades.Persona Alumno
         {
             get { return _alumno; }
             set { _alumno = value; }
         }
 
-        public InscripcionAlumnoCurso(Entidades.Personas alumno )
+        public InscripcionAlumnoCurso(Entidades.Persona alumno )
         {
             InitializeComponent();
             this.Alumno = alumno;

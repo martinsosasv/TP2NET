@@ -21,7 +21,7 @@ namespace Data.Database
                 while (drUsuarios.Read())
                 {
                     Usuario usr = new Usuario();
-                    Entidades.Personas persona = new Entidades.Personas();
+                    Entidades.Persona persona = new Entidades.Persona();
                     PersonaAdapter perAda = new PersonaAdapter();
                     persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
                     
@@ -64,7 +64,7 @@ namespace Data.Database
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
                 {
-                    Entidades.Personas persona = new Entidades.Personas();
+                    Entidades.Persona persona = new Entidades.Persona();
                     PersonaAdapter perAda = new PersonaAdapter();
                     persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
 
@@ -105,7 +105,7 @@ namespace Data.Database
                 if (drUsuarios.Read())
                 {
 
-                    Entidades.Personas persona = new Entidades.Personas();
+                    Entidades.Persona persona = new Entidades.Persona();
                     PersonaAdapter perAda = new PersonaAdapter();
                     persona = perAda.GetOne(Convert.ToInt32(drUsuarios["id_persona"].ToString()));
 

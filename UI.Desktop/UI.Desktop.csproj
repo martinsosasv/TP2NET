@@ -56,54 +56,54 @@
     <Compile Include="Base.Designer.cs">
       <DependentUpon>Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComisionAgregar.cs">
+    <Compile Include="frmComisionAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComisionAgregar.Designer.cs">
-      <DependentUpon>ComisionAgregar.cs</DependentUpon>
+    <Compile Include="frmComisionAgregar.Designer.cs">
+      <DependentUpon>frmComisionAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Comisiones.cs">
+    <Compile Include="frmComisiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Comisiones.Designer.cs">
-      <DependentUpon>Comisiones.cs</DependentUpon>
+    <Compile Include="frmComisiones.Designer.cs">
+      <DependentUpon>frmComisiones.cs</DependentUpon>
     </Compile>
-    <Compile Include="CursoAgregar.cs">
+    <Compile Include="frmCursoAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CursoAgregar.Designer.cs">
-      <DependentUpon>CursoAgregar.cs</DependentUpon>
+    <Compile Include="frmCursoAgregar.Designer.cs">
+      <DependentUpon>frmCursoAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cursos.cs">
+    <Compile Include="frmCursos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cursos.Designer.cs">
-      <DependentUpon>Cursos.cs</DependentUpon>
+    <Compile Include="frmCursos.Designer.cs">
+      <DependentUpon>frmCursos.cs</DependentUpon>
     </Compile>
-    <Compile Include="EspecialidadAgregar.cs">
+    <Compile Include="frmEspecialidadAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EspecialidadAgregar.Designer.cs">
-      <DependentUpon>EspecialidadAgregar.cs</DependentUpon>
+    <Compile Include="frmEspecialidadAgregar.Designer.cs">
+      <DependentUpon>frmEspecialidadAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Especialidades.cs">
+    <Compile Include="frmEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Especialidades.Designer.cs">
-      <DependentUpon>Especialidades.cs</DependentUpon>
+    <Compile Include="frmEspecialidades.Designer.cs">
+      <DependentUpon>frmEspecialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>UI.Desktop</CustomToolNamespace>
     </Compile>
-    <Compile Include="FormLogin.designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="InscripcionAlumnoCurso.cs">
       <SubType>Form</SubType>
@@ -111,55 +111,55 @@
     <Compile Include="InscripcionAlumnoCurso.Designer.cs">
       <DependentUpon>InscripcionAlumnoCurso.cs</DependentUpon>
     </Compile>
-    <Compile Include="MateriaAgregar.cs">
+    <Compile Include="frmMateriaAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MateriaAgregar.Designer.cs">
-      <DependentUpon>MateriaAgregar.cs</DependentUpon>
+    <Compile Include="frmMateriaAgregar.Designer.cs">
+      <DependentUpon>frmMateriaAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materias.cs">
+    <Compile Include="frmMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Materias.Designer.cs">
-      <DependentUpon>Materias.cs</DependentUpon>
+    <Compile Include="frmMaterias.Designer.cs">
+      <DependentUpon>frmMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonaAgregar.cs">
+    <Compile Include="frmPersonaAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonaAgregar.Designer.cs">
-      <DependentUpon>PersonaAgregar.cs</DependentUpon>
+    <Compile Include="frmPersonaAgregar.Designer.cs">
+      <DependentUpon>frmPersonaAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Personas.cs">
+    <Compile Include="frmPersonas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Personas.Designer.cs">
-      <DependentUpon>Personas.cs</DependentUpon>
+    <Compile Include="frmPersonas.Designer.cs">
+      <DependentUpon>frmPersonas.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlanAgregar.cs">
+    <Compile Include="frmPlanAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlanAgregar.Designer.cs">
-      <DependentUpon>PlanAgregar.cs</DependentUpon>
+    <Compile Include="frmPlanAgregar.Designer.cs">
+      <DependentUpon>frmPlanAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Planes.cs">
+    <Compile Include="frmPlanes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Planes.Designer.cs">
-      <DependentUpon>Planes.cs</DependentUpon>
+    <Compile Include="frmPlanes.Designer.cs">
+      <DependentUpon>frmPlanes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioAgregar.cs">
+    <Compile Include="frmUsuarioAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsuarioAgregar.Designer.cs">
-      <DependentUpon>UsuarioAgregar.cs</DependentUpon>
+    <Compile Include="frmUsuarioAgregar.Designer.cs">
+      <DependentUpon>frmUsuarioAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.cs">
+    <Compile Include="frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuarios.Designer.cs">
-      <DependentUpon>Usuarios.cs</DependentUpon>
+    <Compile Include="frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
@@ -167,32 +167,32 @@
     <EmbeddedResource Include="Base.resx">
       <DependentUpon>Base.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ComisionAgregar.resx">
-      <DependentUpon>ComisionAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmComisionAgregar.resx">
+      <DependentUpon>frmComisionAgregar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CursoAgregar.resx">
-      <DependentUpon>CursoAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmCursoAgregar.resx">
+      <DependentUpon>frmCursoAgregar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EspecialidadAgregar.resx">
-      <DependentUpon>EspecialidadAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmEspecialidadAgregar.resx">
+      <DependentUpon>frmEspecialidadAgregar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InscripcionAlumnoCurso.resx">
       <DependentUpon>InscripcionAlumnoCurso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MateriaAgregar.resx">
-      <DependentUpon>MateriaAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmMateriaAgregar.resx">
+      <DependentUpon>frmMateriaAgregar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonaAgregar.resx">
-      <DependentUpon>PersonaAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmPersonaAgregar.resx">
+      <DependentUpon>frmPersonaAgregar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlanAgregar.resx">
-      <DependentUpon>PlanAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmPlanAgregar.resx">
+      <DependentUpon>frmPlanAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -203,8 +203,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UsuarioAgregar.resx">
-      <DependentUpon>UsuarioAgregar.cs</DependentUpon>
+    <EmbeddedResource Include="frmUsuarioAgregar.resx">
+      <DependentUpon>frmUsuarioAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

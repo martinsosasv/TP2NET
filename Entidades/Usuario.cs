@@ -13,7 +13,7 @@ namespace Entidades
         string _email;
         bool _habilitado;
         string _campoagregado;
-        Personas _persona;
+        Persona _persona;
         
         public string NombreUsuario
         {
@@ -39,7 +39,7 @@ namespace Entidades
             set { _habilitado = value; }
         }
 
-        public Personas Persona
+        public Persona Persona
         {
             get
             {

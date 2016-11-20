@@ -24,7 +24,7 @@ namespace Data.Database
                 {
                     AlumnoInscripcion aluIns = new AlumnoInscripcion();
 
-                    Personas per = new Personas();
+                    Persona per = new Persona();
                     Curso cur = new Curso();
 
                     PersonaAdapter perAda = new PersonaAdapter();
@@ -73,7 +73,7 @@ namespace Data.Database
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
-                    Personas per = new Personas();
+                    Persona per = new Persona();
                     Curso cur = new Curso();
 
                     PersonaAdapter perAda = new PersonaAdapter();
@@ -119,7 +119,7 @@ namespace Data.Database
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
-                    Personas per = new Personas();
+                    Persona per = new Persona();
                     Curso cur = new Curso();
 
                     PersonaAdapter perAda = new PersonaAdapter();

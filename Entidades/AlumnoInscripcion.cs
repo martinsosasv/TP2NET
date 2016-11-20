@@ -10,7 +10,7 @@ namespace Entidades
     {
         string _condicion;
         int _nota;
-        Personas _alumno;
+        Persona _alumno;
         Curso _curso;
 
         public AlumnoInscripcion()
@@ -35,7 +35,7 @@ namespace Entidades
             }
         }
 
-        public Personas Alumno
+        public Persona Alumno
         {
             get {  return _alumno; }
 

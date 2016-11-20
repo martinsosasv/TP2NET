@@ -11,9 +11,9 @@ namespace Data.Database
 {
     public class PersonaAdapter : Adapter
     {
-        public List<Personas> GetAll()
+        public List<Persona> GetAll()
         {
-            List<Personas> personas = new List<Personas>();
+            List<Persona> personas = new List<Persona>();
             try
             {
                 this.OpenConnection();
@@ -21,7 +21,7 @@ namespace Data.Database
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
                 while (drPersonas.Read())
                 {
-                    Personas persona = new Personas();
+                    Persona persona = new Persona();
                     PlanAdapter planAda = new PlanAdapter();
                     Plan plan = new Plan();
                     plan = planAda.GetOne(Int32.Parse(drPersonas["id_plan"].ToString()));
@@ -35,7 +35,7 @@ namespace Data.Database
                     persona.Telefono = (string)drPersonas["telefono"];
                     persona.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     persona.IdLegajo = (int)drPersonas["legajo"];
-                    persona.TipoPersona = (Personas.TiposPersonas)drPersonas["tipo_persona"];
+                    persona.TipoPersona = (Persona.TiposPersonas)drPersonas["tipo_persona"];
 
 
                     personas.Add(persona);
@@ -56,9 +56,9 @@ namespace Data.Database
             return personas;
         }
 
-        public Entidades.Personas GetOne(int ID)
+        public Entidades.Persona GetOne(int ID)
         {
-            Personas persona = new Personas();
+            Persona persona = new Persona();
             try
             {
                 this.OpenConnection();
@@ -81,7 +81,7 @@ namespace Data.Database
                     persona.Telefono = (string)drPersona["telefono"];
                     persona.FechaNacimiento = (DateTime)drPersona["fecha_nac"];
                     persona.IdLegajo = (int)drPersona["legajo"];
-                    persona.TipoPersona = (Personas.TiposPersonas)drPersona["tipo_persona"];
+                    persona.TipoPersona = (Persona.TiposPersonas)drPersona["tipo_persona"];
                 }
 
                 drPersona.Close();
@@ -99,7 +99,7 @@ namespace Data.Database
             return persona;
         }
 
-        public void Delete(Personas persona)
+        public void Delete(Persona persona)
         {
             try
             {
@@ -121,7 +121,7 @@ namespace Data.Database
       
         }
 
-        public void Update(Entidades.Personas persona)
+        public void Update(Entidades.Persona persona)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace Data.Database
             }
         }
 
-        public void Insert(Personas persona)
+        public void Insert(Persona persona)
         {
             try
             {
