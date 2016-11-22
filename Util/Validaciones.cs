@@ -149,7 +149,7 @@ namespace Util
             {
                 for (int k = 0; k < des.Length; ++k)
                 {
-                    if (Convert.ToChar(des[k]) == 32 || ((Convert.ToChar(des[k]) >= 65) && (Convert.ToChar(des[k]) <= 90)) || ((Convert.ToChar(des[k]) >= 97) && (Convert.ToChar(des[k]) <= 122)))
+                    if (((Convert.ToChar(des[k]) >= 65) && (Convert.ToChar(des[k]) <= 90)) || ((Convert.ToChar(des[k]) >= 97) && (Convert.ToChar(des[k]) <= 122)) || (Convert.ToChar(des[k]) == 32))
                     {
                         continue;
                     }

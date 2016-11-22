@@ -64,7 +64,7 @@ namespace UI.Desktop
         private bool Validar()
         {
             string mensaje = "";
-            if(!Validaciones.esDescripcionComisionValida(this.txtDescripcion.Text))
+            if(!Validaciones.esDescripcionValida(this.txtDescripcion.Text))
             {
                 mensaje += "- El campo Descripción es requerido y no debe contener caracteres especiales" + "\n";
             }
