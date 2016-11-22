@@ -7,8 +7,8 @@
     <asp:Panel ID="gridPanel" CssClass="gridPanelTable" runat="server">
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField HeaderText="Nombre" DataField="NombrePersona" />
+                <asp:BoundField HeaderText="Apellido" DataField="ApellidoPersona" />
                 <asp:BoundField HeaderText="Email" DataField="Email" />
                 <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario" />
                 <asp:BoundField HeaderText="Habilitado" DataField="Habilitado" />

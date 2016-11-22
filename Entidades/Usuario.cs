@@ -79,5 +79,6 @@ namespace Entidades
         {
             get { return _persona.ApellidoNombre; }
         }
+
     }
 }

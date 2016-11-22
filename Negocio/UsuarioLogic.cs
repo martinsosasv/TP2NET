@@ -14,7 +14,6 @@ namespace Negocio
         public UsuarioLogic()
         {
           this.UsuarioData = new DD.UsuarioAdapter();
-         
         }
         
         DD.UsuarioAdapter _usuarioData;
