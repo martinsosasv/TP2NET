@@ -68,6 +68,7 @@
     <Compile Include="PersonaAdapter.cs" />
     <Compile Include="PlanAdapter.cs" />
     <Compile Include="DocenteCursoAdapter.cs" />
+    <Compile Include="ReporteAdapter.cs" />
     <Compile Include="UsuarioAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

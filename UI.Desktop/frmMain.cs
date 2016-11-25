@@ -97,5 +97,11 @@ namespace UI.Desktop
             InscripcionAlumnoCurso frmInscAlu = new InscripcionAlumnoCurso(this.Persona);
             frmInscAlu.Show();
         }
+
+        private void cursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmReporteCursoGrid frmCursoGrid = new frmReporteCursoGrid();
+            frmCursoGrid.ShowDialog();
+        }
     }
 }

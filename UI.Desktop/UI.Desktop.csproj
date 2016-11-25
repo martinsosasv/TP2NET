@@ -105,6 +105,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCurso.Designer.cs">
+      <DependentUpon>frmReporteCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteCursoGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCursoGrid.Designer.cs">
+      <DependentUpon>frmReporteCursoGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="InscripcionAlumnoCurso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCurso.resx">
+      <DependentUpon>frmReporteCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCursoGrid.resx">
+      <DependentUpon>frmReporteCursoGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InscripcionAlumnoCurso.resx">
       <DependentUpon>InscripcionAlumnoCurso.cs</DependentUpon>
