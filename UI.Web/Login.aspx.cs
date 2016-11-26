@@ -60,7 +60,7 @@ namespace UI.Web
         }
         protected void lbOlvidaPassword_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Default.aspx?msj=Eres un usuario muy descuidado! Haga memoria");
+            ClientScript.RegisterClientScriptBlock(typeof(Page), "myscript", "alert('Eres un usuario muy descuidado! Haga memoria')", true);
         }
     }
 }

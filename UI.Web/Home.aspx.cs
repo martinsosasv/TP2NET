@@ -11,63 +11,53 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!Page.IsPostBack)
             {
                 //Response.Write("<script>window.alert('Bienvenido!');</script>");
-                this.lblBienvenido.Text = Session["usuario"].ToString();
-                int id_tipo_persona = Convert.ToInt32(Session["id_tipo_persona"]);
-                switch (id_tipo_persona)
+                if (Session["usuario"] == null)
                 {
-                    //admin
-                    case 0: this.lbEstadoAcademico.Visible = false;
-                        this.lbInscribirseACursado.Visible = false;
-                        this.lbCursosAsignados.Visible = false;
-
-                        break;
-
-                    //alumno
-                    case 1: this.lbAlumnos_Inscripcion.Visible = false;
-                        this.lbComisiones.Visible = false;
-                        this.lbCursos.Visible = false;
-                        this.lbCursosAsignados.Visible = false;
-                        this.lbDocentes_Curso.Visible = false;
-                        this.lbEspecialidades.Visible = false;
-                        this.lbMaterias.Visible = false;
-                        this.lbPlanes.Visible = false;
-                        this.lbPersonas.Visible = false;
-                        this.btnReporteCursos.Visible = false;
-
-                        break;
-
-                    //docente
-                    case 2: this.lbAlumnos_Inscripcion.Visible = false;
-                        this.lbComisiones.Visible = false;
-                        this.lbCursos.Visible = false;
-                        this.lbEstadoAcademico.Visible = false;
-                        this.lbInscribirseACursado.Visible = false;
-                        this.lbDocentes_Curso.Visible = false;
-                        this.lbEspecialidades.Visible = false;
-                        this.lbMaterias.Visible = false;
-                        this.lbPlanes.Visible = false;
-                        this.lbPersonas.Visible = false;
-                        this.btnReporteCursos.Visible = false;
-                        break;
-
-                    default: Page.Response.Redirect("~/Error.aspx");
-                        break;
-
+                    //MessageBoxAlert("Su sesión ha expirado", "Home");
+                    Page.Response.Redirect("Login.aspx");
                 }
+                else
+                {
+                    this.lblBienvenido.Text = Session["usuario"].ToString();
+                    int id_tipo_persona = Convert.ToInt32(Session["id_tipo_persona"]);
+                    switch (id_tipo_persona)
+                    {
+                        //admin
+                        case 1: 
+                            this.listMnuAlumnos.Visible = false;
+                            this.listMnuDocentes.Visible = false;
+                            break;
+                        //docente
+                        case 2:
+                            this.listMnuABM.Visible = false;
+                            this.listMnuReportes.Visible = false;
+                            this.listMnuAlumnos.Visible = false;
+                            break;
+                        //alumno
+                        case 3:
+                            this.listMnuABM.Visible = false;
+                            this.listMnuReportes.Visible = false;
+                            this.listMnuDocentes.Visible = false;
+                            break;
+                        default: 
+                            MessageBoxAlert("Tipo de usuario inválido. Intente ingresar nuevamente.", "Home");
+                            Page.Response.Redirect("Login.aspx");
+                            break;
+
+                    }
+                }
+                
 
 
             }
         }
 
 
-        protected void lbComisiones_Click(object sender, EventArgs e)
-        {
-            Page.Response.Redirect("Comisiones.aspx");
-
-        }
+        
 
         protected void lbCursosAsignados_Click(object sender, EventArgs e)
         {
@@ -128,6 +118,17 @@ namespace UI.Web
         protected void btnReportePlanes_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect("ReportePlanes.aspx");
+        }
+
+        protected void btpHeaderSalir_Click(object sender, EventArgs e)
+        {
+            //Session.Abandon();
+            Page.Response.Redirect("Login.aspx");
+        }
+
+        private void MessageBoxAlert(string message, string title = "title")
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), title, "alert('" + message + "')'", true);
         }
     }
 }

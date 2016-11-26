@@ -1,54 +1,60 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AcademiaMasterPage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Web.Login" EnableEventValidation="true" %>
+﻿<%@ Page Title="Academia - Login" Language="C#" MasterPageFile="~/AcademiaMasterPage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Web.Login" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div class="navbar">
-        <div class="navbar-inner">
-                <ul class="nav pull-right">
-                    
-                </ul>
-                <a class="brand" href="Home.aspx">UTN <span class="second">Academia</span></a>
-        </div>
+    
+    <div class="bs-example bs-navbar-top-example" data-example-id="navbar-fixed-to-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </button>
+                    <a href="#" class="navbar-brand">Academia</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
 
-    
-        <div class="row-fluid">
-    <div class="dialog">
-        <div class="block">
-            <p class="block-heading">Identificarse</p>
-            <div class="block-body">
+    <div class="container container-login">
+        <div class="panel panel-default panel-login">
+            <div class="panel-heading">Por favor ingrese sus datos</div>
+            <div class="panel-body">
                 <form>
-                    <label>Usuario</label>
-                    <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
-&nbsp;<label>Password</label>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;<asp:Button ID="btnIngresar" runat="server" onclick="btnIngresar_Click" 
-                        Text="Ingresar" />
-                    <br />
-                    &nbsp;&nbsp;<asp:Label ID="lblErrorIngreso" runat="server" Font-Bold="True" 
-                        ForeColor="Red" Text="Usuario y/o contraseña no validos"></asp:Label>
-                    &nbsp;&nbsp;<br />
-                    &nbsp;</form>
-                <a href="reset-password.html">
-            <asp:LinkButton ID="lbOlvidaPassword" runat="server" 
-                onclick="lbOlvidaPassword_Click">Olvidé mi contraseña</asp:LinkButton>
-            </a>
+                        <div class="form-group row">
+                            <label for="txtUsuario" class="col-sm-2 col-form-label">Usuario</label>
+                            <div class="col-sm-10">
+                                <asp:TextBox ID="txtUsuario" runat="server" class="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtPassword" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <asp:TextBox ID="txtPassword" runat="server" class="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-sm-2 col-sm-10">
+                            <asp:Button ID="btnIngresar" runat="server" onclick="btnIngresar_Click" class="btn btn-primary" Text="Ingresar" />
+                            </div>
+                        </div>
+                        <asp:Label ID="lblErrorIngreso" runat="server" Font-Bold="True" ForeColor="Red" Text=""></asp:Label>
+                    </form>
+                    <a href="#">
+                        <asp:LinkButton ID="lbOlvidaPassword" runat="server" onclick="lbOlvidaPassword_Click">Olvidé mi contraseña</asp:LinkButton>
+                    </a>
             </div>
         </div>
-        <p class="pull-right" style="">&nbsp;</p>
-        <p>&nbsp;</p>
-    </div>
-</div>
-
 
     
-
-
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-        $("[rel=tooltip]").tooltip();
-        $(function () {
-            $('.demo-cancel-click').click(function () { return false; });
-        });
-    </script>
+    
+        
+    </div>
+                
 
 </asp:Content>
