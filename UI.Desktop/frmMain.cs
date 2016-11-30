@@ -103,5 +103,17 @@ namespace UI.Desktop
             frmReporteCursoGrid frmCursoGrid = new frmReporteCursoGrid();
             frmCursoGrid.ShowDialog();
         }
+
+        private void planesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReportePlan frmRepPlan = new frmReportePlan();
+            frmRepPlan.ShowDialog();
+        }
+
+        private void docenteCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDocenteCurso frmDocCur = new frmDocenteCurso();
+            frmDocCur.ShowDialog();
+        }
     }
 }

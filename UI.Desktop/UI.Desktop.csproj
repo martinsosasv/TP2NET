@@ -80,6 +80,18 @@
     <Compile Include="frmCursos.Designer.cs">
       <DependentUpon>frmCursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDocenteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocenteCurso.Designer.cs">
+      <DependentUpon>frmDocenteCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocenteCursoAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocenteCursoAgregar.Designer.cs">
+      <DependentUpon>frmDocenteCursoAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEspecialidadAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,12 @@
     </Compile>
     <Compile Include="frmReporteCursoGrid.Designer.cs">
       <DependentUpon>frmReporteCursoGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportePlan.Designer.cs">
+      <DependentUpon>frmReportePlan.cs</DependentUpon>
     </Compile>
     <Compile Include="InscripcionAlumnoCurso.cs">
       <SubType>Form</SubType>
@@ -185,6 +203,9 @@
     <EmbeddedResource Include="frmCursoAgregar.resx">
       <DependentUpon>frmCursoAgregar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDocenteCursoAgregar.resx">
+      <DependentUpon>frmDocenteCursoAgregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEspecialidadAgregar.resx">
       <DependentUpon>frmEspecialidadAgregar.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteCursoGrid.resx">
       <DependentUpon>frmReporteCursoGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportePlan.resx">
+      <DependentUpon>frmReportePlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InscripcionAlumnoCurso.resx">
       <DependentUpon>InscripcionAlumnoCurso.cs</DependentUpon>

@@ -46,6 +46,7 @@
             this.inscripciónACursadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.verCursosAsignadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.docenteCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +88,8 @@
             this.comisionesToolStripMenuItem,
             this.cursosToolStripMenuItem2,
             this.personasToolStripMenuItem,
-            this.usuariosToolStripMenuItem});
+            this.usuariosToolStripMenuItem,
+            this.docenteCursosToolStripMenuItem});
             this.mnuABM.Name = "mnuABM";
             this.mnuABM.Size = new System.Drawing.Size(45, 20);
             this.mnuABM.Text = "ABM";
@@ -164,6 +166,7 @@
             this.planesToolStripMenuItem.Name = "planesToolStripMenuItem";
             this.planesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.planesToolStripMenuItem.Text = "Planes";
+            this.planesToolStripMenuItem.Click += new System.EventHandler(this.planesToolStripMenuItem_Click);
             // 
             // mnuOpciones
             // 
@@ -195,6 +198,13 @@
             this.verCursosAsignadosToolStripMenuItem.Name = "verCursosAsignadosToolStripMenuItem";
             this.verCursosAsignadosToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.verCursosAsignadosToolStripMenuItem.Text = "Ver cursos asignados";
+            // 
+            // docenteCursosToolStripMenuItem
+            // 
+            this.docenteCursosToolStripMenuItem.Name = "docenteCursosToolStripMenuItem";
+            this.docenteCursosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.docenteCursosToolStripMenuItem.Text = "Docente_Cursos";
+            this.docenteCursosToolStripMenuItem.Click += new System.EventHandler(this.docenteCursosToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -233,5 +243,6 @@
         private System.Windows.Forms.ToolStripMenuItem verCursosAsignadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem docenteCursosToolStripMenuItem;
     }
 }

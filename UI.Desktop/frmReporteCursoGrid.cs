@@ -45,17 +45,25 @@ namespace UI.Desktop
             colId_Curso.DataPropertyName = "ID";
             this.dgvCursos.Columns.Add(colId_Curso);
 
-            DataGridViewTextBoxColumn colDescripcionCom = new DataGridViewTextBoxColumn();
-            colDescripcionCom.Name = "descripcion_comision";
-            colDescripcionCom.HeaderText = "Descripción Comision";
-            colDescripcionCom.DataPropertyName = "DescPlanEsp";
-            this.dgvCursos.Columns.Add(colDescripcionCom);
-
             DataGridViewTextBoxColumn colDescripcionMat = new DataGridViewTextBoxColumn();
             colDescripcionMat.Name = "descripcion_materia";
-            colDescripcionMat.HeaderText = "Descripción Materia";
+            colDescripcionMat.HeaderText = "Materia";
             colDescripcionMat.DataPropertyName = "DescMateria";
             this.dgvCursos.Columns.Add(colDescripcionMat);
+            
+            DataGridViewTextBoxColumn colDescripcionCom = new DataGridViewTextBoxColumn();
+            colDescripcionCom.Name = "descripcion_comision";
+            colDescripcionCom.HeaderText = "Comisión";
+            colDescripcionCom.DataPropertyName = "DescComision";
+            this.dgvCursos.Columns.Add(colDescripcionCom);
+
+            DataGridViewTextBoxColumn colDescripcionPlan = new DataGridViewTextBoxColumn();
+            colDescripcionPlan.Name = "descripcion_planEsp";
+            colDescripcionPlan.HeaderText = "Plan";
+            colDescripcionPlan.DataPropertyName = "DescPlanEsp";
+            this.dgvCursos.Columns.Add(colDescripcionPlan);
+
+            
 
             DataGridViewTextBoxColumn colAnio_Calendario = new DataGridViewTextBoxColumn();
             colAnio_Calendario.Name = "anio_calendario";

@@ -187,5 +187,47 @@ namespace Data.Database
             }
         }
 
+        public List<Persona> GetAllDocentes()
+        {
+            List<Persona> listadoPersonas = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand consulta = new SqlCommand("SELECT id_persona,nombre,apellido,direccion,email,telefono,fecha_nac FROM personas WHERE tipo_persona = 2 ", SqlConn);
+                System.Data.SqlClient.SqlDataReader dr = consulta.ExecuteReader();
+                while (dr.Read())
+                {
+                    Persona per = new Persona();
+                    per.ID = Convert.ToInt32(dr[0]);
+                    per.Nombre = dr.IsDBNull(1) ? string.Empty : dr[1].ToString();
+                    per.Apellido = dr.IsDBNull(2) ? string.Empty : dr[2].ToString();
+                    per.Direccion = dr.IsDBNull(3) ? string.Empty : dr[3].ToString();
+                    per.Email = dr.IsDBNull(4) ? string.Empty : dr[4].ToString();
+                    per.Telefono = dr.IsDBNull(5) ? string.Empty : dr[5].ToString();
+                    per.FechaNacimiento = Convert.ToDateTime(dr[6]);
+
+
+                    //per.Legajo = dr.IsDBNull(3) ? string.Empty : dr[3].ToString();
+                    //per.Id_Tipo_Persona = dr.IsDBNull(8) ? 0 : Convert.ToInt32(dr[8]);
+                    //per.Plan = dr.IsDBNull(9) ? null : PlanAdapter.GetOne(Convert.ToInt32(dr[9]));
+                    
+                   
+
+                    listadoPersonas.Add(per);
+                }
+                return listadoPersonas;
+
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al tratar de abrir la conexion", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
     }
 }

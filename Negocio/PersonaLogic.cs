@@ -54,5 +54,10 @@ namespace Negocio
         {
             this.PersonaData.Update(persona);
         }
+
+        public List<Persona> GetAllDocentes()
+        {
+           return this.PersonaData.GetAllDocentes();
+        }
     }
 }

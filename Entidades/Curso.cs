@@ -75,5 +75,10 @@ namespace Entidades
         {
             get { return _materia.Plan.DescripcionEspPlan; }
         }
+
+        public string DescMateriaComision
+        {
+            get { return _materia.Descripcion + "-" + _comision.Descripcion; }
+        }
     }
 }
