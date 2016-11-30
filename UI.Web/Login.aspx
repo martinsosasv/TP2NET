@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label for="txtPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                <asp:TextBox ID="txtPassword" runat="server" class="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" runat="server" class="form-control" TextMode="Password"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -43,7 +43,7 @@
                             <asp:Button ID="btnIngresar" runat="server" onclick="btnIngresar_Click" class="btn btn-primary" Text="Ingresar" />
                             </div>
                         </div>
-                        <asp:Label ID="lblErrorIngreso" runat="server" Font-Bold="True" ForeColor="Red" Text=""></asp:Label>
+                        <div ID="lblErrorIngreso" runat="server" class="alert alert-danger" role="alert"></div>
                     </form>
                     <a href="#">
                         <asp:LinkButton ID="lbOlvidaPassword" runat="server" onclick="lbOlvidaPassword_Click">Olvidé mi contraseña</asp:LinkButton>

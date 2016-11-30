@@ -9,17 +9,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span> </button>
-                    <a href="#" class="navbar-brand">Academia</a>
+                    <a href="Home.aspx" class="navbar-brand">Academia</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="Home.aspx">Home</a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Cuenta</a></li>
+                        <li><a href="Cuenta.aspx">Cuenta</a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="#" runat="server" id="btpHeaderSalir" onClick="btpHeaderSalir_Click">Salir</a></li>
+                        <li><a href="Login.aspx" runat="server" id="btpHeaderSalir" onClick="btpHeaderSalir_Click">Salir</a></li>
                     </ul>
 
                 </div>
@@ -35,76 +35,111 @@
 
             <!-- Table -->
             
-                <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" CssClass="table" SelectedRowStyle-BackColor="#D5EBCC" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
-                    <Columns>
-                        <asp:BoundField HeaderText="Nombre" DataField="NombrePersona" />
-                        <asp:BoundField HeaderText="Apellido" DataField="ApellidoPersona" />
-                        <asp:BoundField HeaderText="Email" DataField="Email" />
-                        <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario" />
-                        <asp:BoundField HeaderText="Habilitado" DataField="Habilitado" />
-                        <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
-                    </Columns>
+            <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" CssClass="table" SelectedRowStyle-BackColor="#000000" SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre" DataField="NombrePersona" />
+                    <asp:BoundField HeaderText="Apellido" DataField="ApellidoPersona" />
+                    <asp:BoundField HeaderText="Email" DataField="Email" />
+                    <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario" />
+                    <asp:BoundField HeaderText="Habilitado" DataField="Habilitado" />
+                    <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
+                </Columns>
 
-                </asp:GridView>
+            </asp:GridView>
             
+
+
+
+            <asp:Panel ID="gridActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
+                <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnEditar_Click">Editar</asp:LinkButton>
+                <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click">Eliminar</asp:LinkButton>
+                <asp:LinkButton ID="btnNuevo" runat="server" OnClick="btnNuevo_Click">Nuevo</asp:LinkButton>
+            </asp:Panel>
+
+
         </div>
 
 
-
-        <asp:Panel ID="gridPanel" CssClass="gridPanelTable" runat="server">
-            
-
+        <div class="container container-login">
+            <asp:Panel ID="formPanel" CssClass="formPanelUser" Visible="false" runat="server">
+            <div class="panel panel-default panel-login">
+                <div class="panel-heading">Usuario</div>
+                <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblPersona" runat="server" Text="Persona: "></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlPersonasUsuario" runat="server" DataSourceID="ObjectDataSourcePersonas" DataTextField="ApellidoNombre" DataValueField="ID">
+                                    </asp:DropDownList>
+                                    <asp:ObjectDataSource ID="ObjectDataSourcePersonas" runat="server" SelectMethod="GetAll" TypeName="Negocio.PersonaLogic"></asp:ObjectDataSource>
+                                    <asp:Label ID="lblAsteriscoPersona" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblAsteriscoEmail" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:CheckBox ID="chkHabilitado" runat="server"></asp:CheckBox>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblNombreUsuario" runat="server" Text="Usuario: "></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblAsteriscoUsuario"  CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtClave" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblAsteriscoClave" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Label ID="lblClave2" runat="server" Text="Repetir clave"></asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtClave2" runat="server" ></asp:TextBox>
+                                    <asp:Label ID="lblAsteriscoClave2" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
+                                </div>
+                            </div>
+                            
+                            
+                            <asp:Panel ID="formActionsPanel" runat="server">
+                                <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>
+                                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton>
+                            </asp:Panel>
+                            <asp:Panel ID="formValidationPanel" runat="server" Visible="false">
+                                <div runat="server" id="alertForm" class="alert alert-danger" role="alert"></div>
+                            </asp:Panel>
+                        
+                    </div>
+                </div>
+            </div>
         </asp:Panel>
-
-        <asp:Panel ID="formPanel" CssClass="formPanelUser" Visible="false" runat="server">
-            <asp:Label ID="lblNombre" runat="server" Text="Nombre: "></asp:Label>
-            <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-            <asp:Label ID="lblAsteriscoNombre" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Label ID="lblApellido" runat="server" Text="Apellido: "></asp:Label>
-            <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
-            <asp:Label ID="lblAsteriscoApellido" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
-            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-            <asp:Label ID="lblAsteriscoEmail" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Label ID="lblHabilitado" runat="server" Text="Habilitado: "></asp:Label>
-            <asp:CheckBox ID="chkHabilitado" runat="server"></asp:CheckBox>
-            <br />
-            <asp:Label ID="lblNombreUsuario" runat="server" Text="Usuario: "></asp:Label>
-            <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
-            <asp:Label ID="lblAsteriscoUsuario"  CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Label ID="lblClave" runat="server" Text="Clave: "></asp:Label>
-            <asp:TextBox ID="txtClave" runat="server" TextMode="Password"></asp:TextBox>
-            <asp:Label ID="lblAsteriscoClave" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Label ID="lblClave2" runat="server" Text="Repetir clave"></asp:Label>
-            <asp:TextBox ID="txtClave2" runat="server" TextMode="Password" ></asp:TextBox>
-            <asp:Label ID="lblAsteriscoClave2" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
-            <br />
-            <asp:Panel ID="formActionsPanel" runat="server">
-                <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>
-                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton>
-            </asp:Panel>
-            <asp:Panel ID="formValidationPanel" runat="server" Visible="false">
-                <asp:BulletedList DisplayMode="Text" ID="listValidationPanel" runat="server" BulletStyle="Circle">
-                
-                </asp:BulletedList>
-            </asp:Panel>
-        </asp:Panel>
-
-        <asp:Panel ID="gridActionsPanel" runat="server" >
-            <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnEditar_Click">Editar</asp:LinkButton>
-            <asp:LinkButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click">Eliminar</asp:LinkButton>
-            <asp:LinkButton ID="btnNuevo" runat="server" OnClick="btnNuevo_Click">Nuevo</asp:LinkButton>
-        </asp:Panel>
+        
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
-            <span class="pull-right" style="color: #3366FF">Tecnologías de Desarrollo de Software IDE</span>
-            <span style="color: #3366FF">© 2016</span>
+            <span>© 2016</span>
+            <span class="pull-right">Tecnologías de Desarrollo de Software IDE</span>
         </div>
     </nav>
     

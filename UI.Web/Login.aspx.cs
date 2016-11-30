@@ -16,6 +16,7 @@ namespace UI.Web
         {
 
             this.lblErrorIngreso.Visible = false;
+            Session.Clear();
 
         }
 
@@ -41,13 +42,13 @@ namespace UI.Web
                     {
                         //El Usuario no existe
                         this.lblErrorIngreso.Visible = true;
-                        this.lblErrorIngreso.Text = "El Usuario no existe";
+                        this.lblErrorIngreso.InnerHtml = "El Usuario no existe";
                     }
                     else
                     {
                         //La Clave ingresada es incorrecta
                         this.lblErrorIngreso.Visible = true;
-                        this.lblErrorIngreso.Text = "La Clave ingresada es incorrecta";
+                        this.lblErrorIngreso.InnerHtml = "La Clave ingresada es incorrecta";
                     }
 
                 }

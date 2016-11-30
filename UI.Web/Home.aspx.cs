@@ -17,8 +17,8 @@ namespace UI.Web
                 //Response.Write("<script>window.alert('Bienvenido!');</script>");
                 if (Session["usuario"] == null)
                 {
-                    //MessageBoxAlert("Su sesión ha expirado", "Home");
-                    Page.Response.Redirect("Login.aspx");
+                    
+                    MessageBoxAlert("Su sesión ha expirado", "Home","Login.aspx");
                 }
                 else
                 {
@@ -43,9 +43,8 @@ namespace UI.Web
                             this.listMnuReportes.Visible = false;
                             this.listMnuDocentes.Visible = false;
                             break;
-                        default: 
-                            MessageBoxAlert("Tipo de usuario inválido. Intente ingresar nuevamente.", "Home");
-                            Page.Response.Redirect("Login.aspx");
+                        default:
+                            MessageBoxAlert("Tipo de usuario inválido. Intente ingresar nuevamente.", "Home", "Login.aspx");
                             break;
 
                     }
@@ -126,9 +125,11 @@ namespace UI.Web
             Page.Response.Redirect("Login.aspx");
         }
 
-        private void MessageBoxAlert(string message, string title = "title")
+        private void MessageBoxAlert(string message, string title = "title",string page = "Login.aspx")
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), title, "alert('" + message + "')'", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), title,
+                        "alert('"+message+"'); window.location='" +
+                        Request.ApplicationPath + page+"';", true);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using Entidades;
+using Util;
 
 namespace UI.Web
 {
@@ -24,13 +25,34 @@ namespace UI.Web
             }
         }
 
+        PersonaLogic _personaLogic;
+        private PersonaLogic PersonaLogic
+        {
+            get
+            {
+                if (_personaLogic == null)
+                {
+                    _personaLogic = new PersonaLogic();
+                }
+                return _personaLogic;
+            }
+        }
+
         public enum FormModes
-        { Alta, Baja, Modificacion }
+        { 
+            Alta, Baja, Modificacion
+        }
         
         public FormModes FormMode
         {
-            get { return (FormModes)this.ViewState["FormMode"]; }
-            set { this.ViewState["FormMode"] = value; }
+            get
+            { 
+                return (FormModes)this.ViewState["FormMode"];
+            }
+            set
+            {
+                this.ViewState["FormMode"] = value;
+            }
         }
 
         private Usuario Entity
@@ -60,7 +82,10 @@ namespace UI.Web
 
         private bool IsEntitySelected
         {
-            get { return (this.SelectedID != 0); }
+            get
+            {
+                return (this.SelectedID != 0);
+            }
         }
 
         private void LoadGrid()
@@ -73,8 +98,35 @@ namespace UI.Web
         {
             if(!(this.IsPostBack))
             {
-                this.LoadGrid();
+                if (Session["usuario"] == null)
+                {
+                    //MessageBoxAlert("Su sesión ha expirado", "Home");
+                    MessageBoxAlert("Su sesión ha expirado", "Usuarios", "Login.aspx");
+                }
+                else
+                {
+                    int id_tipo_persona = Convert.ToInt32(Session["id_tipo_persona"]);
+                    switch (id_tipo_persona)
+                    {
+                        //admin
+                        case 1:
+                            this.LoadGrid();
+                            break;
+                        default:
+                            MessageBoxAlert("No tienes permiso para ingresar a ésta página.", "Usuarios","Home.aspx");
+                            break;
+
+                    }
+                }
+                
             }
+        }
+
+        private void MessageBoxAlert(string message, string title = "title", string page = "Login.aspx")
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), title,
+                        "alert('" + message + "'); window.location='" +
+                        Request.ApplicationPath + page + "';", true);
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,11 +137,12 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            //this.txtNombre.Text = this.Entity.Nombre;
-            //this.txtApellido.Text = this.Entity.Apellido;
+            this.ddlPersonasUsuario.SelectedValue = this.Entity.Persona.ID.ToString();
             this.txtEmail.Text = this.Entity.Email;
             this.chkHabilitado.Checked = this.Entity.Habilitado;
             this.txtUsuario.Text = this.Entity.NombreUsuario;
+            this.txtClave.Text = this.Entity.Clave;
+            this.txtClave2.Text = this.Entity.Clave;
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -98,15 +151,24 @@ namespace UI.Web
             {
                 this.EnableForm(true);
                 this.formPanel.Visible = true;
+                this.formValidationPanel.Visible = false;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Asegúrese de seleccionar un campo.');</script>");
             }
         }
 
         private void LoadEntity(Usuario usuario)
         {
-            usuario.Persona.Nombre = this.txtNombre.Text;
-            usuario.Persona.Apellido = this.txtApellido.Text;
+            
+            //usuario.Persona.Nombre = this.txtNombre.Text;
+            //usuario.Persona.Apellido = this.txtApellido.Text;
+            Persona per = new Persona();
+            per = PersonaLogic.GetOne(Convert.ToInt32(this.ddlPersonasUsuario.SelectedValue));
+            usuario.Persona = per;
             usuario.Email = this.txtEmail.Text;
             usuario.NombreUsuario = this.txtUsuario.Text;
             usuario.Clave = this.txtClave.Text;
@@ -129,25 +191,26 @@ namespace UI.Web
                         this.formPanel.Visible = false;
                         break;
                 case FormModes.Modificacion:
-                    if (ValidateFormPanel())
+                    if (Validar())
                     {
 
                         this.Entity = new Usuario();
                         this.Entity.ID = this.SelectedID;
-                        this.Entity.State = Entidades.Entidades.States.Modified;
+                        //this.Entity.State = Entidades.Entidades.States.Modified;
                         this.LoadEntity(this.Entity);
-                        this.SaveEntity(this.Entity);
+                        //this.SaveEntity(this.Entity);
+                        this.Logic.Update(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
                     }
                     
                     break;
                 case FormModes.Alta:
-                    if (ValidateFormPanel())
+                    if (Validar())
                     {
                         this.Entity = new Usuario();
                         this.LoadEntity(this.Entity);
-                        this.SaveEntity(this.Entity);
+                        this.Logic.Insert(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
                     }
@@ -160,50 +223,48 @@ namespace UI.Web
             
         }
 
-        private bool ValidateFormPanel()
+        private bool Validar()
         {
-            listValidationPanel.Items.Clear();
-
-            if (this.txtNombre.Text == string.Empty)
+            this.alertForm.InnerHtml = "";
+            string mensaje = "";
+            //Persona
+            if (this.ddlPersonasUsuario.SelectedValue == "-1")
             {
-                this.lblAsteriscoNombre.Visible = true;
-                ListItem item = new ListItem("El nombre no puede estar vacío");
-                listValidationPanel.Items.Add(item);
+                this.lblAsteriscoPersona.Visible = true;
+                mensaje += "- El usuario debe tener una persona asignada" + "<br/>";
+            }
+            //Clave
+            if (!Validaciones.esClaveValida(this.txtClave.Text))
+            {
+                this.lblAsteriscoClave.Visible = true;
+                mensaje += "- El campo Clave es requerido y debe contener al menos 6 caracteres" + "<br/>";
+            }
+            else
+            {
+                if (!Validaciones.coincideClave(this.txtClave.Text, this.txtClave2.Text))
+                {
+                    this.lblAsteriscoClave.Visible = true;
+                    mensaje += "- Las Claves deben coincidir" + "<br/>";
+                }
+            }
+            //Email
+            if (!Validaciones.esEmailValido(this.txtEmail.Text))
+            {
+                mensaje += "- El campo Email es requerido y debe ser del formato de correo electrónico" + "<br/>";
+                this.lblAsteriscoEmail.Visible = true;
+            }
+            // Usuario
+            if (!Validaciones.esUsuarioValido(this.txtUsuario.Text))
+            {
+                mensaje += "- El campo Usuario es requerido y no debe contener caracteres especiales" + "<br/>";
+                this.lblAsteriscoUsuario.Visible = true;
             }
             
 
-
-            if (this.txtApellido.Text == string.Empty)
+            //Mostrar los errores
+            if (!String.IsNullOrEmpty(mensaje))
             {
-                this.lblAsteriscoApellido.Visible = true;
-                ListItem item = new ListItem("El Apellido no puede estar vacio");
-                listValidationPanel.Items.Add(item);
-            }
-
-            if (this.txtEmail.Text == string.Empty || !this.txtEmail.Text.Contains('@') || !this.txtEmail.Text.Contains(".com"))
-            {
-                this.lblAsteriscoEmail.Visible = true;
-                ListItem item = new ListItem("El Email es inválido");
-                listValidationPanel.Items.Add(item);
-            }
-
-            if (this.txtUsuario.Text == string.Empty)
-            {
-                this.lblAsteriscoUsuario.Visible = true;
-                ListItem item = new ListItem("El Nombre de Usuario no puede estar vacio");
-                listValidationPanel.Items.Add(item);
-                
-            }
-
-            if (this.txtClave.Text.Length < 8 || this.txtClave.Text != this.txtClave2.Text)
-            {
-                this.lblAsteriscoClave.Visible = true;
-                ListItem item = new ListItem("Las claves deben coincidir y tener más de 8 caracteres");
-                listValidationPanel.Items.Add(item);
-            }
-
-            if (listValidationPanel.Items.Count > 0)
-            {
+                this.alertForm.InnerHtml = mensaje;
                 formValidationPanel.Visible = true;
                 return false;
             }
@@ -211,16 +272,11 @@ namespace UI.Web
             {
                 return true;
             }
-            
-
-            
-            
         }
 
         private void EnableForm(bool enable)
         {
-            this.txtNombre.Enabled = enable;
-            this.txtApellido.Enabled = enable;
+            this.ddlPersonasUsuario.Enabled = enable;
             this.txtEmail.Enabled = enable;
             this.txtUsuario.Enabled = enable;
             this.txtClave.Visible = enable;
@@ -238,6 +294,7 @@ namespace UI.Web
                 this.FormMode = FormModes.Baja;
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
+                this.formValidationPanel.Visible = false;
 
             }
         }
@@ -253,15 +310,23 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
+            this.formValidationPanel.Visible = false;
         }
 
         private void ClearForm()
         {
-            this.txtNombre.Text = string.Empty;
-            this.txtApellido.Text = string.Empty;
+            this.ddlPersonasUsuario.SelectedIndex = -1;
             this.txtEmail.Text = string.Empty;
             this.chkHabilitado.Checked = false;
             this.txtUsuario.Text = string.Empty;
+            this.txtClave.Text = string.Empty;
+            this.txtClave2.Text = string.Empty;
+
+            this.lblAsteriscoUsuario.Visible = false;
+            this.lblAsteriscoPersona.Visible = false;
+            this.lblAsteriscoEmail.Visible = false;
+            this.lblAsteriscoClave2.Visible = false;
+            this.lblAsteriscoClave.Visible = false;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

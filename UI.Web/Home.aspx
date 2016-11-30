@@ -10,17 +10,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span> </button>
-                    <a href="#" class="navbar-brand">Academia</a>
+                    <a href="Home.aspx" class="navbar-brand">Academia</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Cuenta</a></li>
+                        <li><a href="Cuenta.aspx">Cuenta</a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="#" runat="server" id="btpHeaderSalir" onClick="btpHeaderSalir_Click">Salir</a></li>
+                        <li><a href="Login.aspx" runat="server" id="btpHeaderSalir" onClick="btpHeaderSalir_Click">Salir</a></li>
                     </ul>
 
                 </div>
@@ -76,8 +76,8 @@
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="container">
-                <span class="pull-right" style="color: #3366FF">Tecnologías de Desarrollo de Software IDE</span>
-                <span style="color: #3366FF">© 2016</span>
+                <span>© 2016</span>
+                <span class="pull-right">Tecnologías de Desarrollo de Software IDE</span>
             </div>
         </nav>
 

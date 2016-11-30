@@ -129,7 +129,7 @@ namespace Util
             {
                 for (int k = 0; k < usu.Length; ++k)
                 {
-                    if (((Convert.ToChar(usu[k]) >= 65) && (Convert.ToChar(usu[k]) <= 90)) || ((Convert.ToChar(usu[k]) >= 96) && (Convert.ToChar(usu[k]) <= 122)))
+                    if ((char.IsLetter(usu[k])) || (char.IsNumber(usu[k])))
                     {
                         continue;
                     }
@@ -149,11 +149,10 @@ namespace Util
             {
                 for (int k = 0; k < des.Length; ++k)
                 {
-                    if (((Convert.ToChar(des[k]) >= 65) && (Convert.ToChar(des[k]) <= 90)) || ((Convert.ToChar(des[k]) >= 97) && (Convert.ToChar(des[k]) <= 122)) || (Convert.ToChar(des[k]) == 32))
+                    if ((char.IsLetter(des[k])) || (char.IsNumber(des[k])))
                     {
                         continue;
                     }
-
                     else return false;
                 }
                 return true;

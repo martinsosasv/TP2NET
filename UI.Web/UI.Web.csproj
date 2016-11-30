@@ -188,8 +188,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CSS\common.css" />
-    <Content Include="CSS\theme.css" />
-    <Content Include="CSS\Usuarios.css" />
     <Content Include="Home.aspx" />
     <Content Include="Images\140x140.gif" />
     <Content Include="Images\170x170.gif" />
@@ -425,6 +423,10 @@
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{386a75ee-0fee-416e-8130-4f6e86870a37}</Project>
       <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{97944af0-5faf-4822-81c6-bb20ccb333a5}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
