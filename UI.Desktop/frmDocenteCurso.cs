@@ -39,13 +39,13 @@ namespace UI.Desktop
         {
             DataGridViewTextBoxColumn colId_Docente = new DataGridViewTextBoxColumn();
             colId_Docente.Name = "id_docente";
-            colId_Docente.HeaderText = "Id Docente";
+            colId_Docente.HeaderText = "Docente";
             colId_Docente.DataPropertyName = "DescDocente";
             this.dgvBase.Columns.Add(colId_Docente);
 
             DataGridViewTextBoxColumn colId_Curso = new DataGridViewTextBoxColumn();
             colId_Curso.Name = "id_curso";
-            colId_Curso.HeaderText = "Id Curso";
+            colId_Curso.HeaderText = "Curso";
             colId_Curso.DataPropertyName = "DescCurso";
             this.dgvBase.Columns.Add(colId_Curso);
 

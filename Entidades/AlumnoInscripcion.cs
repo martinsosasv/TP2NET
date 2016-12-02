@@ -24,13 +24,15 @@ namespace Entidades
 
             set
             {
-                if (_nota < 4)
+                if (_nota < 4 && _nota > 0)
                 {
                     _condicion = "No aprobado";
                 }
                 else if (_nota >= 4)
                 {
                     _condicion = "Aprobado";
+                }else if(_nota == 0){
+                    _condicion = "Cursando";
                 }
             }
         }

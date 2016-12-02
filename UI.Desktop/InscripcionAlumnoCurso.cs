@@ -21,7 +21,7 @@ namespace UI.Desktop
             set { _alumno = value; }
         }
 
-        public InscripcionAlumnoCurso(Entidades.Persona alumno )
+        public InscripcionAlumnoCurso(Entidades.Persona alumno)
         {
             InitializeComponent();
             this.Alumno = alumno;

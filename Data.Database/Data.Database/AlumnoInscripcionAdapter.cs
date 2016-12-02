@@ -18,7 +18,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdAlumnoInscripciones = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_incripciones", SqlConn);
+                SqlCommand cmdAlumnoInscripciones = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones", SqlConn);
                 SqlDataReader drAlumnoInscripciones = cmdAlumnoInscripciones.ExecuteReader();
                 while (drAlumnoInscripciones.Read())
                 {
@@ -39,13 +39,10 @@ namespace Data.Database
                     aluIns.Condicion = (string)drAlumnoInscripciones["condicion"];
                     aluIns.Nota = (int)drAlumnoInscripciones["nota"];
                     
-                    
-
                     alumnos.Add(aluIns);
                 }
 
                 drAlumnoInscripciones.Close();
-
             }
             catch (Exception Ex)
             {

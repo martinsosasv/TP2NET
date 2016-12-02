@@ -129,9 +129,8 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso, cargo FROM docentes_cursos WHERE id_docente=@id_docente ", SqlConn);
+                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso,cargo FROM docentes_cursos WHERE id_docente=@id_docente ", SqlConn);
                 consulta.Parameters.AddWithValue("@id_docente", id_docente);
-                
                 SqlDataReader dr = consulta.ExecuteReader();
                 while (dr.Read())
                 {
@@ -143,7 +142,6 @@ namespace Data.Database
                     docCurso.Cargo =(Docente_Curso.TipoCargo)dr["cargo"];
                     listado.Add(docCurso);
                 }
-                return listado;
             }
 
             catch (Exception e)
@@ -156,7 +154,7 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-
+            return listado;
         }
 
         public Docente_Curso GetOne(int idDoc, int idCur)

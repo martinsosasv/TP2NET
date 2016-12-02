@@ -115,5 +115,11 @@ namespace UI.Desktop
             frmDocenteCurso frmDocCur = new frmDocenteCurso();
             frmDocCur.ShowDialog();
         }
+
+        private void verCursosAsignadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCursoAsignado frmCurAsig = new frmCursoAsignado(this.Persona);
+            frmCurAsig.ShowDialog();
+        }
     }
 }

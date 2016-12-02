@@ -56,6 +56,12 @@
     <Compile Include="Base.Designer.cs">
       <DependentUpon>Base.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAlumnoInscriptoACurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlumnoInscriptoACurso.Designer.cs">
+      <DependentUpon>frmAlumnoInscriptoACurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComisionAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="frmCursoAgregar.Designer.cs">
       <DependentUpon>frmCursoAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCursoAsignado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCursoAsignado.Designer.cs">
+      <DependentUpon>frmCursoAsignado.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCursos.cs">
       <SubType>Form</SubType>
@@ -197,11 +209,17 @@
     <EmbeddedResource Include="Base.resx">
       <DependentUpon>Base.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAlumnoInscriptoACurso.resx">
+      <DependentUpon>frmAlumnoInscriptoACurso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmComisionAgregar.resx">
       <DependentUpon>frmComisionAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCursoAgregar.resx">
       <DependentUpon>frmCursoAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCursoAsignado.resx">
+      <DependentUpon>frmCursoAsignado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDocenteCursoAgregar.resx">
       <DependentUpon>frmDocenteCursoAgregar.cs</DependentUpon>
