@@ -120,6 +120,26 @@ namespace Data.Database
             }
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("DELETE materias WHERE id_materia = @id", SqlConn);
+                cmdDelete.Parameters.AddWithValue("@id", id);
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar la materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
         public void Update(Materia materia)
         {
             try

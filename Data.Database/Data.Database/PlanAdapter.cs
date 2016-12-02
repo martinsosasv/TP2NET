@@ -108,6 +108,26 @@ namespace Data.Database
             }
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("DELETE planes WHERE id_plan = @id", SqlConn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar el plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
         public void Update(Plan plan)
         {
             try
@@ -118,7 +138,7 @@ namespace Data.Database
                                                     "WHERE id_plan = @id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@id_especilidad", SqlDbType.VarChar, 50).Value = plan.Especialidad.ID;
+                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.VarChar, 50).Value = plan.Especialidad.ID;
 
                 cmdSave.ExecuteNonQuery();
             }

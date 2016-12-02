@@ -39,6 +39,11 @@ namespace Negocio
             this.MateriaData.Delete(materia);
         }
 
+        public void Delete(int id)
+        {
+            this.MateriaData.Delete(id);
+        }
+
         public void Update(Materia materia)
         {
             this.MateriaData.Update(materia);

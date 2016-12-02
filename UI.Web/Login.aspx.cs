@@ -14,10 +14,8 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             this.lblErrorIngreso.Visible = false;
             Session.Clear();
-
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)

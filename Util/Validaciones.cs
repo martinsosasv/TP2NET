@@ -143,13 +143,14 @@ namespace Util
             else return false;
         }
 
-        public static bool esDescripcionValida(string des)
+        public static bool esDescripcionValida(string desc)
         {
-            if (!String.IsNullOrEmpty(des.Trim()))
+            string des = desc.Trim();
+            if (!String.IsNullOrEmpty(des))
             {
                 for (int k = 0; k < des.Length; ++k)
                 {
-                    if ((char.IsLetter(des[k])) || (char.IsNumber(des[k])))
+                    if ((char.IsLetter(des[k])) || (char.IsSeparator(des[k]))  || (char.IsNumber(des[k])))
                     {
                         continue;
                     }

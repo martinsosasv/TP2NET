@@ -44,12 +44,12 @@
                 <a href="#" class="list-group-item disabled">
                 ABM
                 </a>
-                <a href="#" runat="server" id="aMnuEspecialidadesABM" class="list-group-item">Especialidades</a>
-                <a href="#" runat="server" id="aMnuPlanesABM" class="list-group-item">Planes</a>
-                <a href="#" runat="server" id="aMnuMateriasABM" class="list-group-item">Materias</a>
-                <a href="#" runat="server" id="aMnuComisionesABM" class="list-group-item">Comisiones</a>
-                <a href="#" runat="server" id="aMnuCursosABM" class="list-group-item">Cursos</a>
-                <a href="#" runat="server" id="aMnuPersonasABM" class="list-group-item">Personas</a>
+                <a href="Especialidades.aspx" runat="server" id="aMnuEspecialidadesABM" class="list-group-item">Especialidades</a>
+                <a href="Planes.aspx" runat="server" id="aMnuPlanesABM" class="list-group-item">Planes</a>
+                <a href="Materias.aspx" runat="server" id="aMnuMateriasABM" class="list-group-item">Materias</a>
+                <a href="Comisiones.aspx" runat="server" id="aMnuComisionesABM" class="list-group-item">Comisiones</a>
+                <a href="Cursos.aspx" runat="server" id="aMnuCursosABM" class="list-group-item">Cursos</a>
+                <a href="Personas.aspx" runat="server" id="aMnuPersonasABM" class="list-group-item">Personas</a>
                 <a href="Usuarios.aspx" runat="server" ID="aMnuUsuariosABM" class="list-group-item">Usuarios</a>
             </div>
             <div runat="server" id="listMnuReportes" class="list-group">

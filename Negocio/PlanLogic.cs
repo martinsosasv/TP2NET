@@ -39,6 +39,11 @@ namespace Negocio
             this.PlanData.Delete(plan);
         }
 
+        public void Delete(int id)
+        {
+            this.PlanData.Delete(id);
+        }
+
         /*public void Save(Plan plan)
         {
             this.PlanData.Save(plan);
