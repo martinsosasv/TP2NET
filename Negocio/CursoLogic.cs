@@ -39,6 +39,11 @@ namespace Negocio
             this.CursoData.Delete(curso);
         }
 
+        public void Delete(int id)
+        {
+            this.CursoData.Delete(id);
+        }
+
         public void Insert(Curso curso)
         {
             this.CursoData.Insert(curso);

@@ -11,6 +11,7 @@ namespace Data.Database
 {
     public class MateriaAdapter : Adapter
     {
+
         public List<Materia> GetAll()
         {
             List<Materia> materias = new List<Materia>();
@@ -47,6 +48,52 @@ namespace Data.Database
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return materias;
+        }
+
+        public List<Materia> GetAllMateriasPlan(int id)
+        {
+            List<Materia> materias = new List<Materia>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdMaterias = new SqlCommand("SELECT id_materia, desc_materia, hs_semanales, hs_totales, id_plan FROM materias WHERE id_plan=@id_plan", SqlConn);
+                cmdMaterias.Parameters.AddWithValue("@id_plan", id);
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+                while (drMaterias.Read())
+                {
+                    Materia materia = new Materia();
+                    PlanAdapter plaAda = new PlanAdapter();
+                    Plan plan = new Plan();
+                    plan = plaAda.GetOne(Int32.Parse(drMaterias["id_plan"].ToString()));
+
+                    //EspecialidadAdapter espAda = new EspecialidadAdapter();
+                    //Especialidad espe = new Especialidad();
+                    //espe = espAda.GetOne(plan.ID);
+
+
+                    materia.ID = (int)drMaterias["id_materia"];
+                    materia.Descripcion = (string)drMaterias["desc_materia"];
+                    materia.HSSemanales = (int)drMaterias["hs_semanales"];
+                    materia.HSTotales = (int)drMaterias["hs_totales"];
+                    materia.Plan = drMaterias.IsDBNull(4) ? null : plan ;
+                    //materia.DescripcionPlan = plan.Descripcion.ToString();
+                    //materia.DescripcionEspecPlan = espe.Descripcion.ToString();
+                    materias.Add(materia);
+                }
+
+                drMaterias.Close();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias de un plan", Ex);
                 throw ExcepcionManejada;
             }
             finally

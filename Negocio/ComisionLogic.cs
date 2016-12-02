@@ -39,6 +39,10 @@ namespace Negocio
             this.ComisionData.Delete(comision);
         }
 
+        public void Delete(int id)
+        {
+            this.ComisionData.Delete(id);
+        }
         public void Insert(Comision comision)
         {
             this.ComisionData.Insert(comision);

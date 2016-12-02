@@ -197,6 +197,30 @@ namespace Data.Database
             }
         }
 
+        public void UpdateNota(AlumnoInscripcion inscripcion)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripcion SET condicion = @condicion, nota = @nota " +
+                                                    "WHERE id_inscripcion = @id_inscripcion", SqlConn);
+                cmdSave.Parameters.Add("@id_inscripcion", SqlDbType.Int).Value = inscripcion.ID;
+                cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
+                cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
+
+
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al modificar datos de inscripcion", Ex);
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
         public void Insert(AlumnoInscripcion inscripcion)
         {
             try

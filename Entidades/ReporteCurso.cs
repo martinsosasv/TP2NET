@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class ReporteCurso
+    public class ReporteCurso : Entidades
     {
         #region Propiedades
         private int legajo;

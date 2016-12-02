@@ -56,14 +56,14 @@
                 <a href="#" class="list-group-item disabled">
                 Reportes
                 </a>
-                <a href="#" runat="server" id="aMnuCursosReportes" class="list-group-item">Cursos</a>
-                <a href="#" runat="server" id="aMnuEspecialidadesReportes" class="list-group-item">Especialidades</a>
+                <a href="ReporteCursos.aspx" runat="server" id="aMnuCursosReportes" class="list-group-item">Cursos</a>
+                <a href="ReportePlanes.aspx" runat="server" id="aMnuEspecialidadesReportes" class="list-group-item">Planes</a>
             </div>
             <div runat="server" id="listMnuDocentes" class="list-group">
                 <a href="#" class="list-group-item disabled">
                 Docentes
                 </a>
-                <a href="#" runat="server" id="aMnuCursosAsigandosDocentes" class="list-group-item">Ver cursos asignados</a>
+                <a href="CursosAsignado.aspx" runat="server" id="aMnuCursosAsigandosDocentes" class="list-group-item">Ver cursos asignados</a>
             </div>
             <div runat="server" id="listMnuAlumnos" class="list-group">
                 <a href="#" class="list-group-item disabled">

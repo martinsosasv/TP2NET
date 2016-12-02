@@ -29,6 +29,11 @@ namespace Negocio
             return this.MateriaData.GetAll();
         }
 
+        public List<Materia> GetAllMateriasPlan(int id)
+        {
+            return this.MateriaData.GetAllMateriasPlan(id);
+        }
+
         public Materia GetOne(int id)
         {
             return this.MateriaData.GetOne(id);

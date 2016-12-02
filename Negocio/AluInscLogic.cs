@@ -50,5 +50,10 @@ namespace Negocio
         {
             this.AluInscData.Update(aluInsc);
         }
+
+        public void UpdateNota(AlumnoInscripcion aluInsc)
+        {
+            this.AluInscData.UpdateNota(aluInsc);
+        }
     }
 }

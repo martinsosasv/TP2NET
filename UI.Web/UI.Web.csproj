@@ -189,6 +189,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CSS\common.css" />
+    <Content Include="Cursos.aspx" />
+    <Content Include="CursosAsignado.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\140x140.gif" />
@@ -275,6 +277,8 @@
     <Content Include="lib\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Planes.aspx" />
+    <Content Include="ReporteCursos.aspx" />
+    <Content Include="ReportePlanes.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -372,6 +376,20 @@
     <Compile Include="Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cursos.aspx.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cursos.aspx.designer.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CursosAsignado.aspx.cs">
+      <DependentUpon>CursosAsignado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CursosAsignado.aspx.designer.cs">
+      <DependentUpon>CursosAsignado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -411,6 +429,20 @@
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteCursos.aspx.cs">
+      <DependentUpon>ReporteCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteCursos.aspx.designer.cs">
+      <DependentUpon>ReporteCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePlanes.aspx.cs">
+      <DependentUpon>ReportePlanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePlanes.aspx.designer.cs">
+      <DependentUpon>ReportePlanes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
