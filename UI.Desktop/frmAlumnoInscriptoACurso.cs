@@ -35,7 +35,7 @@ namespace UI.Desktop
             {
                 InitializeComponent();
                 this.IdCurso = id;
-                this.dgvAlumnosInscriptos.AutoGenerateColumns = false;
+                this.dgvAlumnosDelCurso.AutoGenerateColumns = false;
                 this.GenerarColumnas();
                 this.cargarGrilla();
             }
@@ -51,27 +51,26 @@ namespace UI.Desktop
             colLegajo.Name = "legajo";
             colLegajo.HeaderText = "legajo";
             colLegajo.DataPropertyName = "legajo";
-            this.dgvAlumnosInscriptos.Columns.Add(colLegajo);
+            this.dgvAlumnosDelCurso.Columns.Add(colLegajo);
 
             DataGridViewTextBoxColumn colApellido = new DataGridViewTextBoxColumn();
             colApellido.Name = "apellido";
             colApellido.HeaderText = "Apellido";
             colApellido.DataPropertyName = "apellido";
-            this.dgvAlumnosInscriptos.Columns.Add(colApellido);
+            this.dgvAlumnosDelCurso.Columns.Add(colApellido);
 
             DataGridViewTextBoxColumn colNombre = new DataGridViewTextBoxColumn();
             colNombre.Name = "nombre";
             colNombre.HeaderText = "Nombre";
             colNombre.DataPropertyName = "nombre";
-            this.dgvAlumnosInscriptos.Columns.Add(colNombre);
+            this.dgvAlumnosDelCurso.Columns.Add(colNombre);
 
             DataGridViewTextBoxColumn colNota = new DataGridViewTextBoxColumn();
             colNota.Name = "nota";
             colNota.HeaderText = "Nota";
             colNota.DataPropertyName = "nota";
             colNota.ReadOnly = false;
-            
-            this.dgvAlumnosInscriptos.Columns.Add(colNota);
+            this.dgvAlumnosDelCurso.Columns.Add(colNota);
         }
 
         private void cargarGrilla()
@@ -96,7 +95,7 @@ namespace UI.Desktop
                                  nota = aluins.Nota
                              };
 
-            dgvAlumnosInscriptos.DataSource = inscriptos.ToList();
+            dgvAlumnosDelCurso.DataSource = inscriptos.ToList();
 
         }
         #endregion
@@ -105,5 +104,6 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
     }
 }
