@@ -57,7 +57,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(255, 374);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 23);
-            this.btnCancelar.TabIndex = 23;
+            this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -67,7 +67,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(102, 374);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(92, 23);
-            this.btnAceptar.TabIndex = 22;
+            this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -77,7 +77,7 @@
             this.txtEmail.Location = new System.Drawing.Point(157, 159);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(207, 20);
-            this.txtEmail.TabIndex = 21;
+            this.txtEmail.TabIndex = 4;
             // 
             // lblEmail
             // 
@@ -93,7 +93,7 @@
             this.txtNombre.Location = new System.Drawing.Point(157, 62);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(207, 20);
-            this.txtNombre.TabIndex = 17;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtID
             // 
@@ -101,7 +101,7 @@
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 16;
+            this.txtID.TabIndex = 0;
             // 
             // lblDireccion
             // 
@@ -153,7 +153,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(157, 193);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(207, 20);
-            this.txtTelefono.TabIndex = 25;
+            this.txtTelefono.TabIndex = 5;
             // 
             // lblFechaNac
             // 
@@ -169,21 +169,21 @@
             this.dtpFechaNac.Location = new System.Drawing.Point(157, 223);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.Size = new System.Drawing.Size(231, 20);
-            this.dtpFechaNac.TabIndex = 27;
+            this.dtpFechaNac.TabIndex = 6;
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(157, 94);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(207, 20);
-            this.txtApellido.TabIndex = 28;
+            this.txtApellido.TabIndex = 2;
             // 
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(157, 126);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(207, 20);
-            this.txtDireccion.TabIndex = 29;
+            this.txtDireccion.TabIndex = 3;
             // 
             // lblLegajo
             // 
@@ -218,7 +218,7 @@
             this.txtLegajo.Location = new System.Drawing.Point(157, 289);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(100, 20);
-            this.txtLegajo.TabIndex = 33;
+            this.txtLegajo.TabIndex = 8;
             // 
             // cbxPlan
             // 
@@ -227,7 +227,7 @@
             this.cbxPlan.Location = new System.Drawing.Point(157, 318);
             this.cbxPlan.Name = "cbxPlan";
             this.cbxPlan.Size = new System.Drawing.Size(207, 21);
-            this.cbxPlan.TabIndex = 35;
+            this.cbxPlan.TabIndex = 9;
             // 
             // cbxTipo
             // 
@@ -235,10 +235,10 @@
             this.cbxTipo.Location = new System.Drawing.Point(157, 257);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipo.TabIndex = 36;
+            this.cbxTipo.TabIndex = 7;
             this.cbxTipo.SelectedValueChanged += new System.EventHandler(this.cbxTipo_SelectedValueChanged);
             // 
-            // PersonaAgregar
+            // frmPersonaAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -265,7 +265,7 @@
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblID);
-            this.Name = "PersonaAgregar";
+            this.Name = "frmPersonaAgregar";
             this.Text = "Agregar Persona";
             this.ResumeLayout(false);
             this.PerformLayout();

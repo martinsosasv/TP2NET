@@ -68,8 +68,7 @@ namespace UI.Desktop
         {
             AlumnoInscripcion aluIns = new AlumnoInscripcion();
             aluIns.ID = this.IdInsc;
-            aluIns.Nota = Convert.ToInt32(this.cbxNota.SelectedValue);
-            
+            aluIns.Nota = Convert.ToInt32(this.cbxNota.SelectedItem);            
             AluInscLogic aluInscLog = new AluInscLogic();
             try
             {

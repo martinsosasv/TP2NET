@@ -202,12 +202,11 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripcion SET condicion = @condicion, nota = @nota " +
+                SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripciones SET condicion = @condicion, nota = @nota " +
                                                     "WHERE id_inscripcion = @id_inscripcion", SqlConn);
                 cmdSave.Parameters.Add("@id_inscripcion", SqlDbType.Int).Value = inscripcion.ID;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
-
 
                 cmdSave.ExecuteNonQuery();
             }

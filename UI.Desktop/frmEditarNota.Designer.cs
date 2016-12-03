@@ -38,11 +38,11 @@
             // lblIdentificacion
             // 
             this.lblIdentificacion.AutoSize = true;
-            this.lblIdentificacion.Location = new System.Drawing.Point(78, 19);
+            this.lblIdentificacion.Location = new System.Drawing.Point(42, 18);
             this.lblIdentificacion.Name = "lblIdentificacion";
-            this.lblIdentificacion.Size = new System.Drawing.Size(42, 13);
+            this.lblIdentificacion.Size = new System.Drawing.Size(118, 13);
             this.lblIdentificacion.TabIndex = 0;
-            this.lblIdentificacion.Text = "nombre";
+            this.lblIdentificacion.Text = "nombre apellido - legajo";
             // 
             // lblNota
             // 
@@ -104,7 +104,7 @@
             this.Controls.Add(this.lblNota);
             this.Controls.Add(this.lblIdentificacion);
             this.Name = "frmEditarNota";
-            this.Text = "frmEditarNota";
+            this.Text = "Nota";
             this.ResumeLayout(false);
             this.PerformLayout();
 

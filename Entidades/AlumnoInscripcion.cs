@@ -59,6 +59,18 @@ namespace Entidades
             set
             {
                 _nota = value;
+                if(_nota == 0)
+                {
+                    _condicion = "Cursando";
+                }
+                else if(_nota > 0 && _nota < 4)
+                {
+                    _condicion = "Desaprobado";
+                }
+                else if(_nota >= 4 && _nota <= 10)
+                {
+                    _condicion = "Aprobado";
+                }
             }
         }
     }

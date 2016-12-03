@@ -74,9 +74,14 @@ namespace UI.Desktop
             DataGridViewTextBoxColumn colNota = new DataGridViewTextBoxColumn();
             colNota.Name = "nota";
             colNota.HeaderText = "Nota";
-            colNota.DataPropertyName = "nota";
-            colNota.ReadOnly = false;
+            colNota.DataPropertyName = "nota";            
             this.dgvAlumnosDelCurso.Columns.Add(colNota);
+
+            DataGridViewTextBoxColumn colCondicion = new DataGridViewTextBoxColumn();
+            colCondicion.Name = "condicion";
+            colCondicion.HeaderText = "Condicion";
+            colCondicion.DataPropertyName = "condicion";
+            this.dgvAlumnosDelCurso.Columns.Add(colCondicion);
         }
 
         private void cargarGrilla()
@@ -92,14 +97,15 @@ namespace UI.Desktop
             var inscriptos = from aluins in listadoAlumnoInscripcion
                              join alu in listadoPersonas
                              on aluins.Alumno.ID equals alu.ID
-                             where (aluins.Curso.ID == this.IdCurso && aluins.Condicion == "Cursando")
+                             where (aluins.Curso.ID == this.IdCurso)
                              select new
                              {
                                  id_inscripcion = aluins.ID,
                                  legajo = alu.IdLegajo,
                                  apellido = alu.Apellido,
                                  nombre = alu.Nombre,
-                                 nota = aluins.Nota
+                                 nota = aluins.Nota,
+                                 condicion = aluins.Condicion
                              };
 
             dgvAlumnosDelCurso.DataSource = inscriptos.ToList();
