@@ -30,7 +30,7 @@
             <!-- Table -->
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" CssClass="table" SelectedRowStyle-BackColor="#000000" SelectedRowStyle-ForeColor="White" DataKeyNames="id_curso" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="id_curso" HeaderText="Id Curso" 
+                    <asp:BoundField DataField="ID" HeaderText="Id Curso" 
                     SortExpression="id_curso" />
                 <asp:BoundField DataField="comision" HeaderText="Comisión" 
                     SortExpression="comision" />

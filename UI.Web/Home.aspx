@@ -69,7 +69,7 @@
                 <a href="#" class="list-group-item disabled">
                 Alumnos
                 </a>
-                <a href="#" runat="server" id="aMnuInscripcionAlumnos" class="list-group-item">Inscripción a cursado</a>
+                <a href="InscripcionAlumnoCurso.aspx" runat="server" id="aMnuInscripcionAlumnos" class="list-group-item">Inscripción a cursado</a>
             </div>
         </div>
 

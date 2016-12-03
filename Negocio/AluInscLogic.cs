@@ -46,6 +46,11 @@ namespace Negocio
             this.AluInscData.Insert(aluInsc);
         }
 
+        public void Insert(int id_alumno, int id_curso, string condicion, int nota)
+        {
+            this.AluInscData.Insert(id_alumno, id_curso, condicion, nota);
+        }
+        
         public void Update(AlumnoInscripcion aluInsc)
         {
             this.AluInscData.Update(aluInsc);

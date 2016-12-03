@@ -105,5 +105,10 @@ namespace UI.Desktop
             aluInscLog.Insert(aluIns);
             this.Listar();
         }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

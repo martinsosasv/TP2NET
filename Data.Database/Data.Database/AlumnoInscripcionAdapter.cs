@@ -66,7 +66,7 @@ namespace Data.Database
                 SqlCommand cmdDatosCurso = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones WHERE id_curso = @id_curso", SqlConn);
                 cmdDatosCurso.Parameters.Add("@id_curso", SqlDbType.Int).Value = IDCurso;
                 SqlDataReader drDatosCurso = cmdDatosCurso.ExecuteReader();
-                if (drDatosCurso.Read())
+                while (drDatosCurso.Read())
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
@@ -112,7 +112,7 @@ namespace Data.Database
                 SqlCommand cmdDatosCurso = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones WHERE id_alumno = @id_alumno", SqlConn);
                 cmdDatosCurso.Parameters.Add("@id_alumno", SqlDbType.Int).Value = IDAlumno;
                 SqlDataReader drDatosCurso = cmdDatosCurso.ExecuteReader();
-                if (drDatosCurso.Read())
+                while (drDatosCurso.Read())
                 {
                     AlumnoInscripcion aluCurso = new AlumnoInscripcion();
 
@@ -233,6 +233,34 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = inscripcion.Curso.ID;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
+                inscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar()); //Asi se obtiene el id que asingo a la BD automaticamente
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al crear usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
+        public void Insert(int id_alumno, int id_curso, string condicion, int nota)
+        {
+            AlumnoInscripcion inscripcion = new AlumnoInscripcion();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripciones (id_alumno,id_curso,condicion,nota) " +
+                                                    "VALUES(@id_alumno,@id_curso,@condicion,@nota) " +
+                                                    "SELECT @@identity", SqlConn);
+
+                cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = id_alumno;
+                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = id_curso;
+                cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = condicion;
+                cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = nota;
                 inscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar()); //Asi se obtiene el id que asingo a la BD automaticamente
 
             }

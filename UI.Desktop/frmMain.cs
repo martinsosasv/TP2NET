@@ -121,5 +121,7 @@ namespace UI.Desktop
             frmCursoAsignado frmCurAsig = new frmCursoAsignado(this.Persona);
             frmCurAsig.ShowDialog();
         }
+
+        
     }
 }

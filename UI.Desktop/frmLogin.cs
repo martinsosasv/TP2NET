@@ -19,6 +19,7 @@ namespace CreacionFormLogin
         public FormLogin()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;           
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -33,8 +34,9 @@ namespace CreacionFormLogin
                     this.txtUsuario.Text = "";
                     this.txtPass.Text = "";
                     frmMain frmMain = new frmMain();
+                    frmMain.StartPosition = FormStartPosition.CenterScreen;
                     frmMain.Persona = user.Persona;
-                    frmMain.ShowDialog();
+                    frmMain.ShowDialog();                    
                 }
                 else
                 {

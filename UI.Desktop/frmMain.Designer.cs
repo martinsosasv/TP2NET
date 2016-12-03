@@ -75,7 +75,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem.Text = "Cerrar sesión";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -215,7 +215,7 @@
             this.Controls.Add(this.mnsPrincipal);
             this.MainMenuStrip = this.mnsPrincipal;
             this.Name = "frmMain";
-            this.Text = "FormMain";
+            this.Text = "FormMain";            
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.mnsPrincipal.ResumeLayout(false);
             this.mnsPrincipal.PerformLayout();
