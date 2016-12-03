@@ -47,6 +47,12 @@ namespace UI.Desktop
 
         private void GenerarColumnas()
         {
+            DataGridViewTextBoxColumn colIdInsc = new DataGridViewTextBoxColumn();
+            colIdInsc.Name = "id_inscripcion";
+            colIdInsc.HeaderText = "Nro. Inscripción";
+            colIdInsc.DataPropertyName = "id_inscripcion";
+            this.dgvAlumnosDelCurso.Columns.Add(colIdInsc);
+
             DataGridViewTextBoxColumn colLegajo = new DataGridViewTextBoxColumn();
             colLegajo.Name = "legajo";
             colLegajo.HeaderText = "legajo";
@@ -89,6 +95,7 @@ namespace UI.Desktop
                              where (aluins.Curso.ID == this.IdCurso && aluins.Condicion == "Cursando")
                              select new
                              {
+                                 id_inscripcion = aluins.ID,
                                  legajo = alu.IdLegajo,
                                  apellido = alu.Apellido,
                                  nombre = alu.Nombre,
@@ -103,6 +110,36 @@ namespace UI.Desktop
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditarNota_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgvAlumnosDelCurso.SelectedRows.Count > 0)
+                {
+                    int id;
+                    string nombre, apellido, legajo;
+
+                    id = Convert.ToInt32(this.dgvAlumnosDelCurso.SelectedRows[0].Cells["id_inscripcion"].Value);
+                    nombre = this.dgvAlumnosDelCurso.SelectedRows[0].Cells["nombre"].Value.ToString();
+                    apellido = this.dgvAlumnosDelCurso.SelectedRows[0].Cells["apellido"].Value.ToString();
+                    legajo = this.dgvAlumnosDelCurso.SelectedRows[0].Cells["legajo"].Value.ToString();
+
+                    frmEditarNota frmEditNote = new frmEditarNota(id, nombre, apellido, legajo);
+                    frmEditNote.StartPosition = FormStartPosition.CenterParent;
+                    frmEditNote.ShowDialog();
+                    this.cargarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }

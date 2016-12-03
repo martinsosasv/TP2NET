@@ -100,7 +100,6 @@ namespace UI.Desktop
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }
