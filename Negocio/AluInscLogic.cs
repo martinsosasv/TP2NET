@@ -26,6 +26,11 @@ namespace Negocio
             return this.AluInscData.GetAll();
         }
 
+        public AlumnoInscripcion GetOne(int id)
+        {
+            return this.AluInscData.GetOne(id);
+        }
+
         public List<AlumnoInscripcion> GetInscripcionesCurso(int idCurso)
         {
             return this.AluInscData.GetInscripcionesCurso(idCurso);

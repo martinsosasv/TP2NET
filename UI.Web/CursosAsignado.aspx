@@ -30,7 +30,7 @@
             <!-- Table -->
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" CssClass="table" SelectedRowStyle-BackColor="#000000" SelectedRowStyle-ForeColor="White" DataKeyNames="id_curso" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="Id Curso" 
+                    <asp:BoundField DataField="id_curso" HeaderText="Id Curso" 
                     SortExpression="id_curso" />
                 <asp:BoundField DataField="comision" HeaderText="Comisión" 
                     SortExpression="comision" />
@@ -41,41 +41,45 @@
                 <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
                     ShowSelectButton="True" />
                 </Columns>
-
             </asp:GridView>
-            <asp:Panel ID="gridActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
+            <asp:Panel ID="gridViewActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
                 <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnAlumnosInscriptos_Click">Ver alumnos inscriptos</asp:LinkButton>
             </asp:Panel>
-
+            <div runat="server" id="cursosAsignadosEmpty">
+                <p>No tienes cursos asignados</p>
+            </div>
         </div>
+
+        
             
-            <div runat="server" id="divDetalleCurso" class="panel panel-default" visible="false">
-                <div class="panel-heading">Detalle del curso</div>
-                <asp:GridView ID="gridViewDetalleCurso" runat="server"
-                    CssClass="table" SelectedRowStyle-BackColor="#000000"
-                    SelectedRowStyle-ForeColor="White" DataKeyNames="id_inscripcion" OnSelectedIndexChanged="gridViewDetalleCurso_SelectedIndexChanged"
-                    AutoGenerateColumns="False">
-            <Columns>
-                <asp:BoundField DataField="id_inscripcion" HeaderText="ID Insc" 
-                    SortExpression="id_inscripcion" />
-                <asp:BoundField DataField="legajo" HeaderText="Legajo" 
-                    SortExpression="legajo" />
-                <asp:BoundField DataField="apellido" HeaderText="Apellido" 
-                    SortExpression="apellido" />
-                <asp:BoundField DataField="nombre" HeaderText="Nombre" 
-                    SortExpression="nombre" />
-                <asp:BoundField DataField="nota" HeaderText="Nota" 
-                    SortExpression="nota" />
-                <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
-                    ShowSelectButton="True" />
-            </Columns>
-        </asp:GridView>
-            <asp:Panel ID="Panel1" CssClass="gridActionsPanelRight" runat="server" >
+        <div runat="server" id="divDetalleCurso" class="panel panel-default" visible="false">
+            <div class="panel-heading">Detalle del curso</div>
+            <asp:GridView ID="gridViewDetalleCurso" runat="server" CssClass="table" SelectedRowStyle-BackColor="#000000" SelectedRowStyle-ForeColor="White" DataKeyNames="id_inscripcion" OnSelectedIndexChanged="gridViewDetalleCurso_SelectedIndexChanged" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="id_inscripcion" HeaderText="ID Insc" 
+                        SortExpression="id_inscripcion" />
+                    <asp:BoundField DataField="legajo" HeaderText="Legajo" 
+                        SortExpression="legajo" />
+                    <asp:BoundField DataField="apellido" HeaderText="Apellido" 
+                        SortExpression="apellido" />
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" 
+                        SortExpression="nombre" />
+                    <asp:BoundField DataField="nota" HeaderText="Nota" 
+                        SortExpression="nota" />
+                    <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
+                        ShowSelectButton="True" />
+                </Columns>
+            
+            </asp:GridView>
+            <asp:Panel ID="gridViewDetalleCursoActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
                 <asp:LinkButton ID="btnAgregarNota" runat="server" OnClick="btnAgregarNota_Click">Modificar Nota</asp:LinkButton>
             </asp:Panel>
+            <div runat="server" id="Div1" visible="false">
+                <p>No existen alumnos inscriptos</p>
             </div>
+        </div>
 
-
+        
 
 
         <div class="container container-login">
@@ -115,8 +119,8 @@
                             
                             
                             <asp:Panel ID="formActionsPanel" runat="server">
-                                <!-- <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>
-                                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton>-->
+                                <asp:LinkButton ID="btnAceptar" runat="server" OnClick="btnAceptar_Click">Aceptar</asp:LinkButton>
+                                <asp:LinkButton ID="btnCancelar" runat="server" OnClick="btnCancelar_Click">Cancelar</asp:LinkButton>
                             </asp:Panel>
                             <asp:Panel ID="formValidationPanel" runat="server" Visible="false">
                                 <div runat="server" id="alertForm" class="alert alert-danger" role="alert"></div>

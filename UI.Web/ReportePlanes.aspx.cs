@@ -76,6 +76,20 @@ namespace UI.Web
         {
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
+            if (this.gridView.Rows.Count == 0)
+            {
+
+                this.gridViewEmpty.Visible = true;
+                this.gridView.Visible = false;
+                this.gridViewActionsPanel.Visible = false;
+
+            }
+            else
+            {
+                this.gridView.Visible = true;
+                this.gridViewActionsPanel.Visible = true;
+                this.gridViewEmpty.Visible = false;
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -113,12 +127,26 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            this.divReportePlan.Visible = false;
         }
 
         private void LoadGridReportePlan(int id)
         {
             this.gridViewReportePlan.DataSource = this.MateriaLogic.GetAllMateriasPlan(id);
             this.gridViewReportePlan.DataBind();
+
+            if (this.gridViewReportePlan.Rows.Count == 0)
+            {
+
+                this.gridViewReportePlanEmpty.Visible = true;
+                this.gridViewReportePlan.Visible = false;
+
+            }
+            else
+            {
+                this.gridViewReportePlan.Visible = true;
+                this.gridViewReportePlanEmpty.Visible = false;
+            }
         }
 
         protected void btnReporte_Click(object sender, EventArgs e)

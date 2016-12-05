@@ -103,27 +103,41 @@ namespace UI.Web
             List<Docente_Curso> listadoDocenteCursos = new List<Docente_Curso>();
             Docente_CursoLogic docCurLog = new Docente_CursoLogic();
             listadoDocenteCursos = docCurLog.GetAll(Convert.ToInt32(Session["id_persona"]));
+            if(listadoDocenteCursos.Count == 0)
+            {
+                this.gridView.Visible = false;
+                this.gridViewActionsPanel.Visible = false;
+                this.cursosAsignadosEmpty.Visible = true;
+            }
+            else
+            {
 
-            List<Curso> listadoCursos = new List<Curso>();
-            CursoLogic curLog = new CursoLogic();
-            listadoCursos = curLog.GetAll();
+                this.gridView.Visible = true;
+                this.gridViewActionsPanel.Visible = true;
+                this.cursosAsignadosEmpty.Visible = false;
 
-            var estado = from doccur in listadoDocenteCursos
-                         join curso in listadoCursos
-                         on doccur.Curso.ID equals curso.ID
-                         select new
-                         {
-                             id_curso = curso.ID,
-                             comision = curso.Comision.Descripcion,
-                             materia = curso.Materia.Descripcion,
-                             rol = doccur.Cargo
-                         };
+                List<Curso> listadoCursos = new List<Curso>();
+                CursoLogic curLog = new CursoLogic();
+                listadoCursos = curLog.GetAll();
 
-            //dgvCursosAsignados.DataSource = estado.ToList();
-            this.gridView.DataSource = estado.ToList();
-            this.gridView.DataBind();
-            /*if (this.dgvAlumnosInscriptosACurso.Rows.Count == 0)
-            { this.lblGridVacia.Visible = true; }*/
+                var estado = from doccur in listadoDocenteCursos
+                             join curso in listadoCursos
+                             on doccur.Curso.ID equals curso.ID
+                             select new
+                             {
+                                 id_curso = curso.ID,
+                                 comision = curso.Comision.Descripcion,
+                                 materia = curso.Materia.Descripcion,
+                                 rol = doccur.Cargo
+                             };
+
+                //dgvCursosAsignados.DataSource = estado.ToList();
+                this.gridView.DataSource = estado.ToList();
+                this.gridView.DataBind();
+                /*if (this.dgvAlumnosInscriptosACurso.Rows.Count == 0)
+                { this.lblGridVacia.Visible = true; }*/
+            }
+            
         }
 
         private void LoadGridAlumnosInscriptos(int id)
@@ -133,27 +147,42 @@ namespace UI.Web
             AluInscLogic aluInsLog = new AluInscLogic();
             listadoAlumno_Inscripcion = aluInsLog.GetAll();
 
-            List<Persona> listadoPersonas = new List<Persona>();
-            PersonaLogic perLog = new PersonaLogic();
-            listadoPersonas = perLog.GetAll();
+            if(listadoAlumno_Inscripcion.Count == 0)
+            {
+                this.gridViewDetalleCurso.Visible = false;
+                this.gridViewDetalleCursoActionsPanel.Visible = false;
+                this.cursosAsignadosEmpty.Visible = true;
+            }
+            else
+            {
+                this.gridViewDetalleCurso.Visible = true;
+                this.gridViewDetalleCursoActionsPanel.Visible = true;
+                this.cursosAsignadosEmpty.Visible = false;
+                List<Persona> listadoPersonas = new List<Persona>();
+                PersonaLogic perLog = new PersonaLogic();
+                listadoPersonas = perLog.GetAll();
 
-            var inscriptos = from aluins in listadoAlumno_Inscripcion
-                             join alu in listadoPersonas
-                             on aluins.Alumno.ID equals alu.ID
-                             where (aluins.Curso.ID == Convert.ToInt32(id) && aluins.Condicion == "Cursando")
-                             select new
-                             {
-                                 id_inscripcion = aluins.ID,
-                                 legajo = alu.IdLegajo,
-                                 apellido = alu.Apellido,
-                                 nombre = alu.Nombre,
-                                 nota = aluins.Nota
-                             };
+                var inscriptos = from aluins in listadoAlumno_Inscripcion
+                                 join alu in listadoPersonas
+                                 on aluins.Alumno.ID equals alu.ID
+                                 //where (aluins.Curso.ID == Convert.ToInt32(id) && aluins.Condicion == "Cursando")
+                                 where (aluins.Curso.ID == Convert.ToInt32(id) )
+                                 select new
+                                 {
+                                     id_inscripcion = aluins.ID,
+                                     legajo = alu.IdLegajo,
+                                     apellido = alu.Apellido,
+                                     nombre = alu.Nombre,
+                                     nota = aluins.Nota
+                                 };
 
-            gridViewDetalleCurso.DataSource = inscriptos.ToList();
-            gridViewDetalleCurso.DataBind();
-            /*if (this.dgvAlumnosInscriptosACurso.Rows.Count == 0)
-            { this.lblGridVacia.Visible = true; }*/
+                gridViewDetalleCurso.DataSource = inscriptos.ToList();
+                gridViewDetalleCurso.DataBind();
+                /*if (this.dgvAlumnosInscriptosACurso.Rows.Count == 0)
+                { this.lblGridVacia.Visible = true; }*/
+            }
+
+            
 
         }
 
@@ -193,11 +222,14 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedIDCurso = (int)this.gridView.SelectedValue;
+            this.divDetalleCurso.Visible = false;
+            this.formPanelInscripcion.Visible = false;
         }
 
         protected void gridViewDetalleCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedIDInscripcion = (int)this.gridView.SelectedValue;
+            this.formPanelInscripcion.Visible = false;
         }
 
         protected void btnAlumnosInscriptos_Click(object sender, EventArgs e)
@@ -231,8 +263,14 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            
 
+            AlumnoInscripcion aluIns = new AlumnoInscripcion();
+
+            AluInscLogic aluInsLogic = new AluInscLogic();
+            aluIns = aluInsLogic.GetOne(id);
+            this.txtIDInscripcion.Text = aluIns.ID.ToString();
+            this.ddlNota.SelectedValue = aluIns.Nota.ToString();
+            
             //TODO: Ocultar formulario y actualizar detalle curso
 
 
@@ -240,12 +278,15 @@ namespace UI.Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            /*AlumnoInscripcion aluIns = new AlumnoInscripcion();
+            AlumnoInscripcion aluIns = new AlumnoInscripcion();
             aluIns.ID = Convert.ToInt32(txtIDInscripcion.Text);
             aluIns.Nota = Convert.ToInt32(ddlNota.SelectedValue);
 
             AluInscLogic aluInsLogic = new AluInscLogic();
-            aluInsLogic.UpdateNota(aluIns);*/
+            aluInsLogic.UpdateNota(aluIns);
+
+            this.formPanelInscripcion.Visible = false;
+            this.LoadGridAlumnosInscriptos(this.SelectedIDCurso);
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

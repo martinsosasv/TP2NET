@@ -35,9 +35,12 @@
                 </Columns>
 
             </asp:GridView>
-            <asp:Panel ID="gridActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
+            <asp:Panel ID="gridViewActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
                 <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnReporte_Click">Generar Reporte</asp:LinkButton>
             </asp:Panel>
+            <div runat="server" id="gridViewEmpty">
+                <p>No existen planes</p>
+            </div>
 
         </div>
             
@@ -47,8 +50,10 @@
                     <Columns>
                         <asp:BoundField HeaderText="Materia" DataField="Descripcion" />
                     </Columns>
-                    
                 </asp:GridView>
+                <div runat="server" id="gridViewReportePlanEmpty">
+                    <p>No existen materias asignadas</p>
+                </div>
             </div>
 
     </div>

@@ -8,31 +8,31 @@ namespace Entidades
 {
     public class AlumnoInscripcion : Entidades
     {
-        string _condicion;
+        //string _condicion;
         int _nota;
         Persona _alumno;
         Curso _curso;
 
         public AlumnoInscripcion()
         {
-            _condicion = "Cursando";
+            //_condicion = "Cursando";
         }
 
         public string Condicion
         {
-            get{ return _condicion; }
-
-            set
+            get
             {
                 if (_nota < 4 && _nota > 0)
                 {
-                    _condicion = "No aprobado";
+                    return "No aprobado";
                 }
                 else if (_nota >= 4)
                 {
-                    _condicion = "Aprobado";
-                }else if(_nota == 0){
-                    _condicion = "Cursando";
+                    return "Aprobado";
+                }
+                else
+                {
+                    return "Cursando";
                 }
             }
         }
@@ -59,18 +59,6 @@ namespace Entidades
             set
             {
                 _nota = value;
-                if(_nota == 0)
-                {
-                    _condicion = "Cursando";
-                }
-                else if(_nota > 0 && _nota < 4)
-                {
-                    _condicion = "Desaprobado";
-                }
-                else if(_nota >= 4 && _nota <= 10)
-                {
-                    _condicion = "Aprobado";
-                }
             }
         }
     }

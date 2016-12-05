@@ -38,24 +38,29 @@
                 </Columns>
 
             </asp:GridView>
-            <asp:Panel ID="gridActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
+            <asp:Panel ID="gridViewActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
                 <asp:LinkButton ID="btnEditar" runat="server" OnClick="btnReporte_Click">Generar Reporte</asp:LinkButton>
             </asp:Panel>
+            <div runat="server" id="gridViewEmpty">
+                <p>No existen cursos</p>
+            </div>
 
         </div>
             
-            <div runat="server" id="divReporteCurso" class="panel panel-default" visible="false">
-                <div class="panel-heading">Reporte curso</div>
-                <asp:GridView ID="gridViewReporteCursos" runat="server" AutoGenerateColumns="false" CssClass="table" DataKeyNames="ID" >
-                    <Columns>
-                        <asp:BoundField HeaderText="Legajo" DataField="Legajo" />
-                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                        <asp:BoundField HeaderText="Condición" DataField="Condicion" />
-                    </Columns>
-                    
-                </asp:GridView>
+        <div runat="server" id="divReporteCurso" class="panel panel-default" visible="false">
+            <div class="panel-heading">Listado de alumnos</div>
+            <asp:GridView ID="gridViewReporteCursos" runat="server" AutoGenerateColumns="false" CssClass="table" DataKeyNames="ID" >
+                <Columns>
+                    <asp:BoundField HeaderText="Legajo" DataField="Legajo" />
+                    <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Condición" DataField="Condicion" />
+                </Columns>
+            </asp:GridView>
+            <div runat="server" id="gridViewReporteCursosEmpty">
+                <p>No existen alumnos asignados a este curso</p>
             </div>
+        </div>
 
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -75,6 +75,19 @@ namespace UI.Web
         {
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
+
+            if (this.gridView.Rows.Count == 0)
+            {
+                this.gridView.Visible = false;
+                this.gridViewActionsPanel.Visible = false;
+                this.gridViewEmpty.Visible = true;
+            }
+            else
+            {
+                this.gridView.Visible = true;
+                this.gridViewActionsPanel.Visible = true;
+                this.gridViewEmpty.Visible = false;
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -112,12 +125,28 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            this.divReporteCurso.Visible = false;
         }
 
         private void LoadGridReporteCurso(int id)
         {
             this.gridViewReporteCursos.DataSource = this.ReporteCursoLogic.GetAllReporteCurso(id);
             this.gridViewReporteCursos.DataBind();
+
+            
+            if (this.gridViewReporteCursos.Rows.Count == 0)
+            {
+
+                this.gridViewReporteCursosEmpty.Visible = true;
+                this.gridViewReporteCursos.Visible = false;
+                
+            }
+            else
+            {
+                this.gridViewReporteCursos.Visible = true;
+                this.gridViewReporteCursosEmpty.Visible = false;
+            }
+
         }
 
         protected void btnReporte_Click(object sender, EventArgs e)

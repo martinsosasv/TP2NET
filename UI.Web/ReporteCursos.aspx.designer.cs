@@ -31,13 +31,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.GridView gridView;
         
         /// <summary>
-        /// Control gridActionsPanel.
+        /// Control gridViewActionsPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridActionsPanel;
+        protected global::System.Web.UI.WebControls.Panel gridViewActionsPanel;
         
         /// <summary>
         /// Control btnEditar.
@@ -47,6 +47,15 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnEditar;
+        
+        /// <summary>
+        /// Control gridViewEmpty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gridViewEmpty;
         
         /// <summary>
         /// Control divReporteCurso.
@@ -65,5 +74,14 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridViewReporteCursos;
+        
+        /// <summary>
+        /// Control gridViewReporteCursosEmpty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gridViewReporteCursosEmpty;
     }
 }

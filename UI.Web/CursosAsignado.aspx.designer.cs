@@ -31,13 +31,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.GridView gridView;
         
         /// <summary>
-        /// Control gridActionsPanel.
+        /// Control gridViewActionsPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridActionsPanel;
+        protected global::System.Web.UI.WebControls.Panel gridViewActionsPanel;
         
         /// <summary>
         /// Control btnEditar.
@@ -47,6 +47,15 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnEditar;
+        
+        /// <summary>
+        /// Control cursosAsignadosEmpty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cursosAsignadosEmpty;
         
         /// <summary>
         /// Control divDetalleCurso.
@@ -67,13 +76,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.GridView gridViewDetalleCurso;
         
         /// <summary>
-        /// Control Panel1.
+        /// Control gridViewDetalleCursoActionsPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel gridViewDetalleCursoActionsPanel;
         
         /// <summary>
         /// Control btnAgregarNota.
@@ -83,6 +92,15 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnAgregarNota;
+        
+        /// <summary>
+        /// Control Div1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
         
         /// <summary>
         /// Control formPanelInscripcion.

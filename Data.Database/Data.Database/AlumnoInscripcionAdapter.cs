@@ -36,7 +36,7 @@ namespace Data.Database
                     aluIns.ID = (int)drAlumnoInscripciones["id_inscripcion"];
                     aluIns.Alumno = drAlumnoInscripciones.IsDBNull(1) ? null : per;
                     aluIns.Curso = drAlumnoInscripciones.IsDBNull(2) ? null : cur;
-                    aluIns.Condicion = (string)drAlumnoInscripciones["condicion"];
+                    //aluIns.Condicion = (string)drAlumnoInscripciones["condicion"];
                     aluIns.Nota = (int)drAlumnoInscripciones["nota"];
                     
                     alumnos.Add(aluIns);
@@ -82,7 +82,7 @@ namespace Data.Database
                     aluCurso.ID = (int)drDatosCurso["id_inscripcion"];
                     aluCurso.Alumno = drDatosCurso.IsDBNull(1) ? null : per;
                     aluCurso.Curso = drDatosCurso.IsDBNull(2) ? null : cur;
-                    aluCurso.Condicion = (string)drDatosCurso["condicion"];
+                    //aluCurso.Condicion = (string)drDatosCurso["condicion"];
                     aluCurso.Nota = (int)drDatosCurso["nota"];
 
                     inscripcionesCursos.Add(aluCurso);
@@ -101,6 +101,48 @@ namespace Data.Database
                 this.CloseConnection();
             }
             return inscripcionesCursos;
+        }
+
+        public AlumnoInscripcion GetOne(int ID)
+        {
+            AlumnoInscripcion aluIns = new AlumnoInscripcion();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdAluIns = new SqlCommand("SELECT id_inscripcion,id_alumno,id_curso,condicion,nota FROM alumnos_inscripciones WHERE id_inscripcion = @id_inscripcion", SqlConn);
+                cmdAluIns.Parameters.Add("@id_inscripcion", SqlDbType.Int).Value = ID;
+                SqlDataReader drAluIns = cmdAluIns.ExecuteReader();
+                if (drAluIns.Read())
+                {
+                    Persona per = new Persona();
+                    Curso cur = new Curso();
+
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    CursoAdapter curAda = new CursoAdapter();
+
+                    per = perAda.GetOne(Convert.ToInt32(drAluIns["id_alumno"]));
+                    cur = curAda.GetOne(Convert.ToInt32(drAluIns["id_curso"]));
+
+                    aluIns.ID = (int)drAluIns["id_inscripcion"];
+                    aluIns.Alumno = drAluIns.IsDBNull(1) ? null : per;
+                    aluIns.Curso = drAluIns.IsDBNull(2) ? null : cur;
+                    //aluCurso.Condicion = (string)drDatosCurso["condicion"];
+                    aluIns.Nota = (int)drAluIns["nota"];
+                }
+
+                drAluIns.Close();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos una inscripción_curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return aluIns;
         }
 
         public List<AlumnoInscripcion> GetInscripcionesAlumno(int IDAlumno)
@@ -128,7 +170,7 @@ namespace Data.Database
                     aluCurso.ID = (int)drDatosCurso["id_inscripcion"];
                     aluCurso.Alumno = drDatosCurso.IsDBNull(1) ? null : per;
                     aluCurso.Curso = drDatosCurso.IsDBNull(2) ? null : cur;
-                    aluCurso.Condicion = (string)drDatosCurso["condicion"];
+                    //aluCurso.Condicion = (string)drDatosCurso["condicion"];
                     aluCurso.Nota = (int)drDatosCurso["nota"];
 
                     inscripcionesCursos.Add(aluCurso);
