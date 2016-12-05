@@ -51,6 +51,7 @@
                 <a href="Cursos.aspx" runat="server" id="aMnuCursosABM" class="list-group-item">Cursos</a>
                 <a href="Personas.aspx" runat="server" id="aMnuPersonasABM" class="list-group-item">Personas</a>
                 <a href="Usuarios.aspx" runat="server" ID="aMnuUsuariosABM" class="list-group-item">Usuarios</a>
+                <a href="DocenteCurso.aspx" runat="server" ID="aMnuDocenteCursoAMB" class="list-group-item">Cursos Docentes</a>
             </div>
             <div runat="server" id="listMnuReportes" class="list-group">
                 <a href="#" class="list-group-item disabled">

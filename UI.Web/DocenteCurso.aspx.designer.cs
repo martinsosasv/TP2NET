@@ -10,7 +10,7 @@
 namespace UI.Web {
     
     
-    public partial class Home {
+    public partial class DocenteCurso {
         
         /// <summary>
         /// Control btpHeaderSalir.
@@ -22,156 +22,201 @@ namespace UI.Web {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btpHeaderSalir;
         
         /// <summary>
-        /// Control lblBienvenido.
+        /// Control gridView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBienvenido;
+        protected global::System.Web.UI.WebControls.GridView gridView;
         
         /// <summary>
-        /// Control listMnuABM.
+        /// Control gridActionsPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listMnuABM;
+        protected global::System.Web.UI.WebControls.Panel gridActionsPanel;
         
         /// <summary>
-        /// Control aMnuEspecialidadesABM.
+        /// Control btnEditar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuEspecialidadesABM;
+        protected global::System.Web.UI.WebControls.LinkButton btnEditar;
         
         /// <summary>
-        /// Control aMnuPlanesABM.
+        /// Control btnNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuPlanesABM;
+        protected global::System.Web.UI.WebControls.LinkButton btnNuevo;
         
         /// <summary>
-        /// Control aMnuMateriasABM.
+        /// Control btnEliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuMateriasABM;
+        protected global::System.Web.UI.WebControls.LinkButton btnEliminar;
         
         /// <summary>
-        /// Control aMnuComisionesABM.
+        /// Control formPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuComisionesABM;
+        protected global::System.Web.UI.WebControls.Panel formPanel;
         
         /// <summary>
-        /// Control aMnuCursosABM.
+        /// Control lblDocente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuCursosABM;
+        protected global::System.Web.UI.WebControls.Label lblDocente;
         
         /// <summary>
-        /// Control aMnuPersonasABM.
+        /// Control ddlDocente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuPersonasABM;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDocente;
         
         /// <summary>
-        /// Control aMnuUsuariosABM.
+        /// Control ObjectDataSourceDocente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuUsuariosABM;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourceDocente;
         
         /// <summary>
-        /// Control aMnuDocenteCursoAMB.
+        /// Control lblAsteriscoDocente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuDocenteCursoAMB;
+        protected global::System.Web.UI.WebControls.Label lblAsteriscoDocente;
         
         /// <summary>
-        /// Control listMnuReportes.
+        /// Control lblCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listMnuReportes;
+        protected global::System.Web.UI.WebControls.Label lblCurso;
         
         /// <summary>
-        /// Control aMnuCursosReportes.
+        /// Control ddlCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuCursosReportes;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurso;
         
         /// <summary>
-        /// Control aMnuEspecialidadesReportes.
+        /// Control ObjectDataSourceCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuEspecialidadesReportes;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourceCurso;
         
         /// <summary>
-        /// Control listMnuDocentes.
+        /// Control lblAsteriscoCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listMnuDocentes;
+        protected global::System.Web.UI.WebControls.Label lblAsteriscoCurso;
         
         /// <summary>
-        /// Control aMnuCursosAsigandosDocentes.
+        /// Control lblCargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuCursosAsigandosDocentes;
+        protected global::System.Web.UI.WebControls.Label lblCargo;
         
         /// <summary>
-        /// Control listMnuAlumnos.
+        /// Control ddlCargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listMnuAlumnos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCargo;
         
         /// <summary>
-        /// Control aMnuInscripcionAlumnos.
+        /// Control lblAsteriscoCargo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMnuInscripcionAlumnos;
+        protected global::System.Web.UI.WebControls.Label lblAsteriscoCargo;
+        
+        /// <summary>
+        /// Control formActionsPanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel formActionsPanel;
+        
+        /// <summary>
+        /// Control btnAceptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAceptar;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnCancelar;
+        
+        /// <summary>
+        /// Control formValidationPanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel formValidationPanel;
+        
+        /// <summary>
+        /// Control alertForm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertForm;
     }
 }

@@ -44,6 +44,16 @@ namespace Entidades
         {
             get { return _docente.ApellidoNombre; }
         }
+        
+        public int IdDocente
+        {
+            get { return _docente.ID; }            
+        }
+        
+        public int IdCurso
+        {
+            get { return _curso.ID; }
+        }
         #endregion
     }
 }

@@ -51,7 +51,7 @@ namespace UI.Desktop
 
             DataGridViewTextBoxColumn colRol = new DataGridViewTextBoxColumn();
             colRol.Name = "rol";
-            colRol.HeaderText = "Rol";
+            colRol.HeaderText = "Cargo";
             colRol.DataPropertyName = "Cargo";
             this.dgvBase.Columns.Add(colRol);
         }

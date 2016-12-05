@@ -26,6 +26,11 @@ namespace Negocio
             return this.DocCurData.GetOne(idDoc, idCur);
         }
 
+        public Docente_Curso GetOne(int idDictado)
+        {
+            return this.DocCurData.GetOne(idDictado);
+        }
+
         public List<Docente_Curso> GetAll()
         {
             return this.DocCurData.GetAll();
@@ -50,6 +55,11 @@ namespace Negocio
         public void Delete(Docente_Curso docenteCurso)
         {
             this.DocCurData.Delete(docenteCurso);
+        }
+
+        public void Delete(int id)
+        {
+            this.DocCurData.Delete(id);
         }
     }
 }

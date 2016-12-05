@@ -88,13 +88,38 @@ namespace Data.Database
 
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("DELETE FROM docentes_cursos WHERE id_dictado = @id_dictado",SqlConn);
+                
+                cmdDelete.Parameters.AddWithValue("@id_dictado", id);                
+                
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar el Docente_Curso", e);
+
+                throw ExcepcionManejada;
+
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+        }
+
         public List<Docente_Curso> GetAll()
         {
             List<Docente_Curso> listado = new List<Docente_Curso>();
             try
             {
                 this.OpenConnection();
-                SqlCommand consulta = new SqlCommand("SELECT id_docente, id_curso, cargo FROM docentes_cursos", SqlConn);
+                SqlCommand consulta = new SqlCommand("SELECT id_docente, id_curso,cargo,id_dictado FROM docentes_cursos", SqlConn);
                 
                 SqlDataReader dr = consulta.ExecuteReader();
                 while (dr.Read())
@@ -102,6 +127,7 @@ namespace Data.Database
                     Docente_Curso docCurso = new Docente_Curso();
                     PersonaAdapter perAda = new PersonaAdapter();
                     CursoAdapter curAda = new CursoAdapter();
+                    docCurso.ID = Convert.ToInt32(dr["id_dictado"]);
                     docCurso.Docente = dr.IsDBNull(0) ? null : perAda.GetOne(Convert.ToInt32(dr[0]));
                     docCurso.Curso = dr.IsDBNull(1) ? null : curAda.GetOne(Convert.ToInt32(dr[1]));
                     docCurso.Cargo = (Docente_Curso.TipoCargo)dr["cargo"];
@@ -129,7 +155,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso,cargo FROM docentes_cursos WHERE id_docente=@id_docente ", SqlConn);
+                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso,cargo,id_dictado FROM docentes_cursos WHERE id_docente=@id_docente ", SqlConn);
                 consulta.Parameters.AddWithValue("@id_docente", id_docente);
                 SqlDataReader dr = consulta.ExecuteReader();
                 while (dr.Read())
@@ -137,6 +163,7 @@ namespace Data.Database
                     Docente_Curso docCurso = new Docente_Curso();
                     PersonaAdapter perAda = new PersonaAdapter();
                     CursoAdapter curAda = new CursoAdapter();
+                    docCurso.ID = Convert.ToInt32(dr["id_dictado"]);
                     docCurso.Docente = dr.IsDBNull(0) ? null : perAda.GetOne(Convert.ToInt32(dr[0]));
                     docCurso.Curso = dr.IsDBNull(1) ? null : curAda.GetOne(Convert.ToInt32(dr[1]));
                     docCurso.Cargo =(Docente_Curso.TipoCargo)dr["cargo"];
@@ -162,10 +189,42 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso, cargo FROM docentes_cursos WHERE id_docente=@idDoc and id_curso=@idCur", SqlConn);
+                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso,cargo,id_dictado FROM docentes_cursos WHERE id_docente=@idDoc and id_curso=@idCur", SqlConn);
                 consulta.Parameters.AddWithValue("@idDoc", idDoc);
                 consulta.Parameters.AddWithValue("@idCur", idCur);
 
+
+                SqlDataReader dr = consulta.ExecuteReader();
+                Docente_Curso docCurso = new Docente_Curso();
+                if (dr.Read())
+                {
+                    PersonaAdapter perAda = new PersonaAdapter();
+                    CursoAdapter curAda = new CursoAdapter();
+                    docCurso.ID = Convert.ToInt32(dr["id_dictado"]);
+                    docCurso.Docente = dr.IsDBNull(0) ? null : perAda.GetOne(Convert.ToInt32(dr[0]));
+                    docCurso.Curso = dr.IsDBNull(1) ? null : curAda.GetOne(Convert.ToInt32(dr[1]));
+                    docCurso.Cargo = (Docente_Curso.TipoCargo)dr["cargo"];
+                }
+
+                return docCurso;
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al tratar de abrir la conexion", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+            public Docente_Curso GetOne(int idDictado)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand consulta = new SqlCommand("SELECT id_docente,id_curso,cargo,id_dictado FROM docentes_cursos WHERE id_dictado=@id_dictado", SqlConn);
+                consulta.Parameters.AddWithValue("@id_dictado", idDictado);
                 
                 SqlDataReader dr = consulta.ExecuteReader();
                 Docente_Curso docCurso = new Docente_Curso();
@@ -173,6 +232,7 @@ namespace Data.Database
                 {
                     PersonaAdapter perAda = new PersonaAdapter();
                     CursoAdapter curAda = new CursoAdapter();
+                    docCurso.ID = Convert.ToInt32(dr["id_dictado"]);
                     docCurso.Docente = dr.IsDBNull(0) ? null : perAda.GetOne(Convert.ToInt32(dr[0]));
                     docCurso.Curso = dr.IsDBNull(1) ? null : curAda.GetOne(Convert.ToInt32(dr[1]));
                     docCurso.Cargo =(Docente_Curso.TipoCargo)dr["cargo"];
@@ -189,8 +249,6 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-
-
         }
     }
 }
