@@ -45,6 +45,11 @@ namespace Negocio
             this.PersonaData.Delete(persona);
         }
 
+        public void Delete(int id)
+        {
+            this.PersonaData.Delete(id);
+        }
+
         public void Insert(Persona persona)
         {
             this.PersonaData.Insert(persona);

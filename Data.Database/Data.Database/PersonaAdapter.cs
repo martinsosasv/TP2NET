@@ -121,6 +121,28 @@ namespace Data.Database
       
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdDelete = new SqlCommand("DELETE personas WHERE id_persona = @id", SqlConn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                cmdDelete.ExecuteNonQuery();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception exManejada = new Exception("Error al eliminar persona", Ex);
+                throw exManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+        }
+
         public void Update(Entidades.Persona persona)
         {
             try
