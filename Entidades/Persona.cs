@@ -88,7 +88,18 @@ namespace Entidades
 
         public string PlanPersona
         {
-            get { return _plan.DescripcionEspPlan; }
+            get
+            {
+                if (_plan != null)
+                {
+                    return _plan.DescripcionEspPlan;
+                }
+                else
+                {
+                    return null;
+                }
+                
+            }
         }
     
     }

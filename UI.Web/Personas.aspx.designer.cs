@@ -238,13 +238,49 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label lblFechaNacimiento;
         
         /// <summary>
-        /// Control Date.
+        /// Control txtDiaNac.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Date;
+        protected global::System.Web.UI.WebControls.TextBox txtDiaNac;
+        
+        /// <summary>
+        /// Control lblBarra1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBarra1;
+        
+        /// <summary>
+        /// Control txtMesNac.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMesNac;
+        
+        /// <summary>
+        /// Control lblBarra2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBarra2;
+        
+        /// <summary>
+        /// Control txtAnioNac.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAnioNac;
         
         /// <summary>
         /// Control lblAsteriscoFechaNacimiento.
@@ -272,15 +308,6 @@ namespace UI.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoPersona;
-        
-        /// <summary>
-        /// Control ObjectDataSourcePersonas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourcePersonas;
         
         /// <summary>
         /// Control lblAsteriscoTipoPersona.
@@ -328,13 +355,22 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label lblPlan;
         
         /// <summary>
-        /// Control txtPlan.
+        /// Control ddlPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPlan;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlan;
+        
+        /// <summary>
+        /// Control ObjectDataSourcePlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourcePlan;
         
         /// <summary>
         /// Control lblAsteriscoPlan.

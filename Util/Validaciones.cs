@@ -123,6 +123,60 @@ namespace Util
             else return false;
         }
 
+        public static bool esDiaValido(string dia)
+        {
+            if (!String.IsNullOrEmpty(dia.Trim()))
+            {
+                int diaI = Convert.ToInt32(dia);
+                if (diaI < 1)
+                {
+                    return false;
+                }
+                else if (diaI > 31)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else return false;
+        }
+        public static bool esMesValido(string mes)
+        {
+            if (!String.IsNullOrEmpty(mes.Trim()))
+            {
+                int mesI = Convert.ToInt32(mes);
+                if (mesI < 1)
+                {
+                    return false;
+                }
+                else if (mesI > 12)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else return false;
+        }
+
+        public static bool esAnioValido(string anio)
+        {
+            if (!String.IsNullOrEmpty(anio.Trim()))
+            {
+                int anioI = Convert.ToInt32(anio);
+                if (anioI < 1900)
+                {
+                    return false;
+                }
+                else if (anioI > DateTime.Today.Year)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else return false;
+        }
+
+
         public static bool esUsuarioValido(string usu)
         {
             if (!String.IsNullOrEmpty(usu.Trim()))

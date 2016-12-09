@@ -119,6 +119,8 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            this.formPanel.Visible = false;
+            this.ClearForm();
         }
 
         private void LoadForm(int id)
@@ -130,11 +132,30 @@ namespace UI.Web
             this.txtDireccion.Text = this.Entity.Direccion;
             this.txtEmail.Text = this.Entity.Email;
             this.txtTelefono.Text = this.Entity.Telefono;
-            this.Date.Value = this.Entity.FechaNacimiento.ToString();
-            this.ddlTipoPersona.DataSource = Enum.GetValues(typeof(Persona.TiposPersonas));
+            this.txtDiaNac.Text = this.Entity.FechaNacimiento.Day.ToString();
+            this.txtMesNac.Text = this.Entity.FechaNacimiento.Month.ToString();
+            this.txtAnioNac.Text = this.Entity.FechaNacimiento.Year.ToString();
+
+            this.ddlTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TiposPersonas));
+            this.ddlTipoPersona.DataBind();
             this.ddlTipoPersona.SelectedValue = this.Entity.TipoPersona.ToString();
-            this.txtLegajo.Text = this.Entity.IdLegajo.ToString();
-            this.txtPlan.Text = this.Entity.PlanPersona;
+
+            if (this.Entity.TipoPersona == Persona.TiposPersonas.Alumno)
+            {
+                this.txtLegajo.Enabled = true;
+                this.ddlPlan.Enabled = true;
+                this.txtLegajo.Text = this.Entity.IdLegajo.ToString();
+                this.ddlPlan.SelectedValue = this.Entity.Plan.ID.ToString();
+            }
+            else
+            {
+                this.txtLegajo.Enabled = false;
+                this.ddlPlan.Enabled = false;
+                this.txtLegajo.Text = string.Empty;
+                this.ddlPlan.SelectedIndex = -1;
+            }
+
+            
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -161,15 +182,29 @@ namespace UI.Web
             per.Telefono = this.txtTelefono.Text;
             per.Email = this.txtEmail.Text;
             per.Nombre = this.txtNombre.Text;
-            //per.FechaNacimiento = this.Date.Value;
-            //per.legajo
-            //per.Plan
-        }
+            int dia = new int();
+            dia = Convert.ToInt32(this.txtDiaNac.Text);
+            int mes = new int();
+            mes = Convert.ToInt32(this.txtMesNac.Text);
+            int anio = new int();
+            anio = Convert.ToInt32(this.txtAnioNac.Text);
+            DateTime fecNac = new DateTime(anio, mes, dia);
+            per.FechaNacimiento = fecNac;
+            per.TipoPersona = (Persona.TiposPersonas)Enum.Parse(typeof(Persona.TiposPersonas), this.ddlTipoPersona.SelectedValue);
 
-        private void SaveEntity(Usuario usuario)
-        {
-            // TODO: Ver que se quitó el Save
-            //this.Logic.Save(usuario);
+            if(per.TipoPersona == Persona.TiposPersonas.Alumno)
+            {
+                per.IdLegajo = Convert.ToInt32(this.txtLegajo.Text);
+                PlanLogic planLogic = new PlanLogic();
+                Plan plan = new Plan();
+                plan = planLogic.GetOne(Convert.ToInt32(this.ddlPlan.SelectedValue));
+                per.Plan = plan;
+            }
+            else
+            {
+                per.IdLegajo = -1;
+            }
+           
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -181,6 +216,7 @@ namespace UI.Web
                     this.DeleteEntity(this.SelectedID);
                     this.LoadGrid();
                     this.formPanel.Visible = false;
+                    this.ClearForm();
                     break;
                 case FormModes.Modificacion:
                     if (Validar())
@@ -188,12 +224,11 @@ namespace UI.Web
 
                         this.Entity = new Persona();
                         this.Entity.ID = this.SelectedID;
-                        //this.Entity.State = Entidades.Entidades.States.Modified;
                         this.LoadEntity(this.Entity);
-                        //this.SaveEntity(this.Entity);
                         this.Logic.Update(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
+                        this.ClearForm();
                     }
 
                     break;
@@ -205,6 +240,7 @@ namespace UI.Web
                         this.Logic.Insert(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
+                        this.ClearForm();
                     }
                     break;
 
@@ -219,25 +255,37 @@ namespace UI.Web
         {
             this.alertForm.InnerHtml = "";
             string mensaje = "";
-            //Persona
-            /*if (this.ddlPersonasUsuario.SelectedValue == "-1")
+
+
+            //Nombre
+            if (!Validaciones.esDescripcionValida(this.txtNombre.Text))
             {
-                this.lblAsteriscoPersona.Visible = true;
-                mensaje += "- El usuario debe tener una persona asignada" + "<br/>";
-            }
-            //Clave
-            if (!Validaciones.esClaveValida(this.txtClave.Text))
-            {
-                this.lblAsteriscoClave.Visible = true;
-                mensaje += "- El campo Clave es requerido y debe contener al menos 6 caracteres" + "<br/>";
+                this.lblAsteriscoNomber.Visible = true;
+                mensaje += "- El campo Nombre es requerido" + "<br/>";
             }
             else
             {
-                if (!Validaciones.coincideClave(this.txtClave.Text, this.txtClave2.Text))
-                {
-                    this.lblAsteriscoClave.Visible = true;
-                    mensaje += "- Las Claves deben coincidir" + "<br/>";
-                }
+                this.lblAsteriscoNomber.Visible = false;
+            }
+            //Apellido
+            if (!Validaciones.esDescripcionValida(this.txtApellido.Text))
+            {
+                this.lblAsteriscoApellido.Visible = true;
+                mensaje += "- El campo Apellido es requerido" + "<br/>";
+            }
+            else
+            {
+                this.lblAsteriscoApellido.Visible = false;
+            }
+            //Direccion
+            if (!Validaciones.esDescripcionValida(this.txtDireccion.Text))
+            {
+                this.lblAsteriscoDireccion.Visible = true;
+                mensaje += "- El campo Descripción es requerido" + "<br/>";
+            }
+            else
+            {
+                this.lblAsteriscoDireccion.Visible = false;
             }
             //Email
             if (!Validaciones.esEmailValido(this.txtEmail.Text))
@@ -245,14 +293,60 @@ namespace UI.Web
                 mensaje += "- El campo Email es requerido y debe ser del formato de correo electrónico" + "<br/>";
                 this.lblAsteriscoEmail.Visible = true;
             }
-            // Usuario
-            if (!Validaciones.esUsuarioValido(this.txtUsuario.Text))
+            else
             {
-                mensaje += "- El campo Usuario es requerido y no debe contener caracteres especiales" + "<br/>";
-                this.lblAsteriscoUsuario.Visible = true;
-            }*/
+                this.lblAsteriscoEmail.Visible = false;
+            }
+            //Telefono
+            if (!Validaciones.esTelefonoValido(this.txtTelefono.Text))
+            {
+                mensaje += "- El campo Teléfono es requerido y no debe contener caracteres especiales" + "<br/>";
+                this.lblAsteriscoTelefono.Visible = true;
+            }
+            else
+            {
+                this.lblAsteriscoTelefono.Visible = false;
+            }
+            // Fecha Nacimiento
+            //Dia
+            if (!Validaciones.esDiaValido(this.txtDiaNac.Text))
+            {
+                mensaje += "- El campo Día es requerido y debe ser un número entre 1 y 31" + "<br/>";
+                this.lblAsteriscoFechaNacimiento.Visible = true;
+            }
+            else if (!Validaciones.esMesValido(this.txtMesNac.Text))
+            {
+                mensaje += "- El campo Mes es requerido y debe ser un número entre 1 y 12" + "<br/>";
+                this.lblAsteriscoFechaNacimiento.Visible = true;
+            } else if (!Validaciones.esAnioValido(this.txtAnioNac.Text))
+            {
+                mensaje += "- El campo Año es requerido y debe ser un número entre 1900 y "+ DateTime.Today.Year + "<br/>";
+                this.lblAsteriscoFechaNacimiento.Visible = true;
+            }
+            else
+            {
+                this.lblAsteriscoFechaNacimiento.Visible = false;
+            }
+            //Tipo
+            if (this.ddlTipoPersona.SelectedIndex == -1)
+            {
+                mensaje += "- El campo Tipo Persona es requerido" + "<br/>";
+                this.lblAsteriscoTipoPersona.Visible = true;
+            }
+            else if (this.ddlTipoPersona.SelectedValue.ToString() == Entidades.Persona.TiposPersonas.Alumno.ToString())
+            {
+                if (!Validaciones.esLegajoValido(this.txtLegajo.Text))
+                {
+                    mensaje += "- El campo Legajo es requerido y debe ser un número" + "<br/>";
+                    this.lblAsteriscoLegajo.Visible = true;
+                }
 
-
+                if (this.ddlPlan.SelectedIndex == -1)
+                {
+                    mensaje += "- El campo Plan es requerido" + "<br/>";
+                    this.lblAsteriscoPlan.Visible = true;
+                }
+            }
             //Mostrar los errores
             if (!String.IsNullOrEmpty(mensaje))
             {
@@ -273,8 +367,12 @@ namespace UI.Web
             this.txtEmail.Enabled = enable;
             this.txtTelefono.Enabled = enable;
             this.txtDireccion.Enabled = enable;
-            //this.Data.Visible = enable;
-            
+            this.txtDiaNac.Enabled = enable;
+            this.txtMesNac.Enabled = enable;
+            this.txtAnioNac.Enabled = enable;
+            this.ddlTipoPersona.Enabled = enable;
+            this.ddlPlan.Enabled = enable;
+            this.txtLegajo.Enabled = enable;
 
         }
 
@@ -287,7 +385,10 @@ namespace UI.Web
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
                 this.formValidationPanel.Visible = false;
-
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Asegúrese de seleccionar un campo.');</script>");
             }
         }
 
@@ -303,27 +404,53 @@ namespace UI.Web
             this.ClearForm();
             this.EnableForm(true);
             this.formValidationPanel.Visible = false;
+            this.ddlTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TiposPersonas));
+            this.ddlTipoPersona.DataBind();
+            this.ddlTipoPersona.SelectedValue = Persona.TiposPersonas.Alumno.ToString();
         }
 
         private void ClearForm()
         {
-            /*this.ddlPersonasUsuario.SelectedIndex = -1;
+            this.txtID.Text = string.Empty;
+            this.txtNombre.Text = string.Empty;
+            this.txtApellido.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
-            this.chkHabilitado.Checked = false;
-            this.txtUsuario.Text = string.Empty;
-            this.txtClave.Text = string.Empty;
-            this.txtClave2.Text = string.Empty;
+            this.txtTelefono.Text = string.Empty;
+            this.txtDireccion.Text = string.Empty;
+            this.txtDiaNac.Text = string.Empty;
+            this.txtMesNac.Text = string.Empty;
+            this.txtAnioNac.Text = string.Empty;
+            this.ddlTipoPersona.SelectedIndex = -1;
+            this.ddlPlan.SelectedIndex = -1;
+            this.txtLegajo.Text = string.Empty;
 
-            this.lblAsteriscoUsuario.Visible = false;
-            this.lblAsteriscoPersona.Visible = false;
+            this.lblAsteriscoNomber.Visible = false;
+            this.lblAsteriscoApellido.Visible = false;
             this.lblAsteriscoEmail.Visible = false;
-            this.lblAsteriscoClave2.Visible = false;
-            this.lblAsteriscoClave.Visible = false;*/
+            this.lblAsteriscoTelefono.Visible = false;
+            this.lblAsteriscoDireccion.Visible = false;
+            this.lblAsteriscoFechaNacimiento.Visible = false;
+            this.lblAsteriscoLegajo.Visible = false;
+            this.lblAsteriscoTipoPersona.Visible = false;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = false;
+        }
+
+        protected void ddlTipoPersona_Change(object sender, EventArgs e)
+        {
+            if(this.ddlTipoPersona.SelectedValue == Persona.TiposPersonas.Alumno.ToString())
+            {
+                this.ddlPlan.Enabled = true;
+                this.txtLegajo.Enabled = true;
+            }
+            else
+            {
+                this.ddlPlan.Enabled = false;
+                this.txtLegajo.Enabled = false;
+            }
         }
     }
 }

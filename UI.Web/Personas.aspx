@@ -127,7 +127,9 @@
                                     <asp:Label ID="lblFechaNacimiento" runat="server" Text="Fecha Nacimiento:"></asp:Label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input runat="server" type="text" value="9/23/2009" style="width: 100px;" readonly="readonly" name="Date" id="Date" class="hasDatepicker"/>
+                                    <asp:TextBox ID="txtDiaNac" Width="36px" runat="server"></asp:TextBox><asp:Label ID="lblBarra1" runat="server" Text="/"></asp:Label>
+                                    <asp:TextBox ID="txtMesNac" Width="36px" runat="server"></asp:TextBox><asp:Label ID="lblBarra2" runat="server" Text="/"></asp:Label>
+                                    <asp:TextBox ID="txtAnioNac" Width="36px" runat="server"></asp:TextBox>
                                     <asp:Label ID="lblAsteriscoFechaNacimiento" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
                                 </div>
                             </div>
@@ -136,9 +138,7 @@
                                     <asp:Label ID="lblTipoPersona" runat="server" Text="Tipo: "></asp:Label>
                                 </div>
                                 <div class="col-md-8">
-                                    <asp:DropDownList ID="ddlTipoPersona" runat="server">
-                                    </asp:DropDownList>
-                                    <asp:ObjectDataSource ID="ObjectDataSourcePersonas" runat="server" SelectMethod="GetAll" TypeName="Negocio.PersonaLogic"></asp:ObjectDataSource>
+                                    <asp:DropDownList ID="ddlTipoPersona" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoPersona_Change"></asp:DropDownList>
                                     <asp:Label ID="lblAsteriscoTipoPersona" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
                                 </div>
                             </div>
@@ -156,7 +156,8 @@
                                     <asp:Label ID="lblPlan" runat="server" Text="Plan: "></asp:Label>
                                 </div>
                                 <div class="col-md-8">
-                                    <asp:TextBox ID="txtPlan" runat="server"></asp:TextBox>
+                                    <asp:DropDownList ID="ddlPlan" runat="server" DataSourceID="ObjectDataSourcePlan" DataTextField="DescripcionEspPlan" DataValueField="ID"></asp:DropDownList>
+                                    <asp:ObjectDataSource ID="ObjectDataSourcePlan" runat="server" SelectMethod="GetAll" TypeName="Negocio.PlanLogic"></asp:ObjectDataSource>
                                     <asp:Label ID="lblAsteriscoPlan" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
                                 </div>
                             </div>

@@ -22,11 +22,20 @@ namespace Data.Database
                 while (drPersonas.Read())
                 {
                     Persona persona = new Persona();
-                    PlanAdapter planAda = new PlanAdapter();
-                    Plan plan = new Plan();
-                    plan = planAda.GetOne(Int32.Parse(drPersonas["id_plan"].ToString()));
+                    //PlanAdapter planAda = new PlanAdapter();
+                    //Plan plan = new Plan();
+                    //plan = planAda.GetOne(Int32.Parse(drPersonas["id_plan"].ToString()));
 
-                    persona.Plan = drPersonas.IsDBNull(8) ? null : plan;
+                    string idPlan = drPersonas["id_plan"].ToString();
+                    Plan plan = new Plan();
+                    if (idPlan != "")
+                    {
+                        PlanAdapter planAda = new PlanAdapter();
+                        plan = planAda.GetOne(Int32.Parse(idPlan));
+                    }
+
+
+                    persona.Plan = drPersonas.IsDBNull(9) ? null : plan;
                     persona.ID = (int)drPersonas["id_persona"];
                     persona.Nombre = (string)drPersonas["nombre"];
                     persona.Apellido = (string)drPersonas["apellido"];
@@ -34,7 +43,7 @@ namespace Data.Database
                     persona.Email = (string)drPersonas["email"];
                     persona.Telefono = (string)drPersonas["telefono"];
                     persona.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
-                    persona.IdLegajo = (int)drPersonas["legajo"];
+                    persona.IdLegajo = drPersonas.IsDBNull(7) ? -1 : (int)drPersonas["legajo"];
                     persona.TipoPersona = (Persona.TiposPersonas)drPersonas["tipo_persona"];
 
 
@@ -67,12 +76,17 @@ namespace Data.Database
                 SqlDataReader drPersona = cmdPersona.ExecuteReader();
                 if(drPersona.Read())
                 {
-                    PlanAdapter planAda = new PlanAdapter();
+
+                    string idPlan = drPersona["id_plan"].ToString();
                     Plan plan = new Plan();
+                    if(idPlan != "")
+                    {
+                        PlanAdapter planAda = new PlanAdapter();
+                        plan = planAda.GetOne(Int32.Parse(idPlan));
+                    }
+                    
 
-                    plan = planAda.GetOne(Int32.Parse(drPersona["id_plan"].ToString()));
-
-                    persona.Plan = drPersona.IsDBNull(8) ? null : plan;
+                    persona.Plan = drPersona.IsDBNull(9) ? null : plan;
                     persona.ID = (int)drPersona["id_persona"];
                     persona.Nombre = (string)drPersona["nombre"];
                     persona.Apellido = (string)drPersona["apellido"];
@@ -80,7 +94,7 @@ namespace Data.Database
                     persona.Email = (string)drPersona["email"];
                     persona.Telefono = (string)drPersona["telefono"];
                     persona.FechaNacimiento = (DateTime)drPersona["fecha_nac"];
-                    persona.IdLegajo = (int)drPersona["legajo"];
+                    persona.IdLegajo = drPersona.IsDBNull(7) ? -1 : (int)drPersona["legajo"];
                     persona.TipoPersona = (Persona.TiposPersonas)drPersona["tipo_persona"];
                 }
 
@@ -161,7 +175,15 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.IdLegajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.TipoPersona;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.Plan.ID;
+                if(persona.Plan == null)
+                {
+                    cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = (object)DBNull.Value;
+                }
+                else
+                {
+                    cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.Plan.ID;
+                }
+                
 
                 cmdSave.ExecuteNonQuery();
                 
@@ -194,7 +216,15 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.IdLegajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.TipoPersona;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.Plan.ID;
+                if (persona.Plan == null)
+                {
+                    cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = DBNull.Value;
+                }
+                else
+                {
+                    cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.Plan.ID;
+                }
+                
                 persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar()); //Asi se obtiene el id que asingo a la BD automaticamente
 
             }
