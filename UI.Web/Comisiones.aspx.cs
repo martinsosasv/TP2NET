@@ -219,16 +219,27 @@ namespace UI.Web
                 this.lblAsteriscoDescripcion.Visible = true;
                 mensaje += "- El campo Descripción es requerido y no debe contener caracteres especiales" + "<br/>";
             }
-            if (!Validaciones.esAnioCalendarioValido(this.txtAnio.Text))
+            else
+            {
+                this.lblAsteriscoDescripcion.Visible = false;
+            }
+            if (!Validaciones.esAnioEspecialidadValido(this.txtAnio.Text))
             {
                 this.lblAsteriscoAnio.Visible = true;
-                mensaje += "- El campo año es requerido y debe contener números" + "<br/>";
+                mensaje += "- El campo año es requerido y debe contener un número entre 1 y 6" + "<br/>";
             }
-            
+            else
+            {
+                this.lblAsteriscoAnio.Visible = false;
+            }
             if (this.ddlPlan.SelectedValue == "-1")
             {
                 this.lblAsteriscoPlan.Visible = true;
                 mensaje += "- La materia debe tener un plan asignado" + "<br/>";
+            }
+            else
+            {
+                this.lblAsteriscoPlan.Visible = false;
             }
 
             //Mostrar los errores

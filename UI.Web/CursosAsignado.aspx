@@ -74,7 +74,7 @@
             <asp:Panel ID="gridViewDetalleCursoActionsPanel" CssClass="gridActionsPanelRight" runat="server" >
                 <asp:LinkButton ID="btnAgregarNota" runat="server" OnClick="btnAgregarNota_Click">Modificar Nota</asp:LinkButton>
             </asp:Panel>
-            <div runat="server" id="Div1" visible="false">
+            <div runat="server" id="gridViewDetalleCursoEmpty" visible="false">
                 <p>No existen alumnos inscriptos</p>
             </div>
         </div>

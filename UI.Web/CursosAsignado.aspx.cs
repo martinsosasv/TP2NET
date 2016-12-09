@@ -151,13 +151,13 @@ namespace UI.Web
             {
                 this.gridViewDetalleCurso.Visible = false;
                 this.gridViewDetalleCursoActionsPanel.Visible = false;
-                this.cursosAsignadosEmpty.Visible = true;
+                this.gridViewDetalleCursoEmpty.Visible = true;
             }
             else
             {
                 this.gridViewDetalleCurso.Visible = true;
                 this.gridViewDetalleCursoActionsPanel.Visible = true;
-                this.cursosAsignadosEmpty.Visible = false;
+                this.gridViewDetalleCursoEmpty.Visible = false;
                 List<Persona> listadoPersonas = new List<Persona>();
                 PersonaLogic perLog = new PersonaLogic();
                 listadoPersonas = perLog.GetAll();
@@ -237,7 +237,6 @@ namespace UI.Web
             if (this.IsEntitySelectedCurso)
             {
                 this.divDetalleCurso.Visible = true;
-                //this.formValidationPanel.Visible = false
                 this.LoadGridAlumnosInscriptos(this.SelectedIDCurso);
             }
             else

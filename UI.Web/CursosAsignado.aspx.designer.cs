@@ -94,13 +94,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.LinkButton btnAgregarNota;
         
         /// <summary>
-        /// Control Div1.
+        /// Control gridViewDetalleCursoEmpty.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gridViewDetalleCursoEmpty;
         
         /// <summary>
         /// Control formPanelInscripcion.

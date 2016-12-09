@@ -228,26 +228,43 @@ namespace UI.Web
         {
             this.alertForm.InnerHtml = "";
             string mensaje = "";
-            //Descripcion
+            //Anio calendario
             if (!Validaciones.esAnioCalendarioValido(this.txtAnioCalendario.Text))
             {
                 this.lblAsteriscoAnioCalendario.Visible = true;
                 mensaje += "- El campo Año Calendario es requerido y debe ser mayor a 1949" + "<br/>";
             }
+            else
+            {
+                this.lblAsteriscoAnioCalendario.Visible = false;
+            }
+            //Cupo
             if (!Validaciones.esCupoValido(this.txtCupo.Text))
             {
                 this.lblAsteriscoCupo.Visible = true;
                 mensaje += "- El campo Cupo es requerido y debe contener números" + "<br/>";
+            }
+            else
+            {
+                this.lblAsteriscoCupo.Visible = false;
             }
             if (this.ddlComision.SelectedValue == "-1")
             {
                 this.lblAsteriscoComision.Visible = true;
                 mensaje += "- El curso debe tener una comisión asignada" + "<br/>";
             }
+            else
+            {
+                this.lblAsteriscoComision.Visible = false;
+            }
             if (this.ddlMateria.SelectedValue == "-1")
             {
                 this.lblAsteriscoMateria.Visible = true;
                 mensaje += "- El curso debe tener una materia asignada" + "<br/>";
+            }
+            else
+            {
+                this.lblAsteriscoMateria.Visible = false;
             }
 
             //Mostrar los errores
