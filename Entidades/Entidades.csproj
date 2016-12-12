@@ -42,7 +42,6 @@
     <Compile Include="AlumnoInscripcion.cs" />
     <Compile Include="Comision.cs" />
     <Compile Include="Curso.cs" />
-    <Compile Include="DocenteCurso.cs" />
     <Compile Include="Docente_Curso.cs" />
     <Compile Include="Entidades.cs" />
     <Compile Include="Especialidad.cs" />

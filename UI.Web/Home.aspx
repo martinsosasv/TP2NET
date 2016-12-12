@@ -17,9 +17,6 @@
                         <li class="active"><a href="#">Home</a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="Cuenta.aspx">Cuenta</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav">
                         <li><a href="Login.aspx" runat="server" id="btpHeaderSalir" onClick="btpHeaderSalir_Click">Salir</a></li>
                     </ul>
 

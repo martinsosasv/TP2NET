@@ -54,6 +54,58 @@ namespace Data.Database
             return cursos;
         }
 
+        public List<Curso> GetAllConCupo()
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                this.OpenConnection();
+                SqlCommand cmdCursos = new SqlCommand("SELECT id_curso,id_materia,id_comision,anio_calendario,cupo FROM cursos", SqlConn);
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+                while (drCursos.Read())
+                {
+                    Curso curso = new Curso();
+                    ComisionAdapter comAda = new ComisionAdapter();
+                    Comision comision = new Comision();
+                    MateriaAdapter matAda = new MateriaAdapter();
+                    Materia materia = new Materia();
+                    materia = matAda.GetOne(Int32.Parse(drCursos["id_materia"].ToString()));
+                    comision = comAda.GetOne(Int32.Parse(drCursos["id_comision"].ToString()));
+
+                   
+
+                    curso.ID = (int)drCursos[0];
+                    curso.Materia = drCursos.IsDBNull(1) ? null : materia;
+                    curso.Comision = drCursos.IsDBNull(2) ? null : comision;
+                    curso.AnioCalendario = (int)drCursos[3];
+                    curso.Cupo = (int)drCursos[4];
+
+                    List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+                    AlumnoInscripcionAdapter inscripcionesAdapter = new AlumnoInscripcionAdapter();
+
+                    inscripciones = inscripcionesAdapter.GetInscripcionesCurso(curso.ID);
+                    if (inscripciones.Count < curso.Cupo)
+                    {
+                        cursos.Add(curso);
+                    }
+
+                    
+                }
+
+                drCursos.Close();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return cursos;
+        }
 
         public Entidades.Curso GetOne(int ID)
         {

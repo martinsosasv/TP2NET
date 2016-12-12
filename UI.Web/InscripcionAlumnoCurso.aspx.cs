@@ -62,7 +62,7 @@ namespace UI.Web
         {
             List<Curso> listadoCursos = new List<Curso>();
             CursoLogic curLog = new CursoLogic();
-            listadoCursos = curLog.GetAll();
+            listadoCursos = curLog.GetAllConCupo();
 
             List<AlumnoInscripcion> listadoAlumno_Inscripciones = new List<AlumnoInscripcion>();
             AluInscLogic aluInscLog = new AluInscLogic();

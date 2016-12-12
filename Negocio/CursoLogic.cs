@@ -29,6 +29,11 @@ namespace Negocio
             return this.CursoData.GetAll();
         }
 
+        public List<Curso> GetAllConCupo()
+        {
+            return this.CursoData.GetAllConCupo();
+        }
+
         public Curso GetOne(int id)
         {
             return this.CursoData.GetOne(id);
