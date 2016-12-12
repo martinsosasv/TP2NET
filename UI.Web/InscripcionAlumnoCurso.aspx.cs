@@ -68,21 +68,37 @@ namespace UI.Web
             AluInscLogic aluInscLog = new AluInscLogic();
             listadoAlumno_Inscripciones = aluInscLog.GetInscripcionesAlumno(Convert.ToInt32(Session["id_persona"]));
 
+            Persona per = new Persona();
+            PersonaLogic perLog = new PersonaLogic();
+            per = perLog.GetOne(Convert.ToInt32(Session["id_persona"]));
+
             List<Curso> listadoCursosAInscribir = new List<Curso>();
 
             for (int i = 0; i < listadoCursos.Count; i++)
             {
-                bool bandera = false;
+            //    bool banderaPlan = false;
+                bool banderaInsc = false;
 
-                for (int j = 0; j < listadoAlumno_Inscripciones.Count; j++)
-                {
-                    if (listadoAlumno_Inscripciones[j].Curso.ID == listadoCursos[i].ID)
+             //   if (per.Plan.ID == listadoCursos[i].IdPlan)
+             //   {
+             //       banderaPlan = true;
+             //   }
+
+             //   if (banderaPlan == true)
+             //   {
+                    for (int j = 0; j < listadoAlumno_Inscripciones.Count; j++)
                     {
-                        bandera = true;
+                        // Usuario ya está inscripto
+                        if (listadoAlumno_Inscripciones[j].Curso.ID == listadoCursos[i].ID)
+                        {
+                            banderaInsc = true;
+                        }
                     }
-                }
+              //  }
 
-                if (bandera == false)
+
+                //if (banderaPlan == true && banderaInsc == false)
+                if(banderaInsc == false)
                 {
                     listadoCursosAInscribir.Add(listadoCursos[i]);
                 }

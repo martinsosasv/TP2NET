@@ -25,7 +25,7 @@ namespace UI.Web
                 Usuario user = new Usuario();
                 UsuarioLogic userLog = new UsuarioLogic();
                 user = userLog.GetOne(this.txtUsuario.Text);
-                if (user.NombreUsuario == this.txtUsuario.Text.ToLower() && user.Clave == this.txtPassword.Text.ToLower())
+                if (user.NombreUsuario == this.txtUsuario.Text.ToLower() && user.Clave == this.txtPassword.Text.ToLower() && user.Habilitado == true)
                 {
                     this.txtUsuario.Text = "";
                     this.txtPassword.Text = "";
@@ -36,7 +36,13 @@ namespace UI.Web
                 }
                 else
                 {
-                    if (user.NombreUsuario != this.txtUsuario.Text)
+                    if(user.Habilitado == false)
+                    {
+                        //El Usuario está deshabilitado
+                        this.lblErrorIngreso.Visible = true;
+                        this.lblErrorIngreso.InnerHtml = "El Usuario se encuentra deshabilitado";
+                    }
+                    else if (user.NombreUsuario != this.txtUsuario.Text)
                     {
                         //El Usuario no existe
                         this.lblErrorIngreso.Visible = true;

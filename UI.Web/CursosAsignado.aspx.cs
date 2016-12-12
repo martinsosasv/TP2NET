@@ -146,43 +146,34 @@ namespace UI.Web
             List<AlumnoInscripcion> listadoAlumno_Inscripcion = new List<AlumnoInscripcion>();
             AluInscLogic aluInsLog = new AluInscLogic();
             listadoAlumno_Inscripcion = aluInsLog.GetAll();
+            this.gridViewDetalleCurso.Visible = true;
+            this.gridViewDetalleCursoActionsPanel.Visible = true;
+            this.gridViewDetalleCursoEmpty.Visible = false;
+            List<Persona> listadoPersonas = new List<Persona>();
+            PersonaLogic perLog = new PersonaLogic();
+            listadoPersonas = perLog.GetAll();
 
-            if(listadoAlumno_Inscripcion.Count == 0)
+            var inscriptos = from aluins in listadoAlumno_Inscripcion
+                                join alu in listadoPersonas
+                                on aluins.Alumno.ID equals alu.ID
+                                where (aluins.Curso.ID == Convert.ToInt32(id) )
+                                select new
+                                {
+                                    id_inscripcion = aluins.ID,
+                                    legajo = alu.IdLegajo,
+                                    apellido = alu.Apellido,
+                                    nombre = alu.Nombre,
+                                    nota = aluins.Nota
+                                };
+
+            gridViewDetalleCurso.DataSource = inscriptos.ToList();
+            gridViewDetalleCurso.DataBind();
+            if (this.gridViewDetalleCurso.Rows.Count == 0)
             {
                 this.gridViewDetalleCurso.Visible = false;
                 this.gridViewDetalleCursoActionsPanel.Visible = false;
                 this.gridViewDetalleCursoEmpty.Visible = true;
             }
-            else
-            {
-                this.gridViewDetalleCurso.Visible = true;
-                this.gridViewDetalleCursoActionsPanel.Visible = true;
-                this.gridViewDetalleCursoEmpty.Visible = false;
-                List<Persona> listadoPersonas = new List<Persona>();
-                PersonaLogic perLog = new PersonaLogic();
-                listadoPersonas = perLog.GetAll();
-
-                var inscriptos = from aluins in listadoAlumno_Inscripcion
-                                 join alu in listadoPersonas
-                                 on aluins.Alumno.ID equals alu.ID
-                                 //where (aluins.Curso.ID == Convert.ToInt32(id) && aluins.Condicion == "Cursando")
-                                 where (aluins.Curso.ID == Convert.ToInt32(id) )
-                                 select new
-                                 {
-                                     id_inscripcion = aluins.ID,
-                                     legajo = alu.IdLegajo,
-                                     apellido = alu.Apellido,
-                                     nombre = alu.Nombre,
-                                     nota = aluins.Nota
-                                 };
-
-                gridViewDetalleCurso.DataSource = inscriptos.ToList();
-                gridViewDetalleCurso.DataBind();
-                /*if (this.dgvAlumnosInscriptosACurso.Rows.Count == 0)
-                { this.lblGridVacia.Visible = true; }*/
-            }
-
-            
 
         }
 
@@ -192,7 +183,7 @@ namespace UI.Web
             {
                 if (Session["usuario"] == null)
                 {
-                    MessageBoxAlert("Su sesión ha expirado", "Reporte Planes", "Login.aspx");
+                    MessageBoxAlert("Su sesión ha expirado", "Cursos Asignados", "Login.aspx");
                 }
                 else
                 {
@@ -204,7 +195,7 @@ namespace UI.Web
                             this.LoadGrid();
                             break;
                         default:
-                            MessageBoxAlert("No tienes permiso para ingresar a ésta página.", "Reporte Planes", "Home.aspx");
+                            MessageBoxAlert("No tienes permiso para ingresar a ésta página.", "Cursos Asignados", "Home.aspx");
                             break;
                     }
                 }

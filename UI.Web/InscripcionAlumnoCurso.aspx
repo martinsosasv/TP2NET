@@ -34,7 +34,7 @@
                     <asp:BoundField DataField="DescComision" HeaderText="Comisión"/>
                     <asp:BoundField DataField="DescMateria" HeaderText="Materia"/>
                     <asp:BoundField DataField="DescPlanEsp" HeaderText="Especialidad"/>
-                    <asp:BoundField DataField="AnioCalendario" HeaderText="Nivel"/>
+                    <asp:BoundField DataField="AnioCalendario" HeaderText="Año"/>
                     <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
                     ShowSelectButton="True" />
                 </Columns>
@@ -55,7 +55,7 @@
                        <asp:BoundField DataField="DescComision" HeaderText="Comisión"/>
                        <asp:BoundField DataField="DescMateria" HeaderText="Materia"/>
                        <asp:BoundField DataField="DescPlanEsp" HeaderText="Especialidad"/>
-                       <asp:BoundField DataField="AnioCalendario" HeaderText="Nivel"/>
+                       <asp:BoundField DataField="AnioCalendario" HeaderText="Año"/>
                     </Columns>
                 </asp:GridView>
             </div>

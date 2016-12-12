@@ -192,6 +192,7 @@
     <Content Include="Cursos.aspx" />
     <Content Include="CursosAsignado.aspx" />
     <Content Include="DocenteCurso.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\140x140.gif" />
@@ -399,6 +400,13 @@
     </Compile>
     <Compile Include="DocenteCurso.aspx.designer.cs">
       <DependentUpon>DocenteCurso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
