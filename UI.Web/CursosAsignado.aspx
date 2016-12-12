@@ -66,6 +66,8 @@
                         SortExpression="nombre" />
                     <asp:BoundField DataField="nota" HeaderText="Nota" 
                         SortExpression="nota" />
+                    <asp:BoundField DataField="condicion" HeaderText="Condición" 
+                        SortExpression="condicion" />
                     <asp:CommandField HeaderText="Seleccionar" SelectText="Seleccionar" 
                         ShowSelectButton="True" />
                 </Columns>
