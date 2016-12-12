@@ -29,7 +29,7 @@ namespace UI.Desktop
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void frmMain_Load(object sender, EventArgs e)

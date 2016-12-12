@@ -35,6 +35,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text = materia.Descripcion;
             this.txtHSSemanales.Text = materia.HSSemanales.ToString();
             this.txtHSTotales.Text = materia.HSTotales.ToString();
+            cbxPlan.SelectedValue = materia.Plan.ID;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

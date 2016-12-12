@@ -35,6 +35,7 @@ namespace UI.Desktop
             this.Text = "Editar plan";
             this.txtID.Text = plan.ID.ToString();
             this.txtDescripcion.Text = plan.Descripcion;
+            cbxEspecialidad.SelectedValue = plan.Especialidad.ID;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

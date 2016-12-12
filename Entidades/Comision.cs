@@ -39,5 +39,10 @@ namespace Entidades
         {
             get { return this.Plan.DescripcionEspecialidad; }
         }
+
+        public string DescComPlanEsp
+        {
+            get { return this.Descripcion + "-" + this.DescripcionEspecPlan + " " + this.PlanDescripcion; }
+        }
     }
 }

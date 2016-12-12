@@ -63,9 +63,9 @@
             this.lblAnio.AutoSize = true;
             this.lblAnio.Location = new System.Drawing.Point(91, 117);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(26, 13);
+            this.lblAnio.Size = new System.Drawing.Size(31, 13);
             this.lblAnio.TabIndex = 2;
-            this.lblAnio.Text = "Año";
+            this.lblAnio.Text = "Nivel";
             // 
             // lblPlan
             // 
@@ -126,7 +126,7 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // ComisionAgregar
+            // frmComisionAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,7 +141,7 @@
             this.Controls.Add(this.lblAnio);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblID);
-            this.Name = "ComisionAgregar";
+            this.Name = "frmComisionAgregar";
             this.Text = "Agregar comisión";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -34,7 +34,7 @@ namespace UI.Desktop
             this.txtID.Text = comision.ID.ToString();
             this.txtDescripcion.Text = comision.Descripcion;
             this.txtAnio.Text = comision.AnioEspecialidad.ToString();
-
+            cbxPlan.SelectedValue = comision.Plan.ID;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

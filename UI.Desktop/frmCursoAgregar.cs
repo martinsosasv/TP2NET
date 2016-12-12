@@ -26,7 +26,7 @@ namespace UI.Desktop
                 ComisionLogic comLog = new ComisionLogic();
                 listadoComisiones = comLog.GetAll();
                 cbxComision.DataSource = listadoComisiones;
-                cbxComision.DisplayMember = "Descripcion";
+                cbxComision.DisplayMember = "DescComPlanEsp";
                 cbxComision.ValueMember = "ID";
 
                 List<Materia> listadoMaterias = new List<Materia>();
