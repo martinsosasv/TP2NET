@@ -22,7 +22,7 @@
     </div>
 
     <div class="container container-login">
-        <div class="panel panel-default panel-login">
+        <div class="panel panel-default panel-login1">
             <div class="panel-heading">Por favor ingrese sus datos</div>
             <div class="panel-body">
                 <form>
@@ -50,11 +50,14 @@
                     </a>
             </div>
         </div>
-
-    
-    
-        
     </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <span>© 2016</span>
+            <span class="pull-right">Tecnologías de Desarrollo de Software IDE</span>
+        </div>
+    </nav>
                 
 
 </asp:Content>

@@ -61,7 +61,7 @@
                                     <asp:Label ID="lblComision" runat="server" Text="Comisión: "></asp:Label>
                                 </div>
                                 <div class="col-md-8">
-                                    <asp:DropDownList ID="ddlComision" runat="server" DataSourceID="ObjectDataSourceComisiones" DataTextField="Descripcion" DataValueField="ID"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlComision" runat="server" DataSourceID="ObjectDataSourceComisiones" DataTextField="DescComPlanEsp" DataValueField="ID"></asp:DropDownList>
                                     <asp:ObjectDataSource ID="ObjectDataSourceComisiones" runat="server" SelectMethod="GetAll" TypeName="Negocio.ComisionLogic"></asp:ObjectDataSource>
                                     <asp:Label ID="lblAsteriscoComision" CssClass="asteriscoValidation" runat="server" Visible="False" Text="*" ForeColor="Red"></asp:Label>
                                 </div>

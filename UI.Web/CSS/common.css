@@ -9,9 +9,18 @@
     text-align:center;
 }
 
+.panel-login1
+{
+    max-width: 420px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:left;
+}
+
 .panel-login
 {
-    max-width: 445px;
+    max-width: 600px;
     float: none;
     margin-left: auto;
     margin-right: auto;

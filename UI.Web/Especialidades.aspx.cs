@@ -12,6 +12,7 @@ namespace UI.Web
 {
     public partial class Especialidades : System.Web.UI.Page
     {
+        #region PROPIEDADES
         EspecialidadLogic _logic;
         private EspecialidadLogic Logic
         {
@@ -74,6 +75,8 @@ namespace UI.Web
                 return (this.SelectedID != 0);
             }
         }
+
+        #endregion
 
         private void LoadGrid()
         {
@@ -233,6 +236,10 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
                 this.formValidationPanel.Visible = false;
 
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Asegúrese de seleccionar un campo.');</script>");
             }
         }
 

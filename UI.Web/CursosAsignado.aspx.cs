@@ -163,7 +163,8 @@ namespace UI.Web
                                     legajo = alu.IdLegajo,
                                     apellido = alu.Apellido,
                                     nombre = alu.Nombre,
-                                    nota = aluins.Nota
+                                    nota = aluins.Nota,
+                                    condicion = aluins.Condicion
                                 };
 
             gridViewDetalleCurso.DataSource = inscriptos.ToList();
@@ -219,7 +220,7 @@ namespace UI.Web
 
         protected void gridViewDetalleCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedIDInscripcion = (int)this.gridView.SelectedValue;
+            this.SelectedIDInscripcion = (int)this.gridViewDetalleCurso.SelectedValue;
             this.formPanelInscripcion.Visible = false;
         }
 
@@ -260,9 +261,6 @@ namespace UI.Web
             aluIns = aluInsLogic.GetOne(id);
             this.txtIDInscripcion.Text = aluIns.ID.ToString();
             this.ddlNota.SelectedValue = aluIns.Nota.ToString();
-            
-            //TODO: Ocultar formulario y actualizar detalle curso
-
 
         }
 

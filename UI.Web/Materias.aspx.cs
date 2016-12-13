@@ -274,6 +274,10 @@ namespace UI.Web
                 this.formValidationPanel.Visible = false;
 
             }
+            else
+            {
+                Response.Write("<script>window.alert('Asegúrese de seleccionar un campo.');</script>");
+            }
         }
 
         private void DeleteEntity(int id)
